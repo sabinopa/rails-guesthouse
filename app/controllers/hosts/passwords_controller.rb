@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Guest::PasswordsController < Devise::PasswordsController
+class Hosts::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super

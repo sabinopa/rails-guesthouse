@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :guest, controllers: { 
-    sessions: 'guest/sessions', 
-    registrations: 'guest/registrations'
+  devise_for :guests, controllers: { 
+    sessions: 'guests/sessions', 
+    registrations: 'guests/registrations'
   }
-  devise_for :host, controllers: { 
-    sessions: 'host/sessions',
-    registrations: 'host/registrations' 
+  devise_for :hosts, controllers: { 
+    sessions: 'hosts/sessions',
+    registrations: 'hosts/registrations' 
   }
   
   root to: 'home#index'

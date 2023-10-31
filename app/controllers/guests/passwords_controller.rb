@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Host::PasswordsController < Devise::PasswordsController
+class Guests::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super
@@ -14,7 +14,7 @@ class Host::PasswordsController < Devise::PasswordsController
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
   #   super
-  # end
+  # end 
 
   # PUT /resource/password
   # def update

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Host::SessionsController < Devise::SessionsController
+class Hosts::SessionsController < Devise::SessionsController
   def create
     super do |resource|
       BackgroundWorker.trigger(resource)

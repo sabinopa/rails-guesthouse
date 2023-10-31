@@ -6,3 +6,9 @@ pt-BR:
     attributes:
       host:
         name: "Nome"
+        lastname: "Sobrenome"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        characters_minimum: "caracteres mínimos"
+        remember_me: "Lembre de mim"

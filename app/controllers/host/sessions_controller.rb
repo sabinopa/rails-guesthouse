@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Host::SessionsController < Devise::SessionsController
+  def create
+    super do |resource|
+      BackgroundWorker.trigger(resource)
+    end
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

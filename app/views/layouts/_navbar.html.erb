@@ -2,18 +2,36 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Pousadaria</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+          <a class="nav-link" href="#">
+            <% if host_signed_in? %>
+              <%= current_host.name %> |
+              <%= link_to 'Anfitrião - Sair', destroy_host_session_path, method: :delete %> |
+            </li>
+          </a>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">
+            <% else %>
+              <%= link_to 'Login como Anfitrião', new_host_session_path %>
+            <% end %>
+            </a>
+          </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page">etcetc</a>
+          <a class="nav-link" href="#">
+            <% if guest_signed_in? %>
+              <%= current_guest.name %> |
+              <%= link_to 'Hóspede - Sair', destroy_guest_session_path, method: :delete %> |
+            </li>
+          </a>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page">
+            <% else %>
+              <%= link_to 'Login como Hóspede', new_guest_session_path %>
+            <% end %>
+            </a>
         </li>
       </ul>
       <form class="d-flex" role="search">

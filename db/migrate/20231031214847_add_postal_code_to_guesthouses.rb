@@ -1,0 +1,5 @@
+class AddPostalCodeToGuesthouses < ActiveRecord::Migration[7.0]
+  def change
+    add_column :guesthouses, :postal_code, :string
+  end
+end

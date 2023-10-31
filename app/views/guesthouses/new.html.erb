@@ -1,0 +1,89 @@
+<h1>Cadastrar pousada:</h1>
+
+<%= form_with(model: @guesthouse) do |f| %>
+
+  <div>
+    <%= f.label :description %>: 
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :brand_name %>: 
+    <%= f.text_field :brand_name %>
+  </div>
+
+  <div>
+    <%= f.label :corporate_name %>: 
+    <%= f.text_field :corporate_name %>
+  </div>
+
+  <div>
+    <%= f.label :phone_number %>: 
+    <%= f.telephone_field :phone_number %>
+  </div>
+
+  <div>
+    <%= f.label :phone_number %>: 
+    <%= f.telephone_field :phone_number %>
+  </div>
+
+  <div>
+    <%= f.label :address %>: 
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :neighborhood %>: 
+    <%= f.text_field :neighborhood %>
+  </div>
+
+  <div>
+    <%= f.label :city %>: 
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label :state %>: 
+    <%= f.text_field :state %>
+  </div>
+
+  <div>
+    <%= f.label :postal_code %>: 
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :payment_method %>: 
+    <%= f.collection_select :payment_method, PaymentMethod.all, :id, :name %>
+  </div>
+
+  <div>
+  <%= f.radio_button :pet_friendly, "Aceita pets" %>
+  <%= f.label :pet_friendly, "Aceita pets" %>
+  <%= f.radio_button :pet_friendly, "Não aceita pets" %>
+  <%= f.label :pet_friendly, "Não aceita pets"  %>
+  </div>
+
+  <div>
+    <%= f.label :usage_policy%>: 
+    <%= f.text_area:usage_policy %>
+  </div>
+
+  <div>
+    <%= f.label :checkin %>: 
+    <%= f.time_field :checkin %>
+  </div>
+
+  <div>
+    <%= f.label :checkout %>: 
+    <%= f.time_field :checkout %>
+  </div>
+
+  <div>
+    <%= f.radio_button :status, "Ativo" %>:
+    <%= f.label :status, "Ativo" %>
+    <%= f.radio_button :status, "Inativo" %>
+    <%= f.label :status, "Inativo"  %>:
+  </div>
+
+<% end %>

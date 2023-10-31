@@ -4,6 +4,8 @@ class Host < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :guesthouse
+
   def description
     "#{name} #{lastname} - #{email}"
   end

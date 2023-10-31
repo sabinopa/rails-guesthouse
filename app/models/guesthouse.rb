@@ -1,3 +1,4 @@
 class Guesthouse < ApplicationRecord
-  belongs_to :payment_method
+  has_one :payment_method
+  belongs_to :host
 end

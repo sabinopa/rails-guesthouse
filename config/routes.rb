@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     registrations: 'guest/registrations'
   }
   devise_for :host, controllers: { 
-    sessions: 'host/sessions' 
+    sessions: 'host/sessions',
+    registrations: 'host/registrations' 
   }
   
-  root to: "home#index"
+  root to: 'home#index'
 end

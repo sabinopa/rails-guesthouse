@@ -5,7 +5,7 @@
     <%= current_host.name %> |
     <%= button_to 'Sair', destroy_host_session_path, method: :delete %> |
   <% else %>
-    <%= link_to 'Login como Anfitrião', new_host_session_path %>
+    <%= link_to 'Entrar como Anfitrião', new_host_session_path %>
   <% end %>
 </div>
 <div>
@@ -13,7 +13,7 @@
     <%= current_guest.name %> |
     <%= button_to 'Sair', destroy_guest_session_path, method: :delete %> |
   <% else %>
-    <%= link_to 'Login como Hóspede', new_guest_session_path %>
+    <%= link_to 'Entrar como Hóspede', new_guest_session_path %>
   <% end %>
 </div>
 </nav>

@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      host: 'Anfitrião'
+      hosts: 'Anfitriões'
+    attributes:
+      host:
+        name: "Nome"

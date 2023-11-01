@@ -1,5 +1,5 @@
 class GuesthousesController < ApplicationController
-  #before_action :authenticate_host!
+  before_action :authenticate_host!
   before_action :set_guesthouse, only: [:show, :edit, :update]
 
   def show 
@@ -10,8 +10,7 @@ class GuesthousesController < ApplicationController
   end
   
   def create
-    @guesthouse = Guesthouse.new(guesthouse_params)
-    @guesthouse.host = current_host
+    @guesthouse = current_host.create_guesthouse(guesthouse_params)
 
     if @guesthouse.save
       redirect_to guesthouse_path(@guesthouse), notice: "#{@guesthouse.brand_name}: Criada com sucesso!"

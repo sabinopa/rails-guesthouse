@@ -1,24 +1,49 @@
-# README
+# Pousadaria - Plataforma de Reservas em Pousadas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o objetivo de oferecer uma plataforma para a busca, visualização e reserva de quartos em pousadas espalhadas por todo o país. 
 
-Things you may want to cover:
+## Funcionalidades
+- [x]  Criar perfis exclusivos para donos de pousadas, 
+- [ ]  Donos de pousadas podem adicionar informações sobre seu estabelecimento, como preços personalizados, política de uso e localização.
+- [ ] Donos de pousadas podem especificar as comodidades de cada quarto em seu estabelecimento, assim como precificar cada um deles.
+- [ ] Donos de pousadas podem personalizar preços em datas de alta demanda. 
+- [ ] Donos de pousadas podem inativas seus estabelecimento por tempo determinado. 
 
-* Ruby version
+### Gems utilizadas
+- [Devise](https://github.com/heartcombo/devise)
+- [Rspec](https://github.com/rspec/rspec-rails)
+- [Capybara](https://github.com/teamcapybara/capybara)
 
-* System dependencies
+### Como executar o projeto 
 
-* Configuration
+Para executar esse projeto, você deve instalar a linguagem [Ruby v3.2.2](https://www.ruby-lang.org/pt/) e o framework [Rails v7.0.8](https://guides.rubyonrails.org/) em seu computador.
 
-* Database creation
+Em seguida, siga os passos abaixo: 
 
-* Database initialization
+- Clone este repostório
+```
+git clone https://github.com/sabinopa/guesthouse-app
+```
 
-* How to run the test suite
+- Abra o diretório pelo terminal 
+```
+cd guesthouse-app
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+- Instale o Bundle pelo terminal 
+```
+bundle install
+```
 
-* Deployment instructions
+- Crie e popule o banco de dados 
+```
+rails db:migrate
+```
 
-* ...
+- Execute a aplicação 
+```
+rails server
+```
+
+- Acesse a aplicação no link http://localhost:3000/
+

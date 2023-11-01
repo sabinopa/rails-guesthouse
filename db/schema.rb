@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_31_220158) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_01_210855) do
   create_table "guesthouses", force: :cascade do |t|
     t.string "description"
     t.string "brand_name"
@@ -31,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_220158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "postal_code"
+    t.integer "host_id", null: false
+    t.index ["host_id"], name: "index_guesthouses_on_host_id"
     t.index ["payment_method_id"], name: "index_guesthouses_on_payment_method_id"
   end
 
@@ -70,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_31_220158) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "guesthouses", "hosts"
   add_foreign_key "guesthouses", "payment_methods"
   add_foreign_key "hosts", "guesthouses"
 end

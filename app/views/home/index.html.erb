@@ -1,1 +1,19 @@
 <h1>Boas Vindas à Pousadaria!</h1>
+<div>
+</div>
+<% @guesthouses.each do |guesthouse| %>
+<div>
+  <h3><%= link_to(guesthouse.brand_name, guesthouse_path(guesthouse.id))%></h3>
+  <dl>
+    <dt><strong>Nome:</strong></dt> 
+    <dd><%= guesthouse.name_brand %></dd>
+    <dt><strong>Cidade:</strong></dt>
+    <dd><%= guesthouse.city %></dd>
+  </dl>
+</div>
+<% end %>
+
+<% if @guesthouses.empty? %> 
+    <%= link_to('Cadastrar Pousada', new_guesthouse_path) %>
+    <p>Não existem pousadas cadastradas.</p>
+<% end %>

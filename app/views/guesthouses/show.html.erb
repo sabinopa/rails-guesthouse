@@ -1,0 +1,33 @@
+<h1>Pousada <%= @guestouse.brand_name %></h1>
+<p> <%= @guesthouse.description %></p>
+<div>
+    <dl>
+        <dt><strong><%= Guesthouse.human_attribute_name(:brand_name) %>:</strong></dt>
+        <dd><%= @guesthouse.brand_name %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:corporate_name) %>:</strong></dt>
+        <dd><%= @guesthouse.corporate_name %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:registration_number) %>:</strong></dt>
+        <dd><%= @guesthouse.registration_number %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:phone_number) %>:</strong></dt>
+        <dd><%= @guesthouse.phone_number %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:email) %>:</strong></dt>
+        <dd><%= @guesthouse.email %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:address) %>:</strong></dt>
+        <dd><%= @guesthouse.address %></dd> - <dd><%= @guesthouse.neighborhood %></dd>, <dd><%= @guesthouse.city %></dd> - <dd><%= @guesthouse.state %></dd>
+        <dd><%= @guesthouse.posta_code %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:pet_friendly) %>:</strong></dt>
+        <dd><%= @guesthouse.pet_friendly %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:usage_policy) %>:</strong></dt>
+        <dd><%= @guesthouse.usage_policy %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:checkin) %>:</strong></dt>
+        <dd><%= @guesthouse.checkin %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:checkout) %>:</strong></dt>
+        <dd><%= @guesthouse.checkout %></dd>
+    </dl>
+</div>
+
+<div>
+<%= link_to 'Editar Pousada', edit_guesthouse_path(@guesthouse.id)) %>
+<%= link_to 'Voltar', root_path %>
+</div>
+

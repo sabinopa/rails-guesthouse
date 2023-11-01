@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    models:
+      guesthouse: 'Pousada'
+      guesthouses: 'Pousadas'
+    attributes:
+      gueshouse:
+        name_brand: 'Nome'
+        corporate_name: 'Registro da empresa'
+        registration_number: 'CNPJ'
+        phone_number: 'Contato'
+        email: 'E-mail'
+        address: 'Endereço'
+        neighborhood: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        postal_code: 'CEP'
+        payment_method: 'Método de pagamento'
+        pet_friendly: 'Aceita animais de estimação'
+        usage_policy: 'Regras de uso'
+        checkin: 'Entrada'
+        checkout: 'Saída'
+
+

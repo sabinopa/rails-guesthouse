@@ -7,7 +7,7 @@ describe 'Host register guesthouse' do
     guesthouse = Guesthouse.create!(brand_name: 'Refúgio do Pôr do Sol', corporate_name: 'Hospitalidade do Pôr do Sol Ltda.',
                                     registration_number: '10.321.987/0001-30', phone_number: '11-9456-7890', email: 'info@refugiodopordosol.com',
                                     address: 'Rua Principal, 123', neighborhood: 'Beira-Mar', city: 'Arraial do Cabo', state: 'RJ',
-                                    payment_method: payment_method, pet_friendly: true, usage_policy: 'Proibido fumar e receber convidados.',
+                                    payment_method_id: 1, pet_friendly: true, usage_policy: 'Proibido fumar e receber convidados.',
                                     checkin: '14:00', checkout: '11:00', status: 1)
 
     visit root_path

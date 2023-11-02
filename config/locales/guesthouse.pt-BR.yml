@@ -4,9 +4,10 @@ pt-BR:
       guesthouse: 'Pousada'
       guesthouses: 'Pousadas'
     attributes:
-      gueshouse:
-        name_brand: 'Nome'
-        corporate_name: 'Registro da empresa'
+      guesthouse:
+        description: 'Descrição'
+        brand_name: 'Nome'
+        corporate_name: 'Razão Social'
         registration_number: 'CNPJ'
         phone_number: 'Contato'
         email: 'E-mail'

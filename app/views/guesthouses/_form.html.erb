@@ -61,14 +61,12 @@
   </div>
 
   <div>
-  <%= f.radio_button :pet_friendly, "Aceita pets" %>
-  <%= f.label :pet_friendly, "Aceita pets" %>
-  <%= f.radio_button :pet_friendly, "Não aceita pets" %>
-  <%= f.label :pet_friendly, "Não aceita pets"  %>
+    <%= f.label :pet_friendly, 'Aceita Pets' %>
+    <%= f.check_box :pet_friendly %>
   </div>
 
   <div>
-    <%= f.label :usage_policy%>: 
+    <%= f.label :usage_policy %>: 
     <%= f.text_area:usage_policy %>
   </div>
 

@@ -1,19 +1,24 @@
 <nav>
-<h1><%= link_to 'Pousadaria', root_path %></h1>
-<div class="centered text">
-  <% if host_signed_in? %>
-    <%= current_host.description %> |
-    <%= button_to 'Sair', destroy_host_session_path, method: :delete %> |
-  <% else %>
-    <%= link_to 'Entrar como Anfitrião', new_host_session_path %>
-  <% end %>
-</div>
-<div>
-  <% if guest_signed_in? %>
-    <%= current_guest.description %> |
-    <%= button_to 'Sair', destroy_guest_session_path, method: :delete %> |
-  <% else %>
-    <%= link_to 'Entrar como Hóspede', new_guest_session_path %>
-  <% end %>
-</div>
+  <h1><%= link_to 'Pousadaria', root_path %></h1>
+
+  <div>
+    <% if host_signed_in? %>
+      <%= current_host.description %> 
+      <%= button_to 'Sair', destroy_host_session_path, method: :delete %> 
+      <%= render 'home/host' %>
+    <% else %>
+      <%= link_to 'Entrar como Anfitrião', new_host_session_path %>
+    <% end %>
+    </div>
+    <div>
+    <% unless host_signed_in? %>
+      <% if guest_signed_in? %>
+        <%= current_guest.description %> 
+        <%= button_to 'Sair', destroy_guest_session_path, method: :delete %> 
+        <%= render 'home/guest' %>
+      <% else %>
+        <%= link_to 'Entrar como Hóspede', new_guest_session_path %>
+      <% end %>
+    <% end %>
+    </div>
 </nav>

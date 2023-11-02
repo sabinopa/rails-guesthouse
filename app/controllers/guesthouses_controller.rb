@@ -6,6 +6,9 @@ class GuesthousesController < ApplicationController
   end
   
   def new
+    if current_host.guesthouse.present?
+      return redirect_to guesthouse_path(current_host.guesthouse), notice: 'Você já tem uma pousada.'
+    end
     @guesthouse = Guesthouse.new
   end
   
@@ -25,7 +28,7 @@ class GuesthousesController < ApplicationController
 
   def update   
     if @guesthouse.update(guesthouse_params)
-      redirect_to guesthouse_path, notice: "#{@guesthouse.brand_name}: Atualizado com sucesso!"
+      redirect_to guesthouse_path(@guesthouse.id), notice: "#{@guesthouse.brand_name}: Atualizado com sucesso!"
     else
       flash.now[:notice] = 'Não foi possível atualizar a pousada.'
       render :new

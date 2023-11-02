@@ -1,0 +1,16 @@
+<% if current_host.guesthouse.nil? %> 
+  <%= link_to('Cadastrar pousada', new_guesthouse_path) %>
+  <p>Não existem pousadas cadastradas.</p>
+<% else %>
+  <h1> Sua pousada: </h1>
+  <div>
+    <dl>
+      <dt><strong>Nome:</strong></dt> 
+      <dd><%= current_host.guesthouse.brand_name %></dd>
+      <dt><strong>Cidade:</strong></dt>
+      <dd><%= current_host.guesthouse.city %></dd>
+    </dl>
+    <p><%= link_to('Gerenciar pousada', edit_guesthouse_path(current_host.guesthouse)) %></p>
+  </div>
+<% end %>
+  

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Host sign up' do
+describe 'Host sign in' do
   it 'successfully' do
     Host.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 

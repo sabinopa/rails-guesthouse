@@ -18,12 +18,12 @@ pt-BR:
         postal_code: 'CEP'
         payment_method: 'Método de pagamento'
         payment_method_id: 'Método de pagamento'
-        pet_friendly: 'Aceita animais de estimação'
+        pet_friendly: 'Animais de estimação'
         usage_policy: 'Regras de uso'
         checkin: 'Entrada'
         checkout: 'Saída'
-        on: 'Ativo'
-        off: 'Inativo'
+        active: 'Ativo'
+        inactive: 'Inativo'
 
 
 

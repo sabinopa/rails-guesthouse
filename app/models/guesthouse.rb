@@ -1,10 +1,18 @@
 class Guesthouse < ApplicationRecord
-  enum status: { off: 0, on: 1 }
-
   validates :description, :brand_name, :corporate_name, :registration_number, :phone_number, :email, :address, :neighborhood, 
-            :city, :state, :postal_code, :payment_method_id, :pet_friendly, :usage_policy, :checkin, :checkout, :status,
-            presence: true
+  :city, :state, :postal_code, :payment_method_id, :usage_policy, :checkin, :checkout, :status, presence: true
 
-  has_one :payment_method
+  validate :host_has_guesthouse, on: :create
+
   belongs_to :host
+  has_many :rooms
+  has_one :payment_method
+  
+  private 
+
+  def host_has_guesthouse
+    if Guesthouse.exists?(host: self.host)
+      errors.add(:host, 'Ops, você já tem uma pousada cadastrada!')
+    end
+  end
 end

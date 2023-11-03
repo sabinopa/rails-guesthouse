@@ -1,13 +1,13 @@
 class GuesthousesController < ApplicationController
   before_action :authenticate_host!
-  before_action :set_guesthouse, only: [:show, :edit, :update, :on]
+  before_action :set_guesthouse, only: [:show, :edit, :update]
 
   def show 
   end
   
   def new
     if current_host.guesthouse.present?
-      return redirect_to guesthouse_path(current_host.guesthouse), notice: 'Você já tem uma pousada.'
+      return redirect_to guesthouse_path(current_host.guesthouse), notice: 'Ops, você já tem uma pousada cadastrada!'
     end
     @guesthouse = Guesthouse.new
   end
@@ -24,6 +24,9 @@ class GuesthousesController < ApplicationController
   end
       
   def edit
+    if @guesthouse.host != current_host
+      redirect_to root_path, notice: 'Você não pode editar essa pousada!'
+    end
   end
 
   def update   
@@ -35,10 +38,12 @@ class GuesthousesController < ApplicationController
     end
   end
 
-  def on
-    guesthouse.on!
-    redirect_to guesthouse_path(guesthouse.id)
-end
+  # def my_guesthouse
+  #   @guesthouse = current_host.guesthouse
+  #   if @guesthouse.nil? 
+  #     redirect_to root_path, notice: 'Clique em Cadastrar Pousada para ter a sua pousada na Pousadaria.'
+  #   end
+  # end
 
   private
 

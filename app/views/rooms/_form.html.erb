@@ -1,0 +1,58 @@
+<% if(@room.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @room.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: room do |f| %>
+  <div>
+    <%= f.label :name %>: 
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description %>: 
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :size %>: 
+    <%= f.number_field :size %>
+  </div>
+
+  <div>
+    <%= f.label :max_people %>: 
+    <%= f.number_field :max_people %>
+  </div>
+
+  <div>
+    <%= f.label :price %>: 
+    <%= f.number_field :price %>
+  </div>
+
+  <div>
+    <%= f.check_box :bathroom %>
+    <%= f.label :bathroom %>
+  </div>
+
+  <div>
+    <%= f.check_box :balcony %>
+    <%= f.label :balcony %>
+  </div>
+
+  <div>
+    <%= f.check_box :air_conditioner %>
+    <%= f.label :air_conditioner %>
+  </div>
+
+  <div>
+    <%= f.check_box :tv %>
+    <%= f.label :tv %>
+  </div>
+
+  <%= f.submit 'Salvar' %>
+
+<% end %>

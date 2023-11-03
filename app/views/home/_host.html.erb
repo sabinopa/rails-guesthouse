@@ -15,6 +15,7 @@
       <dd><%= current_host.guesthouse.city %></dd>
     </dl>
     <p><%= link_to 'Gerenciar pousada', edit_guesthouse_path(current_host.guesthouse) %></p>
+    <p><%= link_to 'Gerenciar quartos', edit_room_path(current_host.guesthouse.room) %></p>
   <% end %>
 </div>
   

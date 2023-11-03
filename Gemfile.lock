@@ -218,7 +218,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   debug
-  devise
+  devise (~> 4.9)
   puma (~> 5.0)
   rails (~> 7.0.8)
   rspec-rails

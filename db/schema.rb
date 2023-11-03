@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_222048) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_171524) do
   create_table "guesthouses", force: :cascade do |t|
     t.string "description"
     t.string "brand_name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_222048) do
     t.string "usage_policy"
     t.time "checkin"
     t.time "checkout"
-    t.integer "status"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "postal_code"
@@ -70,6 +70,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_222048) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "size"
+    t.string "max_people"
+    t.string "price"
+    t.boolean "bathroom"
+    t.boolean "balcony"
+    t.boolean "air_conditioner"
+    t.boolean "tv"
+    t.integer "guesthouse_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guesthouse_id"], name: "index_rooms_on_guesthouse_id"
+  end
+
   add_foreign_key "guesthouses", "hosts"
   add_foreign_key "guesthouses", "payment_methods"
+  add_foreign_key "rooms", "guesthouses"
 end

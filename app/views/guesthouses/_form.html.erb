@@ -1,12 +1,3 @@
-<% if(@guesthouse.errors.any?) %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% @guesthouse.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
 <%= form_with model: guesthouse do |f| %>
   <div>
     <%= f.label :description %>: 
@@ -70,7 +61,7 @@
 
   <div>
     <%= f.check_box :pet_friendly %>
-    <%= f.label :pet_friendly, 'Aceita animais de estimação' %>
+    <%= f.label :pet_friendly %>
   </div>
 
   <div>
@@ -89,10 +80,8 @@
   </div>
 
   <div>
-    <%= f.radio_button :status, "on" %>
-    <%= f.label :status, "Ativo" %>
-    <%= f.radio_button :status, "off" %>
-    <%= f.label :status, "Inativo"  %>
+    <%= f.check_box :status %>
+    <%= f.label :status, 'Ativo' %>
   </div>
 
   <%= f.submit 'Salvar' %>

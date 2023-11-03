@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      payment_method: 'Método de pagamento'
+      payment_method_id: 'Método de pagamento'
+    attributes:
+      payment_method: 
+        method: 'Método de pagamento'

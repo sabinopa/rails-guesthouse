@@ -1,6 +1,6 @@
 class GuesthousesController < ApplicationController
   before_action :authenticate_host!
-  before_action :set_guesthouse, only: [:show, :edit, :update]
+  before_action :set_guesthouse, only: [:show, :edit, :update, :on]
 
   def show 
   end
@@ -16,7 +16,7 @@ class GuesthousesController < ApplicationController
     @guesthouse = current_host.create_guesthouse(guesthouse_params)
 
     if @guesthouse.save
-      redirect_to guesthouse_path(@guesthouse), notice: "#{@guesthouse.brand_name}: Criada com sucesso!"
+      redirect_to guesthouse_path(@guesthouse), notice: "#{@guesthouse.brand_name}: Criado com sucesso!"
     else
       flash.now[:notice] = 'Pousada não cadastrada.'
       render :new
@@ -34,6 +34,11 @@ class GuesthousesController < ApplicationController
       render :new
     end
   end
+
+  def on
+    guesthouse.on!
+    redirect_to guesthouse_path(guesthouse.id)
+end
 
   private
 

@@ -10,5 +10,5 @@ pt-BR:
         email: "E-mail"
         password: "Senha"
         password_confirmation: "Confirmação de senha"
-        characters_minimum: "caracteres mínimos"
+        characters_minimum: "Caracteres mínimos"
         remember_me: "Lembre de mim"

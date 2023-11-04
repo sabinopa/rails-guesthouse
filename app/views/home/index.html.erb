@@ -1,6 +1,10 @@
 <% if host_signed_in? %>  
-  <%= render 'host' %>
+  <%= render 'host', locals: { guesthouse: @guesthouse }%>
 <% elsif host_signed_in? %>
   <%= render 'guest' %>
+<% else %>
+  <% @guesthouses.each do |guesthouse| %> 
+    <%= link_to guesthouse.brand_name, guesthouse %></br>
+  <% end %> 
 <% end %>
 

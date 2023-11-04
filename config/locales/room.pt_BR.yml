@@ -13,4 +13,7 @@ pt-BR:
         balcony: 'Varanda'
         air_conditioner: 'Ar Condicionado'
         tv: 'Televisão'
-       
+        wardrobe: 'Guarda-roupa'
+        safe: 'Cofre'
+        accessibility: 'Acessível para pessoas com deficiência'
+        status: 'Ativo'

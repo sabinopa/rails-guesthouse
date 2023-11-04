@@ -1,10 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!
   before_action :set_room, only: [:show, :edit, :update]
-
-  def index
-    @rooms = Room.all
-  end
+  before_action :check_host, only: [:new, :create, :edit, :update]
 
   def show
     @guesthouse = current_host.guesthouse
@@ -29,9 +26,6 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    if @room.guesthouse.host != current_host
-      redirect_to root_path, notice: 'Você não pode editar esse quarto'
-    end
   end
 
   def update
@@ -46,5 +40,13 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:description, :name, :size, :max_people, :price, :bathroom,
                                 :balcony, :air_conditioner, :tv)
+  end
+
+  def check_host
+    @guesthouse = Guesthouse.find(params[:guesthouse_id])
+    @guesthouse = @room.guesthouse
+    if @guesthouse.host != current_user 
+      redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+    end
   end
 end

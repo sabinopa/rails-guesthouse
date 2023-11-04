@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_171524) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_183443) do
   create_table "guesthouses", force: :cascade do |t|
     t.string "description"
     t.string "brand_name"
@@ -83,6 +83,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_171524) do
     t.integer "guesthouse_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "wardrobe"
+    t.boolean "safe"
+    t.boolean "accessibility"
+    t.boolean "status"
     t.index ["guesthouse_id"], name: "index_rooms_on_guesthouse_id"
   end
 

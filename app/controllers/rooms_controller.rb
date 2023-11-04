@@ -1,20 +1,30 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!
+  before_action :set_room, only: [:show, :edit, :update]
+
+  def index
+    @rooms = Room.all
+  end
 
   def show
+    @guesthouse = current_host.guesthouse
   end
 
   def new
+    @guesthouse = current_host.guesthouse
     @room = Room.new
   end
 
   def create
-    @room = current_host.create_room(room_params)
+    @guesthouse = current_host.guesthouse
+    @room = Room.new(room_params)
+    @room.guesthouse = @guesthouse
 
     if @room.save
-      redirect_to room_path, notice: "Quarto #{@room.name}: Criado com sucesso!"
+      redirect_to guesthouse_rooms_path, notice: "Quarto #{@room.name}: Criado com sucesso!"
     else
       flash.now[:notice] = 'Quarto não cadastrado.'
+      render :new
     end
   end
 

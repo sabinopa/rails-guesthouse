@@ -1,0 +1,5 @@
+<ul>
+  <% @rooms.each do | room | %>
+      <li><%= link_to "#{room.name} - #{room.max_people}", guesthouse_room_path(:guesthouse_id, room) %></li>
+  <% end %> 
+</ul>

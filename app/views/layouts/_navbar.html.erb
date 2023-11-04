@@ -5,7 +5,6 @@
     <% if host_signed_in? %>
       <%= current_host.description %> 
       <%= button_to 'Sair', destroy_host_session_path, method: :delete %> 
-      <%= render 'home/host' %>
     <% else %>
       <%= link_to 'Entrar como Anfitrião', new_host_session_path %>
     <% end %>
@@ -15,7 +14,6 @@
       <% if guest_signed_in? %>
         <%= current_guest.description %> 
         <%= button_to 'Sair', destroy_guest_session_path, method: :delete %> 
-        <%= render 'home/guest' %>
       <% else %>
         <%= link_to 'Entrar como Hóspede', new_guest_session_path %>
       <% end %>

@@ -1,0 +1,20 @@
+<h1>Quarto <%= @room.name %></h1>
+<p> <%= @room.description %></p>
+<div>
+    <dl>
+        <dt><strong><%= Room.human_attribute_name(:size) %>:</strong></dt>
+        <dd><%= @room.size %></dd>
+        <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
+        <dd><%= @room.max_people %></dd>
+        <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
+        <dd><%= @room.price %></dd>
+        <dt><strong><%= Room.human_attribute_name(:bathroom) %>:</strong></dt>
+        <dd><%= @room.bathroom? ? 'Individual' : 'Comunitário' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:balcony) %>:</strong></dt>
+        <dd><%= @room.balcony? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:air_conditioner) %>:</strong></dt>
+        <dd><%= @room.air_conditioner? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:tv) %>:</strong></dt>
+        <dd><%= @room.tv? ? 'Possui' : 'Não possui' %></dd>
+    </dl>
+</div>

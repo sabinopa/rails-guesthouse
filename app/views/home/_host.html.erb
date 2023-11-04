@@ -1,21 +1,26 @@
 <div>
-<% if current_host.guesthouse.nil? %> 
-  <%= link_to 'Cadastrar pousada', new_guesthouse_path %>
-  <p>Não existem pousadas cadastradas.</p>
-<% end %>
-</div>
-
-<div>
-  <% if current_host.guesthouse.present? && current_host.guesthouse.id.present?  %>
-    <h1> Sua pousada: </h1>
-    <dl>
-      <dt><strong>Nome:</strong></dt> 
-      <dd><%= current_host.guesthouse.brand_name %></dd>
-      <dt><strong>Cidade:</strong></dt>
-      <dd><%= current_host.guesthouse.city %></dd>
-    </dl>
-    <p><%= link_to 'Gerenciar pousada', edit_guesthouse_path(current_host.guesthouse) %></p>
-    <p><%= link_to 'Gerenciar quartos', edit_room_path(current_host.guesthouse.room) %></p>
+  <% if current_host.guesthouse.nil? %> 
+    <%= link_to 'Cadastrar pousada', new_guesthouse_path %>
+    <p>Não existem pousadas cadastradas.</p>
   <% end %>
-</div>
+  </div>
+  
+  <div>
+    <% if current_host.guesthouse.id.present?  %>
+      <h1> Sua pousada: </h1>
+      <dl>
+        <dt><strong>Nome:</strong></dt> 
+        <dd><%= current_host.guesthouse.brand_name %></dd>
+        <dt><strong>Cidade:</strong></dt>
+        <dd><%= current_host.guesthouse.city %></dd>
+      </dl>
+      <% end %>
+      <p><%= link_to 'Gerenciar pousada', edit_guesthouse_path(current_host.guesthouse) %></p>
+    
+    <%# if guesthouse.id.room.any? %>
+      <p><%= link_to 'Gerenciar quartos', guesthouse_rooms_path(:guesthouse_id) %></p>
+    <%# end %>
+
+      <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(:guesthouse_id) %></p>
+  </div>
   

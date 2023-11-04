@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   
   authenticate :host do
-    resources :guesthouses, except: [:destroy]
-    resources :rooms, except: [:destroy]
+    resources :guesthouses, except: [:destroy] do
+      resources :rooms, except: [:destroy]
+    end
   end
 end
 

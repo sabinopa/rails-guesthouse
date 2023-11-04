@@ -1,1 +1,6 @@
-<%= render 'host' %>
+<% if host_signed_in? %>  
+  <%= render 'host' %>
+<% elsif host_signed_in? %>
+  <%= render 'guest' %>
+<% end %>
+

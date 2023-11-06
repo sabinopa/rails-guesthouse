@@ -1,10 +1,14 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!
+  before_action :set_guesthouse
   before_action :set_room, only: [:show, :edit, :update]
-  before_action :set_guesthouse_and_check_host, only: [:new, :create, :edit, :update]
+  before_action :check_host, only: [:new, :create, :edit, :update]
+
+  def index
+    @rooms = @guesthouse.rooms
+  end
 
   def show
-    @guesthouse = current_host.guesthouse
   end
 
   def new
@@ -27,6 +31,12 @@ class RoomsController < ApplicationController
   end
 
   def update
+    if @room.update(room_params)
+      redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "#{@room.name}: Atualizado com sucesso!"
+    else
+      flash.now[:notice] = 'Não foi possível atualizar o quarto.'
+      render :new
+    end 
   end
 
   private
@@ -40,10 +50,13 @@ class RoomsController < ApplicationController
                                 :balcony, :air_conditioner, :tv)
   end
 
-  def set_guesthouse_and_check_host
-    @guesthouse = Guesthouse.find(params[:guesthouse_id])
+  def check_host
     if @guesthouse.host != current_host
       return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
     end
+  end
+
+  def set_guesthouse
+    @guesthouse = Guesthouse.find(params[:guesthouse_id])
   end
 end

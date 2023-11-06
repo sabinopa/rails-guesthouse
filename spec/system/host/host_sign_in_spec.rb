@@ -32,4 +32,16 @@ describe 'Host sign in' do
     expect(page).not_to have_button 'Sair'
     expect(page).not_to have_content 'Priscila Sabino - priscila@email.com'
   end
+
+  it 'and submits blank field' do
+    visit root_path
+    click_on 'Entrar como Anfitrião'
+    within('form') do
+      fill_in 'E-mail', with: ''
+      fill_in 'Senha', with: ''
+      click_on 'Entrar'
+    end
+
+    expect(page).to have_content 'E-mail ou senha inválida.'
+  end
 end

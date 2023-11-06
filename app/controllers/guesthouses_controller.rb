@@ -3,7 +3,6 @@ class GuesthousesController < ApplicationController
   before_action :set_guesthouse, only: [:show, :edit, :update]
 
   def show 
-    
   end
 
   def new

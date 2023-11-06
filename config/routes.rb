@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   }
   
   root to: 'home#index'
-  
 
   resources :guesthouses, except: [:destroy] do
     resources :rooms, except: [:destroy]

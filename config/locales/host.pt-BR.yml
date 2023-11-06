@@ -9,6 +9,6 @@ pt-BR:
         lastname: "Sobrenome"
         email: "E-mail"
         password: "Senha"
-        password_confirmation: "Confirmação de senha"
+        password_confirmation: "Confirme sua senha"
         characters_minimum: "Caracteres mínimos"
         remember_me: "Lembre de mim"

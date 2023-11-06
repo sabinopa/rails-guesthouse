@@ -1,11 +1,15 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_host!
+  before_action :authenticate_host!, except: [:index, :show]
   before_action :set_guesthouse
   before_action :set_room, only: [:show, :edit, :update]
   before_action :check_host, only: [:new, :create, :edit, :update]
 
   def index
-    @rooms = @guesthouse.rooms
+    if current_host.present?
+      @rooms = @guesthouse.rooms
+    else
+      @rooms = @guesthouse.rooms.where(status: true)
+    end
   end
 
   def show
@@ -47,7 +51,7 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:description, :name, :size, :max_people, :price, :bathroom,
-                                :balcony, :air_conditioner, :tv)
+                                :balcony, :air_conditioner, :tv, :status)
   end
 
   def check_host

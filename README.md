@@ -4,8 +4,8 @@ O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o
 
 ## Funcionalidades
 - [x]  Criar perfis exclusivos para donos de pousadas, 
-- [ ]  Donos de pousadas podem adicionar informações sobre seu estabelecimento, como preços personalizados, política de uso e localização.
-- [ ] Donos de pousadas podem especificar as comodidades de cada quarto em seu estabelecimento, assim como precificar cada um deles.
+- [x]  Donos de pousadas podem adicionar informações sobre seu estabelecimento, como preços personalizados, política de uso e localização.
+- [x] Donos de pousadas podem especificar as comodidades de cada quarto em seu estabelecimento, assim como precificar cada um deles.
 - [ ] Donos de pousadas podem personalizar preços em datas de alta demanda. 
 - [ ] Donos de pousadas podem inativas seus estabelecimento por tempo determinado. 
 

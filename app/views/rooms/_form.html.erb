@@ -53,6 +53,11 @@
     <%= f.label :tv %>
   </div>
 
+  <div>
+    <%= f.check_box :status %>
+    <%= f.label :status, 'Disponível para reservas' %>
+  </div>
+
   <%= f.submit 'Salvar' %>
 
 <% end %>

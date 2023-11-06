@@ -16,5 +16,7 @@
         <dd><%= @room.air_conditioner? ? 'Possui' : 'Não possui' %></dd>
         <dt><strong><%= Room.human_attribute_name(:tv) %>:</strong></dt>
         <dd><%= @room.tv? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:status) %>:</strong></dt>
+        <dd><%= @room.status? ? 'Disponível' : 'Indisponível' %></dd>
     </dl>
 </div>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :rooms, except: [:destroy]
     end
   end
+  
+  
 end
 
-#get 'my_guesthouse', to: 'gesthouses#my_guesthouse'

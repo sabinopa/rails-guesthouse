@@ -25,5 +25,7 @@
         <dd><%= @guesthouse.checkin.strftime("%H:%M") %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:checkout) %>:</strong></dt>
         <dd><%= @guesthouse.checkout.strftime("%H:%M") %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:status) %>:</strong></dt>
+        <dd><%= @guesthouse.status? ? 'Ativo' : 'Inativo' %></dd>
     </dl>
 </div>

@@ -143,20 +143,14 @@ describe 'Host edits guesthouse' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
 
+    login_as(host, :scope => :host)
     visit root_path
-    click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'aline@email.com'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
     click_on 'Gerenciar pousada'
-
     uncheck 'Ativo'
     click_on 'Salvar'
 
-    expect(current_path).to eq(guesthouse_path(@guesthouse))
-    expect(page).to have_content "#{@guesthouse.brand_name}: Atualizado com sucesso!"
+    expect(current_path).to eq(guesthouse_path(guesthouse))
+    expect(page).to have_content "#{guesthouse.brand_name}: Atualizado com sucesso!"
     expect(page).to have_content 'Inativo'
 
   end

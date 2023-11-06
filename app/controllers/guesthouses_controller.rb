@@ -30,7 +30,7 @@ class GuesthousesController < ApplicationController
     end
   end
 
-  def update   
+  def update
     if @guesthouse.update(guesthouse_params)
       redirect_to guesthouse_path(@guesthouse.id), notice: "#{@guesthouse.brand_name}: Atualizado com sucesso!"
     else

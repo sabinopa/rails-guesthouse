@@ -21,15 +21,10 @@ describe 'Host sign in' do
   end
 
   it 'e faz logout' do
-    Host.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
+    host = Host.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
+    login_as(host)
     visit root_path
-    click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'priscila@email.com'
-      fill_in 'Senha', with: '12345678'
-      click_on 'Entrar'
-    end
     click_on 'Sair'
 
     expect(page).to have_content 'Saiu com sucesso.'

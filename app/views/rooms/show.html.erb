@@ -2,5 +2,9 @@
 
 <div>
 <%= link_to 'Voltar', guesthouse_rooms_path %>
-<%= link_to 'Editar', edit_guesthouse_room_path(@room) %>
 </div>
+
+<% if @room.guesthouse.host.present? %>
+  <p><%= link_to "Adicionar preço personalizado", new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %></p>
+  <p><%= link_to 'Editar', edit_guesthouse_room_path(@room) %></p>
+<% end %>

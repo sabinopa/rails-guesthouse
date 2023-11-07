@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   }
   
   root to: 'home#index'
-
   resources :guesthouses, except: [:destroy] do
-    resources :rooms, except: [:destroy]
+    resources :rooms, except: [:destroy] do
+      resources :custom_price, except: [:destroy]
+    end
   end
+
 end
 

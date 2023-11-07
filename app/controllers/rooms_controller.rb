@@ -61,6 +61,6 @@ class RoomsController < ApplicationController
   end
 
   def set_guesthouse
-    @guesthouse = Guesthouse.find(params[:guesthouse_id])
+    @guesthouse = current_host.guesthouse
   end
 end

@@ -1,5 +1,5 @@
 class GuesthousesController < ApplicationController
-  #before_action :authenticate_host!, except: [:show]
+  before_action :authenticate_host!, except: [:show]
   before_action :set_guesthouse, only: [:show, :edit, :update]
 
   def show 

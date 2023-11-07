@@ -144,7 +144,6 @@ describe 'Host edits guesthouse' do
     expect(current_path).to eq(guesthouse_path(guesthouse))
     expect(page).to have_content "#{guesthouse.brand_name}: Atualizado com sucesso!"
     expect(page).to have_content 'Inativo'
-
   end
 
   it 'and try to edit another guesthouse' do

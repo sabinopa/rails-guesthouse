@@ -10,7 +10,7 @@ describe 'Host edits room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                        price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                        bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
 
 
@@ -27,7 +27,7 @@ describe 'Host edits room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                        price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                        bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
 
     login_as(host, :scope => :host)  
@@ -40,7 +40,6 @@ describe 'Host edits room' do
     fill_in 'Descrição', with: 'Sol o dia todo!'
     fill_in 'Dimensão', with: '15 m2'
     fill_in 'Capacidade', with: '5 pessoas'
-    fill_in 'Preço', with: '350,00'
     check 'Varanda'
     uncheck 'Televisão'
     click_on 'Salvar'
@@ -50,7 +49,6 @@ describe 'Host edits room' do
     expect(page).to have_content 'Sol o dia todo!'
     expect(page).to have_content 'Dimensão: 15 m2'
     expect(page).to have_content 'Capacidade: 5 pessoas'
-    expect(page).to have_content 'Preço: R$ 350,00'
     expect(page).to have_content 'Varanda: Possui'
     expect(page).to have_content 'Televisão: Não possui'
     expect(page).to have_content 'Disponibilidade para reservas: Disponível'
@@ -65,7 +63,7 @@ describe 'Host edits room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                        price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                        bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
     second_host = Host.create!(name: 'Hugo', lastname: 'Silveira', email: 'hugo@email.com', password: '12345678')
     second_guesthouse = Guesthouse.create!(host: second_host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -90,7 +88,7 @@ describe 'Host edits room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                        price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                        bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
 
 
@@ -104,14 +102,12 @@ describe 'Host edits room' do
     fill_in 'Descrição', with: ''
     fill_in 'Dimensão', with: ''
     fill_in 'Capacidade', with: ''
-    fill_in 'Preço', with: ''
     click_on 'Salvar'
 
     expect(page).to have_content 'Nome não pode ficar em branco'
     expect(page).to have_content 'Descrição não pode ficar em branco'
     expect(page).to have_content 'Dimensão não pode ficar em branco'
     expect(page).to have_content 'Capacidade não pode ficar em branco'
-    expect(page).to have_content 'Preço não pode ficar em branco'
   end
 
   it 'and turn room inactive' do
@@ -123,7 +119,7 @@ describe 'Host edits room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                                    price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                                    bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                                     accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
 
     login_as(host, :scope => :host)

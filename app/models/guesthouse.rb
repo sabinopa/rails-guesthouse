@@ -7,9 +7,9 @@ class Guesthouse < ApplicationRecord
   validates :pet_friendly, inclusion: [true, false]
   validate :host_has_guesthouse, on: :create
 
+  belongs_to :payment_method
   belongs_to :host
   has_many :rooms
-  has_one :payment_method
   
   private 
 

@@ -18,13 +18,8 @@ describe 'Host register guesthouse' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
 
+    login_as(host, :scope => :host)
     visit root_path
-    click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'aline@email.com'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
     click_on 'Cadastrar pousada'
     fill_in 'Nome', with: 'Refúgio do Pôr do Sol'
     fill_in 'Razão Social', with: 'Hospitalidade do Pôr do Sol Ltda.'
@@ -57,14 +52,8 @@ describe 'Host register guesthouse' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     
-
+    login_as(host, :scope => :host)
     visit root_path
-    click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'aline@email.com'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
     click_on 'Cadastrar pousada'
     fill_in 'Nome', with: ''
     fill_in 'Razão Social', with: ''
@@ -88,7 +77,7 @@ describe 'Host register guesthouse' do
     expect(page).to have_content 'Regras de uso não pode ficar em branco'
   end
 
-  it 'try to register another guesthouse' do
+  it 'and try to register another guesthouse' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -97,13 +86,8 @@ describe 'Host register guesthouse' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
 
+    login_as(host, :scope => :host)                                
     visit root_path
-    click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'aline@email.com'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
     visit new_guesthouse_path
 
     expect(page).to have_content('Ops, você já tem uma pousada cadastrada!')

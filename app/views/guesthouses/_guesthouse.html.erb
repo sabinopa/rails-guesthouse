@@ -15,12 +15,13 @@
         <dt><strong><%= Guesthouse.human_attribute_name(:email) %>:</strong></dt>
         <dd><%= @guesthouse.email %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:address) %>:</strong></dt>
-        <dd><%= @guesthouse.address %></dd> - <dd><%= @guesthouse.neighborhood %></dd>, <dd><%= @guesthouse.city %></dd> - <dd><%= @guesthouse.state %></dd>
-        <dd><%= @guesthouse.postal_code %></dd>
+        <dd><%= @guesthouse.address %></dd> - <dd><%= @guesthouse.neighborhood %></dd>, <dd><%= @guesthouse.city %></dd> - <dd><%= @guesthouse.state %></dd> - <dd><%= @guesthouse.postal_code %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:pet_friendly) %>:</strong></dt>
         <dd><%= @guesthouse.pet_friendly? ? 'Aceita' : 'Não aceita' %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:usage_policy) %>:</strong></dt>
         <dd><%= @guesthouse.usage_policy %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
+        <dd><%= @guesthouse.payment_method.method %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:checkin) %>:</strong></dt>
         <dd><%= @guesthouse.checkin.strftime("%H:%M") %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:checkout) %>:</strong></dt>

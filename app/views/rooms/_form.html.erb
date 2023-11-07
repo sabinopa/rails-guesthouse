@@ -20,16 +20,16 @@
 
   <div>
     <%= f.label :size %>: 
-    <%= f.number_field :size %>
+    <%= f.number_field :size %> (m2)
   </div>
 
   <div>
     <%= f.label :max_people %>: 
-    <%= f.number_field :max_people %>
+    <%= f.number_field :max_people %> pessoas
   </div>
 
   <div>
-    <%= f.label :price %>: 
+    <%= f.label :price %>: R$
     <%= f.number_field :price %>
   </div>
 
@@ -54,8 +54,23 @@
   </div>
 
   <div>
+    <%= f.check_box :wardrobe %>
+    <%= f.label :wardrobe %>
+  </div>
+
+  <div>
+    <%= f.check_box :safe %>
+    <%= f.label :safe %>
+  </div>
+
+  <div>
+    <%= f.check_box :accessibility %>
+    <%= f.label :accessibility %>
+  </div>
+
+  <div>
     <%= f.check_box :status %>
-    <%= f.label :status, 'Disponível para reservas' %>
+    <%= f.label :status %>
   </div>
 
   <%= f.submit 'Salvar' %>

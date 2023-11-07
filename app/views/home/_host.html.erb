@@ -10,7 +10,7 @@
         <dt><strong>Cidade:</strong></dt>
         <dd><%= current_host.guesthouse.city %></dd>
       </dl>
-      <p><%= link_to 'Gerenciar pousada', edit_guesthouse_path(@guesthouse) %></p>
+      <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse) %></p>
       <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse) %></p>
       <% if @guesthouse.rooms.any? %>
         <p><%= link_to 'Ver quartos', guesthouse_rooms_path(@guesthouse) %></p>

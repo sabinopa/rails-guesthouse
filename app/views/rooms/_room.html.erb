@@ -1,21 +1,28 @@
 <h1>Quarto <%= @room.name %></h1>
+<p>Pousada <%= @guesthouse.brand_name %></p>
 <p> <%= @room.description %></p>
 <div>
     <dl>
         <dt><strong><%= Room.human_attribute_name(:size) %>:</strong></dt>
-        <dd><%= @room.size %></dd>
+        <dd><%= @room.size %></dd> m2
         <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
-        <dd><%= @room.max_people %></dd>
+        <dd><%= @room.max_people %></dd> pessoas
         <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
         <dd><%= @room.price %></dd>
         <dt><strong><%= Room.human_attribute_name(:bathroom) %>:</strong></dt>
-        <dd><%= @room.bathroom? ? 'Individual' : 'Comunitário' %></dd>
+        <dd><%= @room.bathroom? ? 'Particular' : 'Compartilhado' %></dd>
         <dt><strong><%= Room.human_attribute_name(:balcony) %>:</strong></dt>
         <dd><%= @room.balcony? ? 'Possui' : 'Não possui' %></dd>
         <dt><strong><%= Room.human_attribute_name(:air_conditioner) %>:</strong></dt>
         <dd><%= @room.air_conditioner? ? 'Possui' : 'Não possui' %></dd>
         <dt><strong><%= Room.human_attribute_name(:tv) %>:</strong></dt>
         <dd><%= @room.tv? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:wardrobe) %>:</strong></dt>
+        <dd><%= @room.wardrobe? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:safe) %>:</strong></dt>
+        <dd><%= @room.safe? ? 'Possui' : 'Não possui' %></dd>
+        <dt><strong><%= Room.human_attribute_name(:accessibility) %>:</strong></dt>
+        <dd><%= @room.accessibility? ? 'Acessível para pessoas com deficiência' : 'Não acessível' %></dd>
         <dt><strong><%= Room.human_attribute_name(:status) %>:</strong></dt>
         <dd><%= @room.status? ? 'Disponível' : 'Indisponível' %></dd>
     </dl>

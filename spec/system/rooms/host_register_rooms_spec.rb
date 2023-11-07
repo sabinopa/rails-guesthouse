@@ -33,6 +33,7 @@ describe 'Host register room' do
     fill_in 'Descrição', with: 'Um ambiente calmo e reconfortante.'
     fill_in 'Dimensão', with: '15'
     fill_in 'Capacidade', with: '4'
+    fill_in 'Preço', with: '220.0'
     check 'Banheiro'
     check 'Televisão'
     check 'Armário'
@@ -54,7 +55,7 @@ describe 'Host register room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
-                        max_people: '4', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
+                        max_people: '4', price: '220.0', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
     
     login_as(host, :scope => :host)  
     visit root_path
@@ -66,6 +67,7 @@ describe 'Host register room' do
     expect(page).to have_content 'Um ambiente calmo e reconfortante.'
     expect(page).to have_content 'Dimensão: 15 m2'
     expect(page).to have_content 'Capacidade: 4 pessoas'
+    expect(page).to have_content 'Preço: R$ 220.0'
     expect(page).to have_content 'Banheiro: Particular'
     expect(page).to have_content 'Armário: Possui'
     expect(page).to have_content 'Cofre: Possui'
@@ -82,9 +84,9 @@ describe 'Host register room' do
                                        city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                        usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     first_room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
-                                 max_people: '4', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
+                                 max_people: '4', price: '220,00', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
-                                 max_people: '2', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true) 
+                                 max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true) 
 
     login_as(bruna, :scope => :host)  
     visit root_path

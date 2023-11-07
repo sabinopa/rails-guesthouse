@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_07_200751) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_07_204009) do
   create_table "custom_prices", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_200751) do
     t.boolean "safe"
     t.boolean "accessibility"
     t.boolean "status"
+    t.decimal "price"
     t.index ["guesthouse_id"], name: "index_rooms_on_guesthouse_id"
   end
 

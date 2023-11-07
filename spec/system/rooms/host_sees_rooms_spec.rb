@@ -26,7 +26,7 @@ describe 'Host sees rooms' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 'Ativo')
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                                    bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
+                                    price: '220.0', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                                     accessibility: 'Acessível para pessoas com deficiência', status: 'Disponível')
     login_as(host, :scope => :host)
     visit root_path
@@ -38,6 +38,7 @@ describe 'Host sees rooms' do
     expect(page).to have_content 'Um ambiente calmo e reconfortante.'
     expect(page).to have_content 'Dimensão: 15 m2'
     expect(page).to have_content 'Capacidade: 4 pessoas'
+    expect(page).to have_content 'Preço: R$ 220.0'
     expect(page).to have_content 'Banheiro: Particular'
     expect(page).to have_content 'Televisão: Possui'
     expect(page).to have_content 'Armário: Possui'

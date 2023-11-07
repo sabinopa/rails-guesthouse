@@ -16,7 +16,7 @@ describe 'Host edits guesthouse' do
 
   end
 
-  it 'from the home page' do 
+  it 'from home page' do 
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -46,7 +46,7 @@ describe 'Host edits guesthouse' do
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
                                   corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
                                   email: 'contato@pousadaserenidade.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
-                                  city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
+                                  city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita', 
                                   usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '11:00', status: 'Ativo')
     
     login_as(host, :scope => :host)
@@ -81,6 +81,7 @@ describe 'Host edits guesthouse' do
     expect(page).to have_content 'E-mail: info@serena.com'
     expect(page).to have_content 'Endereço: Estrada dos Morros, Km 90 - Bosque Verde, Campo Alegre - AL'
     expect(page).to have_content 'Descrição: Para aproveitar o sol e calor.'
+    expect(page).to have_content 'Animais de estimação: Não aceita'
     expect(page).to have_content 'Regras de uso: Proibido bebidas alcóolicas.'
     expect(page).to have_content 'Entrada: 12:00'
     expect(page).to have_content 'Saída: 10:00'

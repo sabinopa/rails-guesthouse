@@ -8,7 +8,7 @@
         <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
         <dd><%= @room.max_people %></dd> pessoas
         <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
-        <dd><%= @room.price %></dd>
+        <dd>R$ <%= @room.price %></dd>
         <dt><strong><%= Room.human_attribute_name(:bathroom) %>:</strong></dt>
         <dd><%= @room.bathroom? ? 'Particular' : 'Compartilhado' %></dd>
         <dt><strong><%= Room.human_attribute_name(:balcony) %>:</strong></dt>

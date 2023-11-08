@@ -1,10 +1,23 @@
 <%= render 'room', room: @room %>
 
+<% if @custom_prices.any? %>
+    <h3>Preços por períodos especiais</h3>
+    <% @custom_prices.each do |custom_price| %>
+      <div>
+        <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%y") %>
+        <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%y") %>
+        <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
+      </div>
+    <% end %>
+  <% end %>
+
+<% if host_signed_in? && current_host == @room.guesthouse.host %>
+  <%= link_to 'Editar', edit_guesthouse_room_path(@room.id) %>
+  <%= link_to 'Adicionar preços personaliados', new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
+  
+<% end %>
+
+
 <div>
 <%= link_to 'Voltar', guesthouse_rooms_path %>
 </div>
-
-<% if @room.guesthouse.host.present? %>
-  <p><%= link_to "Adicionar preço personalizado", new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %></p>
-  <p><%= link_to 'Editar', edit_guesthouse_room_path(@room) %></p>
-<% end %>

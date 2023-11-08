@@ -1,13 +1,4 @@
-<% if(@custom_price.errors.any?) %>
-  <p>Verifique os erros abaixo:</p>
-  <ul>
-    <% @custom_price.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with (model: [@room.guesthouse, @room, @custom_price]) do |f| %>
+<%= form_with model: [@room.guesthouse, @room, @custom_price] do |f| %>
 <div>
   <%= f.label :start_date, 'Início' %>:
   <%= f.date_field :start_date %>

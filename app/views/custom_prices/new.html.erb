@@ -1,2 +1,12 @@
-<h1>Personalizar preço no perído: </h1>
-<%= render 'form', custom_price: @custom_price, room: @room, guesthouse: @guesthouse %>
+<h1>Personalizar preço no período: </h1>
+
+<% if(@custom_price.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @custom_price.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render partial: 'form', locals: { custom_price: @custom_price } %>

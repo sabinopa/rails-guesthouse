@@ -13,6 +13,8 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.all.where(guesthouse_id: @guesthouse.id).find(params[:id])
+    @custom_prices = CustomPrice.all.where(room_id: @room.id)
   end
 
   def new

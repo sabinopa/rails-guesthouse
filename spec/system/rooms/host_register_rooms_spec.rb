@@ -8,7 +8,7 @@ describe 'Host register room' do
                                     corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
                                     email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
+                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
 
     login_as(host, :scope => :host)  
     visit root_path
@@ -24,7 +24,7 @@ describe 'Host register room' do
                                     corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
                                     email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
+                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
   
     login_as(host, :scope => :host)  
     visit root_path
@@ -39,7 +39,6 @@ describe 'Host register room' do
     check 'Armário'
     check 'Cofre'
     check 'Acessibilidade'
-    check 'Disponibilidade para reservas'
     click_on 'Salvar'
 
     expect(page).to have_content "Quarto Tranquilidade: Criado com sucesso!"
@@ -53,7 +52,7 @@ describe 'Host register room' do
                                     corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
                                     email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
+                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
                         max_people: '4', price: '220.0', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
     
@@ -72,7 +71,6 @@ describe 'Host register room' do
     expect(page).to have_content 'Armário: Possui'
     expect(page).to have_content 'Cofre: Possui'
     expect(page).to have_content 'Acessível para pessoas com deficiência'
-    expect(page).to have_content 'Disponibilidade para reservas: Disponível'
   end
 
   it 'and see list of rooms' do
@@ -82,7 +80,7 @@ describe 'Host register room' do
                                        corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
                                        email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
                                        city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                       usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
+                                       usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
     first_room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
                                  max_people: '4', price: '220,00', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 

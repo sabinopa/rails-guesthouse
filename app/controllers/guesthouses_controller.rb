@@ -1,9 +1,10 @@
 class GuesthousesController < ApplicationController
   before_action :authenticate_host!, except: [:show]
   before_action :set_guesthouse, only: [:show, :edit, :update, :active, :inactive]
-  before_action :check_host, only: [:new, :create, :edit, :update, :active, :inactive]
 
   def show 
+    @available_rooms = @guesthouse.rooms.where(status: :active)
+    @all_rooms = @guesthouse.rooms
   end
 
   def new
@@ -25,6 +26,9 @@ class GuesthousesController < ApplicationController
   end
       
   def edit
+    if @guesthouse.host != current_host
+      redirect_to root_path, notice: 'Você não pode editar essa pousada!'
+    end
   end
 
   def update
@@ -56,11 +60,5 @@ class GuesthousesController < ApplicationController
     params.require(:guesthouse).permit(:description, :brand_name, :corporate_name, :registration_number, :phone_number,
                                       :email, :address, :neighborhood, :city, :state, :postal_code, :payment_method_id, 
                                       :pet_friendly, :usage_policy, :checkin, :checkout, :status)
-  end
-
-  def check_host
-    if @guesthouse.host != current_host
-      return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
-    end
   end
 end

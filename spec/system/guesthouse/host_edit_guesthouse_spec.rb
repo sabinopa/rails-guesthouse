@@ -79,7 +79,7 @@ describe 'Host edits guesthouse' do
     expect(page).to have_content 'Contato: 43 898980909'
     expect(page).to have_content 'E-mail: info@serena.com'
     expect(page).to have_content 'Endereço: Estrada dos Morros, Km 90 - Bosque Verde, Campo Alegre - AL'
-    expect(page).to have_content 'Descrição: Para aproveitar o sol e calor.'
+    expect(page).to have_content 'Para aproveitar o sol e calor.'
     expect(page).to have_content 'Animais de estimação: Não aceita'
     expect(page).to have_content 'Regras de uso: Proibido bebidas alcóolicas.'
     expect(page).to have_content 'Entrada: 12:00'
@@ -163,7 +163,7 @@ describe 'Host edits guesthouse' do
     login_as(first_host, :scope => :host)
     visit edit_guesthouse_path(second_guesthouse)
 
-    expect(page).to have_content 'Você não pode editar essa pousada!'
+    expect(page).to have_content 'Ops, você não é o anfitrião dessa pousada.'
     expect(current_path).to eq(root_path)
   end
 end

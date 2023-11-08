@@ -1,4 +1,6 @@
 pt-BR:
+  active: 'Disponível'
+  inactive: 'Indisponível'
   activerecord:
     models:
       room: 'Quarto'
@@ -17,5 +19,4 @@ pt-BR:
         wardrobe: 'Armário'
         safe: 'Cofre'
         accessibility: 'Acessibilidade'
-        status: 'Disponibilidade para reservas'
 

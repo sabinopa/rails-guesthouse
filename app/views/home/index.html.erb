@@ -1,9 +1,19 @@
 <% if host_signed_in? %>  
   <%= render 'host', locals: { guesthouse: @guesthouse }%>
-<% elsif host_signed_in? %>
+<% elsif guest_signed_in? %>
   <%= render 'guest' %>
 <% else %>
-  <% @guesthouses.each do |guesthouse| %> 
+  <p> Nossas pousadas em: </p>
+  <% @available_cities.each do |city| %>
+    <%= link_to city, cities_guesthouses_path(city: city) %>
+  <% end %>
+
+  <p> Pousadas recentes </p>
+  <% @recent_guesthouses.each do |guesthouse| %> 
     <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
-  <% end %> 
+  <% end %>
+  <p> Demais pousada </p>
+  <% @other_guesthouses.each do |guesthouse| %> 
+    <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
+  <% end %>
 <% end %>

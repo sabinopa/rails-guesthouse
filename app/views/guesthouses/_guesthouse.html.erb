@@ -2,8 +2,12 @@
 <p> <%= @guesthouse.description %></p>
 <div>
     <dl>
-        <dt><strong><%= Guesthouse.human_attribute_name(:description) %>:</strong></dt>
-        <dd><%= @guesthouse.description %></dd>
+        <% if host_signed_in? %> 
+          <dt><strong><%= Guesthouse.human_attribute_name(:corporate_name) %>:</strong></dt>
+          <dd><%= @guesthouse.corporate_name %></dd>
+          <dt><strong><%= Guesthouse.human_attribute_name(:registration_number) %>:</strong></dt>
+          <dd><%= @guesthouse.registration_number %></dd>
+        <% end %>
         <dt><strong><%= Guesthouse.human_attribute_name(:brand_name) %>:</strong></dt>
         <dd><%= @guesthouse.brand_name %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:phone_number) %>:</strong></dt>
@@ -24,11 +28,6 @@
         <dd><%= @guesthouse.checkout.strftime("%H:%M") %></dd>
         <dt><%= Guesthouse.human_attribute_name(:status) %>:</dt>
         <dd><%= I18n.translate(@guesthouse.status) %></dd>
-      <% if host_signed_in? %> 
-        <dt><strong><%= Guesthouse.human_attribute_name(:corporate_name) %>:</strong></dt>
-        <dd><%= @guesthouse.corporate_name %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:registration_number) %>:</strong></dt>
-        <dd><%= @guesthouse.registration_number %></dd>
-      <% end %>
+
     </dl>
 </div>

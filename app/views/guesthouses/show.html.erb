@@ -1,17 +1,15 @@
 <%= render 'guesthouse' %>
-
-<% if @guesthouse.inactive? %>
-  <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id) %>
-<% else %>  
-  <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id) %>
-<% end %>
-
+<%= render 'rooms' %>
 <div>
-<%= link_to 'Voltar', root_path %>
-<% if current_host.present? && current_host.guesthouse == @guesthouse %>
-  <%= link_to 'Editar', edit_guesthouse_path %>
-<% end %>
-
+  <%= link_to 'Voltar', root_path %>
+  <% if current_host.present? && current_host.guesthouse == @guesthouse %>
+    <%= link_to 'Editar', edit_guesthouse_path %>
+    <% if @guesthouse.inactive? %>
+      <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id) %>
+    <% else %>  
+      <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id) %>
+  <% end %>
+  <% end %>
 </div>
 
 

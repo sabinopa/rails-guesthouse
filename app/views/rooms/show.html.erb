@@ -9,14 +9,18 @@
         <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
       </div>
     <% end %>
-  <% end %>
-
-<% if host_signed_in? && current_host == @room.guesthouse.host %>
-  <%= link_to 'Editar', edit_guesthouse_room_path(@room.id) %>
-  <%= link_to 'Adicionar preços personalizados', new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
-  
 <% end %>
 
+<% if host_signed_in? && current_host && @room.guesthouse.host == current_host %>
+  <%= link_to 'Editar', edit_guesthouse_room_path(@room.id) %>
+  <%= link_to 'Adicionar preços personalizados', new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
+
+  <% if @room.inactive? %>
+    <%= button_to 'Tornar quarto disponível', active_guesthouse_room_path(@room.id) %>
+  <% else %>
+    <%= button_to 'Tornar quarto indisponível', inactive_guesthouse_room_path(@room.id) %>
+  <% end %>
+<% end %>
 
 <div>
 <%= link_to 'Voltar', guesthouse_rooms_path %>

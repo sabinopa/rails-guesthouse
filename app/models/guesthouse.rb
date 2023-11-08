@@ -6,7 +6,7 @@ class Guesthouse < ApplicationRecord
   validates :pet_friendly, inclusion: [true, false]
   validate :host_has_guesthouse, on: :create
 
-  enum status: { inactive: 0, active: 1}
+  enum status: { inactive: 0, active: 1 }
 
   belongs_to :payment_method
   belongs_to :host

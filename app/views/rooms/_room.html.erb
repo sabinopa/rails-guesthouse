@@ -23,7 +23,7 @@
         <dd><%= @room.safe? ? 'Possui' : 'Não possui' %></dd>
         <dt><strong><%= Room.human_attribute_name(:accessibility) %>:</strong></dt>
         <dd><%= @room.accessibility? ? 'Acessível para pessoas com deficiência' : 'Não acessível' %></dd>
-        <dt><strong><%= Room.human_attribute_name(:status) %>:</strong></dt>
-        <dd><%= @room.status? ? 'Disponível' : 'Indisponível' %></dd>
+        <dt><%= Room.human_attribute_name(:status) %>:</dt>
+        <dd><%= I18n.translate(@room.status) %></dd>
     </dl>
 </div>

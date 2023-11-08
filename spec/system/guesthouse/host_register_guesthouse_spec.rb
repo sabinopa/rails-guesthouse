@@ -37,7 +37,6 @@ describe 'Host register guesthouse' do
     fill_in 'Regras de uso', with: 'Proibido fumar e receber convidados.'
     fill_in 'Entrada', with: '14:00'
     fill_in 'Saída', with: '11:00'
-    check 'Ativo'
     click_on 'Salvar'
 
     expect(page).to have_content "Refúgio do Pôr do Sol: Criado com sucesso!"

@@ -25,7 +25,7 @@ describe 'Host sees your own guesthouse details' do
     expect(page).to have_content('Regras de uso: Manter silêncio nas áreas comuns.')
     expect(page).to have_content('Entrada: 14:00')
     expect(page).to have_content('Saída: 10:00')
-    expect(page).to have_content('Status: Ativo')
+    expect(page).to have_content('Status: Ativa')
     end
 
   it 'and return to home page' do

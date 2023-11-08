@@ -3,21 +3,27 @@
     <p>Não existem pousadas cadastradas.</p>
     <%= link_to 'Cadastrar pousada', new_guesthouse_path %>
   <% else %>
-      <h1> Sua pousada: </h1>
-      <dl>
-        <dt><strong>Nome:</strong></dt> 
-        <dd><%= current_host.guesthouse.brand_name %></dd>
-        <dt><strong>Cidade:</strong></dt>
-        <dd><%= current_host.guesthouse.city %></dd>
-      </dl>
-      <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse) %></p>
-      <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse) %></p>
-      <% if @guesthouse.rooms.any? %>
-        <p><%= link_to 'Ver quartos', guesthouse_rooms_path(@guesthouse) %></p>
-        <p> Total de Quartos:<%= @guesthouse.rooms.count %> </p>
-      <% else %> 
-        <p> Total de Quartos: 0 </p>
-      <% end %>
+  <h1> Sua pousada: </h1>
+  <dl>
+    <dt><strong>Nome:</strong></dt> 
+    <dd><%= current_host.guesthouse.brand_name %></dd>
+    <dt><strong>Cidade:</strong></dt>
+    <dd><%= current_host.guesthouse.city %></dd>
+  </dl>
+  <% if @guesthouse.inactive? %>
+    <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id) %>
+  <% else %>  
+    <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id) %>
+  <% end %>
+  
+    <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse) %></p>
+    <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse) %></p>
+    <% if @guesthouse.rooms.any? %>
+      <p><%= link_to 'Ver quartos', guesthouse_rooms_path(@guesthouse) %></p>
+      <p> Total de Quartos:<%= @guesthouse.rooms.count %> </p>
+    <% else %> 
+      <p> Total de Quartos: 0 </p>
+    <% end %>
   <% end %>
 </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_07_204009) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_08_162158) do
   create_table "custom_prices", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_204009) do
     t.string "usage_policy"
     t.time "checkin"
     t.time "checkout"
-    t.boolean "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "postal_code"

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
   resources :guesthouses, except: [:destroy] do
+    post 'active', on: :member
+    post 'inactive', on: :member
     resources :rooms, except: [:destroy] do
       resources :custom_prices, except: [:destroy]
     end

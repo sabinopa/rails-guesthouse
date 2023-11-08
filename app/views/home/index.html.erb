@@ -4,7 +4,6 @@
   <%= render 'guest' %>
 <% else %>
   <% @guesthouses.each do |guesthouse| %> 
-    <%= link_to guesthouse.brand_name, guesthouse %></br>
+    <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
   <% end %> 
 <% end %>
-

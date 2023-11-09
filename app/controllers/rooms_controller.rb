@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!, except: [:index, :show]
-  before_action :set_guesthouse, except: [:show, :index]
+  before_action :set_guesthouse, except: [:show]
   before_action :set_room, only: [:show, :edit, :update, :active, :inactive]
-  # before_action :check_host, only: [:new, :create, :edit, :update]
+  before_action :check_host, only: [:edit, :update]
 
   def index
     if current_host.present?
@@ -48,12 +48,12 @@ class RoomsController < ApplicationController
 
   def active
     @room.active!
-    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto #{@room.name} ativo!"
+    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto ativo!"
   end
 
   def inactive
     @room.inactive!
-    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto #{@room.name} inativo!"
+    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto inativo!"
   end
 
   private
@@ -67,13 +67,13 @@ class RoomsController < ApplicationController
                                 :balcony, :air_conditioner, :tv, :status)
   end
 
-  def check_host
-    if current_host.guesthouse.rooms != @rooms
-      return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
-    end
-  end
-
   def set_guesthouse
     @guesthouse = current_host.guesthouse
+  end
+
+  def check_host
+    unless Room.find(params[:id]).guesthouse.host == @guesthouse.host
+      return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+    end
   end
 end

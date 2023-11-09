@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Host sees your own guesthouse details' do
-  it 'and see aditional informations' do
+  it 'and sees aditional informations' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -25,10 +25,10 @@ describe 'Host sees your own guesthouse details' do
     expect(page).to have_content('Regras de uso: Manter silêncio nas áreas comuns.')
     expect(page).to have_content('Entrada: 14:00')
     expect(page).to have_content('Saída: 10:00')
-    expect(page).to have_content('Status: Ativa')
+    expect(page).to have_content('Status: Disponível')
     end
 
-  it 'and return to home page' do
+  it 'and returns to home page' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 

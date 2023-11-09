@@ -6,11 +6,9 @@ describe 'Host sign in' do
 
     visit root_path
     click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: 'priscila@email.com'
-      fill_in 'Senha', with: '12345678'
-      click_on 'Entrar'
-    end
+    fill_in 'E-mail', with: 'priscila@email.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Entrar'
     
     expect(page).to have_content 'Login efetuado com sucesso!'
     within('nav') do
@@ -20,7 +18,7 @@ describe 'Host sign in' do
     end
   end
 
-  it 'e faz logout' do
+  it 'and logs out' do
     host = Host.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 
     login_as(host)
@@ -36,11 +34,9 @@ describe 'Host sign in' do
   it 'and submits blank field' do
     visit root_path
     click_on 'Entrar como Anfitrião'
-    within('form') do
-      fill_in 'E-mail', with: ''
-      fill_in 'Senha', with: ''
-      click_on 'Entrar'
-    end
+    fill_in 'E-mail', with: ''
+    fill_in 'Senha', with: ''
+    click_on 'Entrar'
 
     expect(page).to have_content 'E-mail ou senha inválida.'
   end

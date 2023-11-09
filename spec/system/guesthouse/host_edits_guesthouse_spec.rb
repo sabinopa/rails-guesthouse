@@ -5,15 +5,12 @@ describe 'Host edits guesthouse' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     visit root_path
     click_on 'Entrar como Anfitrião'                              
-    within('form') do
-      fill_in 'E-mail', with: 'aline@email.com'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
+    fill_in 'E-mail', with: 'aline@email.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
 
     expect(page).not_to have_link('Entrar como Anfitrião')
     expect(page).to have_content('Aline Santos - aline@email.com')
-
   end
 
   it 'from home page' do 
@@ -124,26 +121,7 @@ describe 'Host edits guesthouse' do
     expect(page).to have_content 'Regras de uso não pode ficar em branco'
   end
 
-  # it 'and turn guesthouse inactive' do
-  #   host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
-  #   payment_method = PaymentMethod.create!(method: 'PIX')
-  #   guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
-  #                                   corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
-  #                                   email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
-  #                                   city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-  #                                   usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
-
-  #   login_as(host, :scope => :host)
-  #   visit root_path
-  #   click_on 'Ver detalhes da pousada'
-  #   click_on 'Editar'
-  #   click_on 'Salvar'
-
-  #   expect(current_path).to eq(guesthouse_path(guesthouse))
-  #   expect(page).to have_content "#{guesthouse.brand_name}: Atualizado com sucesso!"
-  # end
-
-  it 'and try to edit another guesthouse' do
+  it 'and tries to edit another guesthouse' do
     first_host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'Crédito à vista')
     first_guesthouse = Guesthouse.create!(host: first_host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -153,13 +131,13 @@ describe 'Host edits guesthouse' do
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
 
     second_host = Host.create!(name: 'Bruna', lastname: 'Almeida', email: 'bruna@email.com', password: '12345678')
-    second_guesthouse = Guesthouse.create!(host: second_host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
-                                    corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
-                                    email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
-                                    city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
+    second_guesthouse = Guesthouse.create!(host: second_host,  description: 'Um refúgio à beira-mar com vista panorâmica', brand_name: 'Pousada Maré Alta',
+                                          corporate_name: 'Maré Alta Hospedagens Ltda', registration_number: '11.111.111/0001-11', phone_number: '55 55555-5555',
+                                          email: 'contato@pousadamarealta.com', address: 'Avenida Beira Mar, 123', neighborhood: 'Costa Brilhante',
+                                          city: 'Florianópolis', state: 'SC', postal_code: '54321-90', payment_method_id: payment_method.id, 
+                                          pet_friendly: 'Aceita animais de estimação', usage_policy: 'Proibido fumar nas dependências.',
+                                          checkin: '15:00', checkout: '11:00', status: 1)
     
-
     login_as(first_host, :scope => :host)
     visit edit_guesthouse_path(second_guesthouse)
 

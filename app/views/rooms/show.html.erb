@@ -1,19 +1,18 @@
 <%= render 'room', room: @room %>
 
-<% if @custom_prices.any? %>
-    <h3>Preços por períodos especiais</h3>
-    <% @custom_prices.each do |custom_price| %>
-      <div>
-        <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%y") %>
-        <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%y") %>
-        <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
-      </div>
-    <% end %>
-<% end %>
-
 <% if host_signed_in? && current_host && @room.guesthouse.host == current_host %>
   <%= link_to 'Editar', edit_guesthouse_room_path(@room.id) %>
+  <% if @custom_prices.any? %>
+      <h3>Preços por períodos especiais</h3>
+      <% @custom_prices.each do |custom_price| %>
+        <div>
+          <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%y") %>
+          <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%y") %>
+          <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
+        </div>
+      <% end %>
   <%= link_to 'Adicionar preços personalizados', new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
+<% end %>
 
   <% if @room.inactive? %>
     <%= button_to 'Tornar quarto disponível', active_guesthouse_room_path(@room.id) %>

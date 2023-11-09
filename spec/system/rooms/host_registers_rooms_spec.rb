@@ -45,7 +45,7 @@ describe 'Host register room' do
     expect(page).to have_content "Quarto Tranquilidade - 4 pessoas"
   end
 
-  it 'and see details page' do
+  it 'and sees details page' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -54,7 +54,7 @@ describe 'Host register room' do
                                     city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                     usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
-                        max_people: '4', price: '220.0', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
+                        max_people: '4', price: '220.0', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1)
     
     login_as(host, :scope => :host)  
     visit root_path
@@ -73,7 +73,7 @@ describe 'Host register room' do
     expect(page).to have_content 'Acessível para pessoas com deficiência'
   end
 
-  it 'and see list of rooms' do
+  it 'and sees list of rooms' do
     bruna = Host.create!(name: 'Bruna', lastname: 'Pereira', email: 'bruna@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = bruna.create_guesthouse!(description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -82,9 +82,9 @@ describe 'Host register room' do
                                        city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                        usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
     first_room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
-                                 max_people: '4', price: '220,00', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true)
+                                 max_people: '4', price: '220,00', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1)
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
-                                 max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: true) 
+                                 max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1) 
 
     login_as(bruna, :scope => :host)  
     visit root_path

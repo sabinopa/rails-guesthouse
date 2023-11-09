@@ -1,21 +1,28 @@
-<% if host_signed_in? %>  
-  <%= render 'host', locals: { guesthouse: @guesthouse }%>
+<% if host_signed_in? %>
+  <%= render 'host', locals: { guesthouse: @guesthouse } %>
 <% elsif guest_signed_in? %>
   <%= render 'guest' %>
-<% else %>
+<% end %>
+ 
+<% if @cities.present? %>
   <p> Veja pousadas em: </p>
-  <% @available_cities.each do |city| %>
+  <% @cities.each do |city| %>
   <ul>
     <li><%= link_to city, cities_guesthouses_path(city: city)%></li>
   </ul>
   <% end %>
+<% end %>
 
-  <p> Pousadas recentes </p>
-  <% @recent_guesthouses.each do |guesthouse| %> 
-    <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
-  <% end %>
-  <p> Demais pousadas </p>
-  <% @other_guesthouses.each do |guesthouse| %> 
-    <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
-  <% end %>
+<p> Pousadas recentes </p>
+<% @recent_guesthouses.each do |guesthouse| %> 
+  <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
+<% end %>
+
+<p> Demais pousadas </p>
+<% @other_guesthouses.each do |guesthouse| %> 
+  <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
+<% end %>
+
+<% if @guesthouses.empty? %> 
+    <p>Não existem pousadas cadastrados.</p>
 <% end %>

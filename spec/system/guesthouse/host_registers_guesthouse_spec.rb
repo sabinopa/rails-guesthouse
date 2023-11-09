@@ -47,7 +47,7 @@ describe 'Host register guesthouse' do
     expect(page).to have_content 'Animais de estimação: Aceita'
   end
 
-  it 'incomplete data' do
+  it 'with incomplete data' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     
@@ -76,7 +76,7 @@ describe 'Host register guesthouse' do
     expect(page).to have_content 'Regras de uso não pode ficar em branco'
   end
 
-  it 'and try to register another guesthouse' do
+  it 'and tries to register another guesthouse' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 

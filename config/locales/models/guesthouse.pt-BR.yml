@@ -1,10 +1,14 @@
 pt-BR:
   active: 'Ativa'
   inactive: 'Inativa'
+  found: 
+    one: 'encontrada'
+    other: 'encontradas'
   activerecord:
     models:
-      guesthouse: 'Pousada'
-      guesthouses: 'Pousadas'
+      guesthouse: 
+        one: 'pousada'
+        other: 'pousadas'
     attributes:
       guesthouse:
         description: 'Descrição'

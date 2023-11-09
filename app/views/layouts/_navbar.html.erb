@@ -1,6 +1,10 @@
 <nav>
   <h1><%= link_to 'Pousadaria', root_path %></h1>
-
+  <%= form_with(url: search_guesthouses_path, method: :get) do |f| %>
+  <%= f.label :query, 'Buscar Pousada' %>
+  <%= f.text_field :query %>
+  <%= f.submit 'Buscar' %>
+<% end %>
   <div>
     <% if host_signed_in? %>
       <%= current_host.description %> 

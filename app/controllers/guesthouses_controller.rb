@@ -1,5 +1,5 @@
 class GuesthousesController < ApplicationController
-  before_action :authenticate_host!, except: [:show, :cities]
+  before_action :authenticate_host!, except: [:show, :cities, :search]
   before_action :set_guesthouse, only: [:show, :edit, :update, :active, :inactive]
 
   def show 
@@ -37,6 +37,16 @@ class GuesthousesController < ApplicationController
     else
       flash.now[:notice] = 'Não foi possível atualizar a pousada.'
       render :new
+    end
+  end
+
+  def search
+    @query = params['query']
+    @guesthouses = Guesthouse.active.where('brand_name LIKE :query 
+                                            OR neighborhood LIKE :query 
+                                            OR city LIKE :query', query: "%#{@query}%").order(:brand_name)
+    if @guesthouses.empty?
+      flash.now[:notice] = 'Nenhuma pousada encontrada!'
     end
   end
 

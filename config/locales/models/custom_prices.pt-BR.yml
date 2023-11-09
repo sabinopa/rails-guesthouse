@@ -1,8 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      custom_price: 'Preço personalizado'
-      custom_prices: 'Preços personalizados'
+      custom_price: 
+        one: 'Preço personalizado'
+        other: 'Preços personalizados'
     attributes:
       start_date: 'Início'
       end_date: 'Fim'

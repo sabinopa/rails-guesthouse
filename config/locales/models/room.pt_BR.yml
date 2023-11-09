@@ -3,8 +3,9 @@ pt-BR:
   inactive: 'Indisponível'
   activerecord:
     models:
-      room: 'Quarto'
-      rooms: 'Quartos'
+      room: 
+        one: 'quarto'
+        other: 'quartos'
     attributes:
       room:
         description: 'Descrição'

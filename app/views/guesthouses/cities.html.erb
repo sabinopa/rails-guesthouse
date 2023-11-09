@@ -1,0 +1,7 @@
+<p> Nossas pousadas em <%= @city %></p>
+
+<% @guesthouses.each do |guesthouse| %> 
+  <%= link_to "#{guesthouse.brand_name}", guesthouse %></br>
+<% end %> 
+
+<%= link_to 'Voltar', root_path %>

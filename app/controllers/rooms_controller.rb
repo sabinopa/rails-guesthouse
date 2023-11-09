@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!, except: [:index, :show]
-  before_action :set_guesthouse
+  before_action :set_guesthouse, except: [:show, :index]
   before_action :set_room, only: [:show, :edit, :update, :active, :inactive]
   # before_action :check_host, only: [:new, :create, :edit, :update]
 
@@ -13,7 +13,8 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.all.where(guesthouse_id: @guesthouse.id).find(params[:id])
+    @guesthouse = Guesthouse.find(params[:id])
+    # @room = Room.all.where(guesthouse_id: @guesthouse.id).find(params[:id])
     @custom_prices = CustomPrice.all.where(room_id: @room.id)
   end
 

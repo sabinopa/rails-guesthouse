@@ -1,5 +1,5 @@
 class GuesthousesController < ApplicationController
-  before_action :authenticate_host!, except: [:show]
+  before_action :authenticate_host!, except: [:show, :cities]
   before_action :set_guesthouse, only: [:show, :edit, :update, :active, :inactive]
 
   def show 
@@ -48,6 +48,11 @@ class GuesthousesController < ApplicationController
   def inactive
     @guesthouse.inactive!
     redirect_to @guesthouse, notice: 'Sua pousada está inativa!'
+  end
+
+  def cities
+    @city = params[:city]
+    @guesthouses = Guesthouse.active.where(city: @city).order(:brand_name)
   end
 
   private

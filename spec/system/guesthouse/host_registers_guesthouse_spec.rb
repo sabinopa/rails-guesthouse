@@ -77,7 +77,7 @@ describe 'Host register guesthouse' do
   end
 
   it 'and tries to register another guesthouse' do
-    host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
+    host = Host.create!(name: 'Carlos', lastname: 'Silva', email: 'carlos@email.com', password: 'secretpassword')
     payment_method = PaymentMethod.create!(method: 'PIX')
     guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
                                     corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',

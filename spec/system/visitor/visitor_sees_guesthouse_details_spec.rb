@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor sees guesthouse' do
+describe 'Visitor sees guesthouse details' do
   it 'from home page' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     second_host = Host.create!(name: 'Bruna', lastname: 'Almeida', email: 'bruna@email.com', password: '12345678')
@@ -55,6 +55,5 @@ describe 'Visitor sees guesthouse' do
     click_on 'Voltar'
 
     expect(current_path).to eq root_path
-    
   end
 end

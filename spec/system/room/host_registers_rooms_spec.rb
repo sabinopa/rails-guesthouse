@@ -81,16 +81,16 @@ describe 'Host register room' do
                                        email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
                                        city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                        usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: :active)
-    first_room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, 
-                                 max_people: '4', price: '220,00', bathroom: true, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1)
+    first_room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Um espaço sereno para relaxamento total.', size: 20, 
+                               max_people: '3', price: '250,00', bathroom: true, balcony: true, tv: false, wardrobe: true, safe: false, accessibility: false, status: 1)  
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
                                  max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1) 
 
     login_as(bruna, :scope => :host)  
     visit root_path
-    click_on 'Ver quartos'
+    click_on 'Pousada Serenidade - Maceió'
 
-    expect(page).to have_link 'Tranquilidade - 4 pessoas'
+    expect(page).to have_link 'Harmonia - 3 pessoas'
     expect(page).to have_link 'Calmaria - 2 pessoas'
  end
 end

@@ -1,6 +1,5 @@
 <div>
   <% if @guesthouse.nil? %> 
-    <p>Não existem pousadas cadastradas.</p>
     <%= link_to 'Cadastrar pousada', new_guesthouse_path %>
   <% else %>
     <% if @guesthouse.inactive? %>

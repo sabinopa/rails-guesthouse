@@ -222,7 +222,8 @@ describe 'Host adds custom price to a room' do
     custom_price = CustomPrice.create!(room: room, start_date: '10/12/2023', end_date: '15/12/2023', price: 300.00)
 
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
-    max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1) 
+                              max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, 
+                              safe: true, accessibility: true, status: 1) 
 
     login_as(host, :scope => :host)  
     visit root_path

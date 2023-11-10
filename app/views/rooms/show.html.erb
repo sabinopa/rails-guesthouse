@@ -12,7 +12,7 @@
           <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
         </div>
       <% end %>
-<% end %>
+  <% end %>
 
   <% if @room.inactive? %>
     <%= button_to 'Tornar quarto disponível', active_guesthouse_room_path(@room.id) %>

@@ -1,14 +1,7 @@
 require 'rails_helper'
 
-describe 'Visitor views homepage' do 
-  it 'and see the application name' do
-    visit root_path
-
-    expect(page).to have_content 'Pousadaria'
-    expect(page).to have_link 'Pousadaria', href: root_path
-  end
-
-  it 'and see registered guesthouses' do
+describe 'Visitor sees guesthouse' do
+  it 'from home page' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     second_host = Host.create!(name: 'Bruna', lastname: 'Almeida', email: 'bruna@email.com', password: '12345678')
     payment_method = PaymentMethod.create!(method: 'Crédito 3x')
@@ -26,15 +19,21 @@ describe 'Visitor views homepage' do
                       checkin: '15:00', checkout: '11:00', status: 1)
 
     visit root_path
+    click_on 'Pousada Maré Alta - Florianópolis'
 
-    expect(page). not_to have_content 'Não existem pousadas cadastrados.'
-    expect(page).to have_content 'Pousada Serenidade - Maceió'
-    expect(page).to have_content 'Pousada Maré Alta - Florianópolis'
-    expect(page).to have_content 'Pousadas recentes'
-    expect(page).to have_content 'Demais pousadas'
+    expect(page).to have_content 'Pousada Maré Alta'
+    expect(page).to have_content 'Um refúgio à beira-mar com vista panorâmica'
+    expect(page).to have_content 'Contato: 55 55555-5555'
+    expect(page).to have_content 'E-mail: contato@pousadamarealta.com'
+    expect(page).to have_content 'Endereço: Avenida Beira Mar, 123 - Costa Brilhante, Florianópolis - SC - 54321-90'
+    expect(page).to have_content 'Animais de estimação: Aceita'
+    expect(page).to have_content 'Regras de uso: Proibido fumar nas dependências.'
+    expect(page).to have_content 'Entrada: 15:00'
+    expect(page).to have_content 'Saída: 11:00'
+    expect(page).to have_content 'Status: Disponível'
   end
 
-  it 'and see cities availables' do
+  it 'and return to home page' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     second_host = Host.create!(name: 'Bruna', lastname: 'Almeida', email: 'bruna@email.com', password: '12345678')
     payment_method = PaymentMethod.create!(method: 'Crédito 3x')
@@ -52,15 +51,10 @@ describe 'Visitor views homepage' do
                       checkin: '15:00', checkout: '11:00', status: 1)
 
     visit root_path
+    click_on 'Pousada Maré Alta - Florianópolis'
+    click_on 'Voltar'
 
-    expect(page). not_to have_content 'Não existem pousadas cadastradas.' 
-    expect(page).to have_content 'Maceió' 
-    expect(page).to have_content 'Florianópolis' 
-  end
-
-  it 'there is no registered guesthouses' do 
-    visit root_path
-
-    expect(page).to have_content 'Não existem pousadas cadastradas.' 
+    expect(current_path).to eq root_path
+    
   end
 end

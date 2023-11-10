@@ -13,19 +13,19 @@ describe 'Host sees your own guesthouse details' do
     login_as(host, :scope => :host)                                
     visit root_path 
     click_on 'Ver detalhes da pousada'
-    expect(page).to have_content('Pousada Serenidade')
-    expect(page).to have_content('Atmosfera acolhedora e serviços personalizados')
-    expect(page).to have_content('Serenidade Hospedagens Ltda')
-    expect(page).to have_content('CNPJ: 10.290.988/0001-20')
-    expect(page).to have_content('Contato: 42 98989-0000')
-    expect(page).to have_content('E-mail: contato@pousadaencanto.com')
-    expect(page).to have_content('Endereço: Estrada das Colinas, Km 5 - Vale Tranquilo, Maceió - AL - 12345-67')
-    expect(page).to have_content('Método de pagamento: PIX')
-    expect(page).to have_content('Animais de estimação: Aceita')
-    expect(page).to have_content('Regras de uso: Manter silêncio nas áreas comuns.')
-    expect(page).to have_content('Entrada: 14:00')
-    expect(page).to have_content('Saída: 10:00')
-    expect(page).to have_content('Status: Disponível')
+    expect(page).to have_content 'Pousada Serenidade'
+    expect(page).to have_content 'Atmosfera acolhedora e serviços personalizados'
+    expect(page).to have_content 'Serenidade Hospedagens Ltda'
+    expect(page).to have_content 'CNPJ: 10.290.988/0001-20'
+    expect(page).to have_content 'Contato: 42 98989-0000'
+    expect(page).to have_content 'E-mail: contato@pousadaencanto.com'
+    expect(page).to have_content 'Endereço: Estrada das Colinas, Km 5 - Vale Tranquilo, Maceió - AL - 12345-67'
+    expect(page).to have_content 'Método de pagamento: PIX'
+    expect(page).to have_content 'Animais de estimação: Aceita'
+    expect(page).to have_content 'Regras de uso: Manter silêncio nas áreas comuns.'
+    expect(page).to have_content 'Entrada: 14:00'
+    expect(page).to have_content 'Saída: 10:00'
+    expect(page).to have_content 'Status: Disponível'
     end
 
   it 'and returns to home page' do

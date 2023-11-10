@@ -13,8 +13,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @guesthouse = Guesthouse.find(params[:id])
-    # @room = Room.all.where(guesthouse_id: @guesthouse.id).find(params[:id])
+    @guesthouse = Guesthouse.find(params[:guesthouse_id])
     @custom_prices = CustomPrice.all.where(room_id: @room.id)
   end
 
@@ -72,7 +71,7 @@ class RoomsController < ApplicationController
   end
 
   def check_host
-    unless Room.find(params[:id]).guesthouse.host == @guesthouse.host
+    if @room.guesthouse.host != @guesthouse.host
       return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
     end
   end

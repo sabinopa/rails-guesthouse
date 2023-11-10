@@ -55,7 +55,7 @@ describe 'Host edits room' do
     expect(page).to have_content 'Status: Disponível'
   end
 
-  it 'must be the owner' do
+  it 'must be the host' do
     first_host = Host.create!(name: 'Paulo', lastname: 'Xavier', email: 'paulo@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'Crédito até 3x')
     first_guesthouse = Guesthouse.create!(host: first_host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
@@ -77,7 +77,7 @@ describe 'Host edits room' do
      visit edit_guesthouse_room_path(first_guesthouse.id, first_room.id)
 
      expect(page).to have_content 'Ops, você não é o anfitrião dessa pousada.'
-     expect(current_path).to eq(root_path)
+     expect(current_path).to eq root_path
   end
 
   it 'with incomplete data' do

@@ -5,6 +5,7 @@ pt-BR:
         one: 'Preço personalizado'
         other: 'Preços personalizados'
     attributes:
-      start_date: 'Início'
-      end_date: 'Fim'
-      price: 'Preço'
+      custom_price:
+        start_date: 'Início'
+        end_date: 'Fim'
+        price: 'Preço'

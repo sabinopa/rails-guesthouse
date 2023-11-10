@@ -1,5 +1,8 @@
 class CustomPricesController < ApplicationController
-  before_action :set_room, only: [:new, :create, :edit, :update]
+  before_action :authenticate_host!
+  before_action :set_room, only: [:new, :create]
+  before_action :set_guesthouse, only: [:new, :create]
+  before_action :check_host
 
   def new
     @custom_price = CustomPrice.new
@@ -24,5 +27,15 @@ class CustomPricesController < ApplicationController
 
   def set_room
     @room = Room.find(params[:room_id])
+  end
+
+  def set_guesthouse
+    @guesthouse = Guesthouse.find(params[:guesthouse_id])
+  end
+
+  def check_host
+    if @room.guesthouse.host != @guesthouse.host
+      redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+    end
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Host changes status of his guesthouse' do
+describe 'Host updates the status of his guesthouse' do
   it 'and turns guesthouse inactive' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')
@@ -15,7 +15,7 @@ describe 'Host changes status of his guesthouse' do
     click_on 'Ver detalhes da pousada'
     click_button 'Desativar pousada'
 
-    expect(current_path).to eq(guesthouse_path(guesthouse))
+    expect(current_path).to eq guesthouse_path(guesthouse) 
     expect(page).to have_content 'Sua pousada está inativa!'
   end
 
@@ -33,7 +33,7 @@ describe 'Host changes status of his guesthouse' do
     click_on 'Ver detalhes da pousada'
     click_button 'Ativar pousada'
   
-    expect(current_path).to eq(guesthouse_path(guesthouse))
+    expect(current_path).to eq guesthouse_path(guesthouse)
     expect(page).to have_content 'Sua pousada está ativa!'
   end
 end

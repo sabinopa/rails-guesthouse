@@ -9,8 +9,8 @@ describe 'Host edits guesthouse' do
     fill_in 'Senha', with: 'password'
     click_on 'Entrar'
 
-    expect(page).not_to have_link('Entrar como Anfitrião')
-    expect(page).to have_content('Aline Santos - aline@email.com')
+    expect(page).not_to have_link 'Entrar como Anfitrião' 
+    expect(page).to have_content 'Aline Santos - aline@email.com' 
   end
 
   it 'from home page' do 

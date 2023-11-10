@@ -89,7 +89,7 @@ describe 'Host register guesthouse' do
     visit root_path
     visit new_guesthouse_path
 
-    expect(page).to have_content('Ops, você já tem uma pousada cadastrada!')
-    expect(current_path).not_to eq(new_guesthouse_path)
+    expect(page).to have_content 'Ops, você já tem uma pousada cadastrada!' 
+    expect(current_path).not_to eq new_guesthouse_path 
   end
 end

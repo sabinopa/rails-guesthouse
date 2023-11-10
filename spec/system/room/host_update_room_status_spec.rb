@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Host change status of his room' do
+describe 'Host updates the status of his room' do
   it 'and turns room inactive' do
     host = Host.create!(name: 'Aline', lastname: 'Santos', email: 'aline@email.com', password: 'password')
     payment_method = PaymentMethod.create!(method: 'PIX')

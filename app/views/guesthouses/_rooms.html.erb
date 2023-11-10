@@ -2,14 +2,14 @@
 <p>Quartos:</p>
   <ul>
     <% @all_rooms.each do |room| %>
-      <li><%= link_to room.name, [@guesthouse, room] %></li>
+      <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
     <% end %>
   </ul>
 <% elsif @available_rooms.any? %>
 <p>Quartos:</p>
   <ul>
     <% @available_rooms.each do |room| %>
-      <li><%= link_to room.name, [@guesthouse, room] %></li>
+      <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
     <% end %>
   </ul>
 <% end %>

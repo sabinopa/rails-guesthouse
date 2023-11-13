@@ -21,14 +21,14 @@ class GuesthousesController < ApplicationController
     if @guesthouse.save
       redirect_to guesthouse_path(@guesthouse), notice: "#{@guesthouse.brand_name}: Criado com sucesso!"
     else
-      flash.now[:notice] = 'Pousada não cadastrada.'
+      flash.now[:alert] = 'Pousada não cadastrada.'
       render :new
     end
   end
       
   def edit
     if @guesthouse.host != current_host
-      redirect_to root_path, notice: 'Você não pode editar essa pousada!'
+      redirect_to root_path, alert: 'Você não pode editar essa pousada!'
     end
   end
 
@@ -36,18 +36,16 @@ class GuesthousesController < ApplicationController
     if @guesthouse.update(guesthouse_params)
       redirect_to guesthouse_path(@guesthouse.id), notice: "#{@guesthouse.brand_name}: Atualizado com sucesso!"
     else
-      flash.now[:notice] = 'Não foi possível atualizar a pousada.'
+      flash.now[:alert] = 'Não foi possível atualizar a pousada.'
       render :new
     end
   end
 
   def search
-    @query = params['query']
-    @guesthouses = Guesthouse.active.where('brand_name LIKE :query 
-                                            OR neighborhood LIKE :query 
-                                            OR city LIKE :query', query: "%#{@query}%").order(:brand_name)
+    @query_params = params["query"]
+    @guesthouses = Guesthouse.search(@query_params)
     if @guesthouses.empty?
-      flash.now[:notice] = 'Nenhuma pousada encontrada!'
+      flash.now[:alert] = 'Nenhuma pousada encontrada!'
     end
   end
 
@@ -86,7 +84,7 @@ class GuesthousesController < ApplicationController
 
   def check_host
     if current_host.guesthouse != @guesthouse
-      return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+      return redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
     end
   end
 end

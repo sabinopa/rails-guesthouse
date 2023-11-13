@@ -5,8 +5,8 @@ describe 'Visitor search for a guesthouse' do
     visit root_path
   
     within('nav') do
-      expect(page).to have_field 'Buscar Pousada'
-      expect(page).to have_button 'Buscar' 
+      expect(page).to have_field 'Busque aqui...'
+      expect(page).to have_button 'Buscar Pousada'
     end
   end
 
@@ -21,8 +21,8 @@ describe 'Visitor search for a guesthouse' do
                                           checkin: '15:00', checkout: '11:00', status: 1)
 
     visit root_path
-    fill_in 'Buscar Pousada', with: guesthouse.brand_name
-    click_on 'Buscar'
+    fill_in 'Busque aqui...', with: guesthouse.brand_name
+    click_on 'Buscar Pousada'
 
     expect(page).to have_content "Resultados da busca por: #{guesthouse.brand_name}"
     expect(page).to have_content '1 pousada encontrada'
@@ -45,8 +45,8 @@ describe 'Visitor search for a guesthouse' do
                                           city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
                                           usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
     visit root_path                                  
-    fill_in 'Buscar Pousada', with: 'Serenidade'
-    click_on 'Buscar'
+    fill_in 'Busque aqui...', with: 'Serenidade'
+    click_on 'Buscar Pousada'
 
     expect(page).to have_content '2 pousadas encontradas'
     expect(page).to have_content 'Pousada Serenidade da Alma'
@@ -66,8 +66,8 @@ describe 'Visitor search for a guesthouse' do
                                           checkin: '15:00', checkout: '11:00', status: 1)
    
     visit root_path                                      
-    fill_in 'Buscar Pousada', with: 'Florianópolis'
-    click_on 'Buscar'
+    fill_in 'Busque aqui...', with: 'Florianópolis'
+    click_on 'Buscar Pousada'
 
     expect(page).to have_content '1 pousada encontrada'
     expect(page).to have_link 'Pousada Serenidade do Verão'
@@ -86,8 +86,8 @@ describe 'Visitor search for a guesthouse' do
                                           checkin: '15:00', checkout: '11:00', status: 1)
    
     visit root_path                                      
-    fill_in 'Buscar Pousada', with: 'Costa Brilhante'
-    click_on 'Buscar'
+    fill_in 'Busque aqui...', with: 'Costa Brilhante'
+    click_on 'Buscar Pousada'
 
     expect(page).to have_content '1 pousada encontrada'
     expect(page).to have_link 'Pousada Serenidade do Verão'

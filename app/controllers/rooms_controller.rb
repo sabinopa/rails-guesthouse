@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to guesthouse_rooms_path, notice: "Quarto #{@room.name}: Criado com sucesso!"
     else
-      flash.now[:notice] = 'Quarto não cadastrado.'
+      flash.now[:alert] = 'Quarto não cadastrado.'
       render :new
     end
   end
@@ -40,7 +40,7 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "#{@room.name}: Atualizado com sucesso!"
     else
-      flash.now[:notice] = 'Não foi possível atualizar o quarto.'
+      flash.now[:alert] = 'Não foi possível atualizar o quarto.'
       render :new
     end 
   end
@@ -63,7 +63,7 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:description, :name, :size, :max_people, :price, :bathroom,
-                                :balcony, :air_conditioner, :tv, :status)
+                                :balcony, :air_conditioner, :tv, :wardrobe, :safe, :accessibility, :status)
   end
 
   def set_guesthouse
@@ -72,7 +72,7 @@ class RoomsController < ApplicationController
 
   def check_host
     if @room.guesthouse.host != @guesthouse.host
-      return redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+      return redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
     end
   end
 end

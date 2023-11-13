@@ -54,6 +54,7 @@ describe 'Visitor views homepage' do
     visit root_path
 
     expect(page). not_to have_content 'Não existem pousadas cadastradas.' 
+    expect(page).to have_content 'Buscar destinos' 
     expect(page).to have_content 'Maceió' 
     expect(page).to have_content 'Florianópolis' 
   end

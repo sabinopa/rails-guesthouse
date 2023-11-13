@@ -1,4 +1,4 @@
-<h1>Resultados da busca por: <%= @query %></h1>
+<h1>Resultados da busca por: <%= @query_params %></h1>
 
 <p><%= @guesthouses.count %> <%= Guesthouse.model_name.human(count: @guesthouses.count).downcase %> 
 <%= t(:found, count: @guesthouses.count) %></p>

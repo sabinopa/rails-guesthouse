@@ -1,6 +1,6 @@
 <%= render 'guesthouse' %>
 <%= render 'rooms' %>
-<div>
+<div class="container">
   <%= link_to 'Voltar', root_path %>
   <% if current_host.present? && current_host.guesthouse == @guesthouse %>
     <%= link_to 'Editar', edit_guesthouse_path %>

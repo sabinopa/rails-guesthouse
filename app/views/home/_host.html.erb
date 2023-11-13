@@ -1,30 +1,38 @@
-<div>
-  <% if @guesthouse.nil? %> 
-    <%= link_to 'Cadastrar pousada', new_guesthouse_path %>
-  <% else %>
-    <% if @guesthouse.inactive? %>
-      <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id) %>
-    <% else %>  
-      <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id) %>
-    <% end %>
-  <h1> Sua pousada: </h1>
-    <dl>
-      <dt><strong>Nome:</strong></dt> 
-      <dd><%= current_host.guesthouse.brand_name %></dd>
-      <dt><strong>Cidade:</strong></dt>
-      <dd><%= current_host.guesthouse.city %></dd>
-    </dl>
-    <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse) %></p>
-    <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse) %></p>
-    <% if @guesthouse.rooms.any? %>
-      <p><%= link_to 'Ver quartos', guesthouse_rooms_path(@guesthouse) %></p>
-      <p> Total de Quartos:<%= @guesthouse.rooms.count %> </p>
-    <% else %> 
-      <p> Total de Quartos: 0 </p>
-    <% end %>
-  <% end %>
-</div>
+<div class="d-flex flex-row justify-content-around mt-5">
+  <div class="card text-center" style="width: 18rem;">
+    <% if @guesthouse.nil? %> 
+      <%= link_to 'Cadastrar pousada', new_guesthouse_path, class: "btn btn-outline-primary" %>
+        
+    <% else %>
+    
+      <div class="card-header" style="width: 18rem;">
+          <% if @guesthouse.inactive? %>
+            <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
+          <% else %>  
+            <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id), class: "btn btn-outline-danger" %>
+          <% end %>
+      </div>
+          
+      <div class="card-body" style="width: 18rem;">
+          <h5 class="card-title"> Sua pousada: </h5>
+          <p class="card-text"><%= current_host.guesthouse.brand_name %></p>
+          <p class="card-text"><%= current_host.guesthouse.city %></p>
+      </div>
 
+      <div class="card-footer text-body-secondary">
+          <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse), class: "btn btn-outline-primary" %></p>
+          <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse), class: "btn btn-outline-primary" %></p>
+
+          <% if @guesthouse.rooms.any? %>
+            <p><%= link_to 'Ver quartos', guesthouse_rooms_path(@guesthouse), class: "btn btn-outline-primary" %></p>
+            <p> Total de Quartos: <%= @guesthouse.rooms.count %> </p>
+          <% else %> 
+            <p> Total de Quartos: 0 </p>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
     
 
   

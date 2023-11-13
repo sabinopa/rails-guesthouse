@@ -1,5 +1,6 @@
+<div class="container p-2 g-col-8">
 <h1>Pousada <%= @guesthouse.brand_name %></h1>
-<p> <%= @guesthouse.description %></p>
+<p class="font-monospace"><%= @guesthouse.description %></p>
 <div>
     <dl>
         <% if host_signed_in? %> 
@@ -15,7 +16,7 @@
         <dt><strong><%= Guesthouse.human_attribute_name(:email) %>:</strong></dt>
         <dd><%= @guesthouse.email %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:address) %>:</strong></dt>
-        <dd><%= @guesthouse.address %></dd> - <dd><%= @guesthouse.neighborhood %></dd>, <dd><%= @guesthouse.city %></dd> - <dd><%= @guesthouse.state %></dd> - <dd><%= @guesthouse.postal_code %></dd>
+        <dd><%= @guesthouse.address %> - <%= @guesthouse.neighborhood %>, <%= @guesthouse.city %> - <%= @guesthouse.state %> - <%= @guesthouse.postal_code %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:pet_friendly) %>:</strong></dt>
         <dd><%= @guesthouse.pet_friendly? ? 'Aceita' : 'Não aceita' %></dd>
         <dt><strong><%= Guesthouse.human_attribute_name(:usage_policy) %>:</strong></dt>
@@ -29,4 +30,5 @@
         <dt><%= Guesthouse.human_attribute_name(:status) %>:</dt>
         <dd><%= I18n.translate(@guesthouse.status) %></dd>
     </dl>
+</div>
 </div>

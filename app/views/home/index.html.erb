@@ -3,26 +3,52 @@
 <% elsif guest_signed_in? %>
   <%= render 'guest' %>
 <% end %>
- 
-<% if @cities.present? %>
-  <p> Veja pousadas em: </p>
-  <% @cities.each do |city| %>
-  <ul>
-    <li><%= link_to city, cities_guesthouses_path(city: city)%></li>
-  </ul>
-  <% end %>
-<% end %>
 
-<p> Pousadas recentes </p>
-<% @recent_guesthouses.each do |guesthouse| %> 
-  <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
-<% end %>
+<div class="d-flex flex-row justify-content-around mt-5">
+  <form class="d-flex" action="<%= cities_guesthouses_path %>" method="get">
+    <select class="form-select me-2" name="city" aria-label="Default select example">
+      <option selected>Buscar destinos</option>
+      <% if @cities.present? %>
+        <% @cities.each do |city| %>
+        <option value="<%= city %>"><%= city %></option>
+        <% end %>
+      <% end %>
+    </select>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+</div>
 
-<p> Demais pousadas </p>
-<% @other_guesthouses.each do |guesthouse| %> 
-  <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %></br>
-<% end %>
+<div class="d-flex flex-row justify-content-around mt-5" >
+  <div class="card text-center" style="width: 18rem;">
+    <p> Pousadas recentes </p>
+    <ul class="list-group list-group-flush">
+    <% @recent_guesthouses.each do |guesthouse| %> 
+      <li class="list-group-item">
+        <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+  
+<div class="d-flex flex-row justify-content-around mt-5" >
+  <div class="card text-center" style="width: 18rem;">
+    <p> Demais pousadas </p>
+    <ul class="list-group list-group-flush">
+      <% @other_guesthouses.each do |guesthouse| %> 
+        <li class="list-group-item" ></li>
+          <%= link_to "#{guesthouse.brand_name} - #{guesthouse.city}", guesthouse %>
+        </li>
+       <% end %>
+    </ul>
+  </div>
+</div>
 
-<% if @guesthouses.empty? %> 
-    <p>Não existem pousadas cadastradas.</p>
-<% end %>
+<div class="d-flex flex-row justify-content-around mt-5" >
+  <div class="card text-center" style="width: 18rem;">
+    <% if @guesthouses.empty? %> 
+      <p>Não existem pousadas cadastradas.</p>
+    <% end %>
+  </div>
+</div>
+

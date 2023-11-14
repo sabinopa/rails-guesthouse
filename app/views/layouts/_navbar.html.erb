@@ -33,6 +33,7 @@
     </div>
 
     <div class="navbar-collapse justify-content-end">
+        <%= link_to "Busca detalhada", new_search_path %>
         <%= form_with(url: search_guesthouses_path, method: :get, html: { class: "d-flex" }) do |f| %>
           <div class="input-group">
             <%= f.text_field :query, placeholder: 'Busque aqui...', class: "form-control me-2" %>

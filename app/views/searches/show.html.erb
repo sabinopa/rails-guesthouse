@@ -1,0 +1,36 @@
+<h1>Resultados da busca</h1>
+<p><%= link_to 'Voltar', new_search_path %></p>
+
+<% if @search.search_room.empty? %>
+    <p>Nenhuma pousada encontrada.</p>
+<% else %>
+    <table>
+        <thead>
+            <tr>
+                <th>Search.human_attribute_name(:bathroom)</th>
+                <th>Search.human_attribute_name(:balcony)</th>
+                <th>Search.human_attribute_name(:air_conditioner)</th>
+                <th>Search.human_attribute_name(:tv)</th>
+                <th>Search.human_attribute_name(:wardrobe)</th>
+                <th>Search.human_attribute_name(:safe)</th>
+                <th>Search.human_attribute_name(:accessibility)</th>
+                <th colspan="7"></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <% @search.search_room.each do |room| %>
+            <tr>
+                <td><%= room.bathroom %></td>
+                <td><%= room.balcony %></td>
+                <td><%= room.air_conditioner %></td>
+                <td><%= room.tv %></td>
+                <td><%= room.wardrobe %></td>
+                <td><%= room.safe %></td>
+                <td><%= room.accessibility %></td>
+                <td><%= link_to 'Ver', guesthouse_path(room.id) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+</table>
+<% end %>

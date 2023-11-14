@@ -1,0 +1,29 @@
+<h1>Busca detalhada</h1>
+
+<%= form_with model: @search do |f| %>
+
+    <%= f.label :bathroom %>
+    <%= f.select :bathroom, [['Particular', true], ['Compartilhado', false]] %><br><br>
+
+    <%= f.label :balcony %>
+    <%= f.select :balcony, [['Possui', true], ['Não possui', false]] %><br><br>
+
+    <%= f.label :air_conditioner %>
+    <%= f.select :air_conditioner , [['Possui', true], ['Não possui', false]] %><br><br>
+
+    <%= f.label :tv %>
+    <%= f.select :tv, [['Possui', true], ['Não possui', false]] %><br><br>
+
+    <%= f.label :wardrobe %>
+    <%= f.select :wardrobe, [['Possui', true], ['Não possui', false]] %><br><br>
+
+    <%= f.label :safe %>
+    <%= f.select :safe, [['Possui', true], ['Não possui', false]] %><br><br>
+
+    <%= f.label :accessibility %>
+    <%= f.select :accessibility, [['Acessível', true], ['Não acessível', false]] %><br><br>
+
+    <%= f.submit 'Buscar' %>
+<% end %>
+
+<p><%= link_to 'Voltar', root_path %></p>

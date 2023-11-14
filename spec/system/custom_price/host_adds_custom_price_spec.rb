@@ -44,15 +44,17 @@ describe 'Host adds custom price to a room' do
     click_on 'Ver quartos'
     click_on 'Tranquilidade - 4 pessoas'
     click_on 'Adicionar preços personalizados'
-    fill_in 'Início', with: '21/12/2023'
-    fill_in 'Fim', with: '15/01/2024'
+    fill_in 'Início', with: 8.days.from_now
+    fill_in 'Fim', with: 12.days.from_now
     fill_in 'Preço no período', with: 350.00
     click_on 'Salvar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, room.id)
     expect(page).to have_content 'Novo preço cadastrado com sucesso!'
-    expect(page).to have_content 'Início: 21/12/23'
-    expect(page).to have_content 'Fim: 15/01/24'
+    start_date = I18n.localize 8.days.from_now.to_date
+    end_date = I18n.localize 12.days.from_now.to_date
+    expect(page).to have_content "Início: #{start_date}"
+    expect(page).to have_content "Fim: #{end_date}"
     expect(page).to have_content 'Preço personalizado: R$350.0'
     expect(page).to have_link 'Adicionar preços personalizados'
   end
@@ -142,7 +144,7 @@ describe 'Host adds custom price to a room' do
     click_on 'Tranquilidade - 4 pessoas'
     click_on 'Adicionar preços personalizados'
     fill_in 'Início', with: 10.days.ago
-    fill_in 'Fim', with: '10/12/2023'
+    fill_in 'Fim', with: 10.days.from_now
     fill_in 'Preço no período', with: 350.00
     click_on 'Salvar'
 
@@ -168,8 +170,8 @@ describe 'Host adds custom price to a room' do
     click_on 'Ver quartos'
     click_on 'Tranquilidade - 4 pessoas'
     click_on 'Adicionar preços personalizados'
-    fill_in 'Início', with: '21/12/2023'
-    fill_in 'Fim', with: '10/12/2023'
+    fill_in 'Início', with: 15.days.from_now
+    fill_in 'Fim', with: 8.days.from_now
     fill_in 'Preço no período', with: 350.00
     click_on 'Salvar'
 
@@ -190,15 +192,15 @@ describe 'Host adds custom price to a room' do
                         price: 220.00, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     
-    custom_price = CustomPrice.create!(room: room, start_date: '10/12/2023', end_date: '15/12/2023', price: 300.00)
+    custom_price = CustomPrice.create!(room: room, start_date: 8.days.from_now, end_date: 20.days.from_now, price: 300.00)
     
     login_as(host, :scope => :host)  
     visit root_path
     click_on 'Ver quartos'
     click_on 'Tranquilidade - 4 pessoas'
     click_on 'Adicionar preços personalizados'
-    fill_in 'Início', with: '12/12/2023'
-    fill_in 'Fim', with: '10/01/2023'
+    fill_in 'Início', with: 10.days.from_now
+    fill_in 'Fim', with: 15.days.from_now
     fill_in 'Preço no período', with: 350.00
     click_on 'Salvar'
 
@@ -230,15 +232,17 @@ describe 'Host adds custom price to a room' do
     click_on 'Ver quartos'
     click_on 'Calmaria - 2 pessoas'
     click_on 'Adicionar preços personalizados'
-    fill_in 'Início', with: '12/12/2023'
-    fill_in 'Fim', with: '20/12/2023'
+    fill_in 'Início', with: 8.days.from_now
+    fill_in 'Fim', with: 13.days.from_now
     fill_in 'Preço no período', with: 400.00
     click_on 'Salvar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, second_room.id)
     expect(page).to have_content 'Novo preço cadastrado com sucesso!'
-    expect(page).to have_content 'Início: 12/12/23'
-    expect(page).to have_content 'Fim: 20/12/23'
+    start_date = I18n.localize 8.days.from_now.to_date
+    end_date = I18n.localize 13.days.from_now.to_date
+    expect(page).to have_content "Início: #{start_date}"
+    expect(page).to have_content "Fim: #{end_date}"
     expect(page).to have_content 'Preço personalizado: R$400.0'
     expect(page).to have_link 'Adicionar preços personalizados'
   end

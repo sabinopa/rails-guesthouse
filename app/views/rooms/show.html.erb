@@ -7,8 +7,8 @@
       <h3>Preços em períodos especiais:</h3>
       <% @custom_prices.each do |custom_price| %>
         <div>
-          <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%y") %>
-          <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%y") %>
+          <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%Y") %>
+          <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%Y") %>
           <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
         </div>
       <% end %>
@@ -20,6 +20,8 @@
     <%= button_to 'Tornar quarto indisponível', inactive_guesthouse_room_path(@room.id) %>
   <% end %>
 <% end %>
+
+<%= link_to 'Reservar', new_guesthouse_room_booking_path(@guesthouse.id, @room.id) %>
 
 <div>
 <%= link_to 'Voltar', guesthouse_path %>

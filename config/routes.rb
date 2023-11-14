@@ -9,16 +9,19 @@ Rails.application.routes.draw do
   }
   
   root to: 'home#index'
+
   resources :searches
   resources :guesthouses, except: [:destroy] do
     post 'active', on: :member
     post 'inactive', on: :member
     get 'cities', on: :collection
     get 'search', on: :collection
+    
     resources :rooms, except: [:destroy] do
       post 'active', on: :member
       post 'inactive', on: :member
       resources :custom_prices, except: [:destroy]
+      resources :bookings, except: [:destroy]
     end
   end
 end

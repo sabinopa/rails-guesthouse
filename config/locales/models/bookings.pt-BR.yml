@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      booking: 
+        one: 'Reserva'
+        other: 'Reservas'
+    attributes:
+      booking:
+        start_date: 'Início'
+        end_date: 'Fim'
+        price: 'Preço'
+        number_guests: 'Número de hóspedes'

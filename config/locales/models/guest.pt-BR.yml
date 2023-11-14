@@ -1,11 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      host: 
-        one: 'Anfitrião'
-        other: 'Anfitriões'
+      guest:
+        one: 'Hóspede'
+        other: 'Hóspedes'
     attributes:
-      host:
+      guest:
         name: 'Nome'
         lastname: 'Sobrenome'
-

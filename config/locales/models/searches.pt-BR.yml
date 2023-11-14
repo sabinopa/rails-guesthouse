@@ -1,0 +1,20 @@
+pt-BR:
+  active: 'Disponível'
+  inactive: 'Indisponível'
+  activerecord:
+    models:
+      search: 'Buscar'
+    attributes:
+      search:
+        description: 'Descrição'
+        name: 'Nome'
+        size: 'Dimensão'
+        max_people: 'Capacidade'
+        price: 'Preço'
+        balcony: 'Varanda'
+        bathroom: 'Banheiro'
+        air_conditioner: 'Ar Condicionado'
+        tv: 'Televisão'
+        wardrobe: 'Armário'
+        safe: 'Cofre'
+        accessibility: 'Acessibilidade'

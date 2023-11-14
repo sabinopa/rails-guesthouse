@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
   
   root to: 'home#index'
+  resources :searches
   resources :guesthouses, except: [:destroy] do
     post 'active', on: :member
     post 'inactive', on: :member

@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_08_192621) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_14_173211) do
+  create_table "bookings", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "number_guests"
+    t.integer "host_id", null: false
+    t.integer "guest_id", null: false
+    t.string "code"
+    t.integer "room_id", null: false
+    t.integer "status"
+    t.float "prices"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_bookings_on_guest_id"
+    t.index ["host_id"], name: "index_bookings_on_host_id"
+    t.index ["room_id"], name: "index_bookings_on_room_id"
+  end
+
   create_table "custom_prices", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -100,6 +117,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_192621) do
     t.index ["guesthouse_id"], name: "index_rooms_on_guesthouse_id"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.string "bathroom"
+    t.string "balcony"
+    t.string "air_conditioner"
+    t.string "tv"
+    t.string "wardrobe"
+    t.string "safe"
+    t.string "accessibility"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "bookings", "guests"
+  add_foreign_key "bookings", "hosts"
+  add_foreign_key "bookings", "rooms"
   add_foreign_key "custom_prices", "rooms"
   add_foreign_key "guesthouses", "hosts"
   add_foreign_key "guesthouses", "payment_methods"

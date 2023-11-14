@@ -10,7 +10,7 @@ describe 'Host sign in' do
     fill_in 'Senha', with: '12345678'
     click_on 'Entrar'
     
-    expect(page).to have_content 'Login efetuado com sucesso!'
+    expect(page).to have_content 'Login efetuado com sucesso.'
     within('nav') do
       expect(page).not_to have_link 'Entrar como Anfitrião'
       expect(page).to have_button 'Sair'
@@ -25,7 +25,7 @@ describe 'Host sign in' do
     visit root_path
     click_on 'Sair'
 
-    expect(page).to have_content 'Saiu com sucesso.'
+    expect(page).to have_content 'Logout efetuado com sucesso.'
     expect(page).to have_link 'Entrar como Anfitrião'
     expect(page).not_to have_button 'Sair'
     expect(page).not_to have_content 'Priscila Sabino - priscila@email.com'
@@ -38,6 +38,6 @@ describe 'Host sign in' do
     fill_in 'Senha', with: ''
     click_on 'Entrar'
 
-    expect(page).to have_content 'E-mail ou senha inválida.'
+    expect(page).to have_content 'E-mail ou senha inválidos.'
   end
 end

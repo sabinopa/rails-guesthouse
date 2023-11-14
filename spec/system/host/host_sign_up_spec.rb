@@ -4,7 +4,7 @@ describe 'Host sign up' do
   it 'successfully' do
       visit root_path
       click_on 'Entrar como Anfitrião'
-      click_on 'Sign up'
+      click_on 'Inscrever-se'
       fill_in 'Nome', with: 'Priscila'
       fill_in 'Sobrenome', with: 'Sabino'
       fill_in 'E-mail', with: 'priscila@email.com'
@@ -12,14 +12,14 @@ describe 'Host sign up' do
       fill_in 'Confirme sua senha', with: 'password'
       click_on 'Criar conta'
   
-      expect(page).to have_content 'Login efetuado com sucesso.'
+      expect(page).to have_content 'Boas vindas! Você realizou seu registro com sucesso.'
       expect(page).to have_content 'Priscila Sabino - priscila@email.com'
     end
 
     it 'and submits blank field' do
       visit root_path
       click_on 'Entrar como Anfitrião'
-      click_on 'Sign up'
+      click_on 'Inscrever-se'
       fill_in 'Nome', with: ''
       fill_in 'Sobrenome', with: ''
       fill_in 'E-mail', with: ''

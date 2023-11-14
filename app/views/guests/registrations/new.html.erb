@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :document_number %><br />
+    <%= f.text_field :document_number, autocomplete: "lastname" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>

@@ -8,3 +8,4 @@ pt-BR:
       guest:
         name: 'Nome'
         lastname: 'Sobrenome'
+        document_number: 'Número de documento'

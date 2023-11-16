@@ -1,4 +1,8 @@
 class Guesthouse < ApplicationRecord
+  belongs_to :payment_method
+  belongs_to :host
+  has_many :rooms
+  
   validates :description, :brand_name, :corporate_name, :registration_number, 
             :phone_number, :email, :address, :neighborhood, :city, :state, 
             :postal_code, :payment_method_id, :usage_policy, :checkin, 
@@ -8,9 +12,6 @@ class Guesthouse < ApplicationRecord
 
   enum status: { inactive: 0, active: 1 }
 
-  belongs_to :payment_method
-  belongs_to :host
-  has_many :rooms
 
   scope :brand_name_like, -> (query) { where("brand_name LIKE ?", "%#{query}%") }
   scope :neighborhood_like, -> (query) { where("neighborhood LIKE ?", "%#{query}%") }

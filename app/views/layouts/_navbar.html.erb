@@ -14,8 +14,11 @@
           </li>
 
         <% elsif guest_signed_in? %>
+          <li class="nav-link active">
+            <%= link_to 'Minhas Reservas', my_bookings_path %>
+          </li> 
           <li class="nav-link disabled">
-            <%= current_guest.description %> 
+            <%= current_guest.description %>
           </li>
           <li class="nav-item active">
             <%= button_to 'Sair', destroy_guest_session_path, method: :delete, class: "btn btn-outline-secondary" %> 

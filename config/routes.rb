@@ -20,8 +20,10 @@ Rails.application.routes.draw do
     resources :rooms, except: [:destroy] do
       post 'active', on: :member
       post 'inactive', on: :member
+      get 'availability', on: :member
       resources :custom_prices, except: [:destroy]
-      resources :bookings, except: [:destroy]
+      resources :bookings, except: [:destroy] 
     end
   end
+  get 'my_bookings', to: 'bookings#my_bookings'
 end

@@ -18,7 +18,7 @@
           <p class="card-text"><%= current_host.guesthouse.brand_name %></p>
           <p class="card-text"><%= current_host.guesthouse.city %></p>
       </div>
-
+      
       <div class="card-footer text-body-secondary">
           <p><%= link_to 'Ver detalhes da pousada', guesthouse_path(@guesthouse), class: "btn btn-outline-primary" %></p>
           <p><%= link_to 'Adicionar quartos', new_guesthouse_room_path(@guesthouse), class: "btn btn-outline-primary" %></p>

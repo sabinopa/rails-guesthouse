@@ -6,7 +6,7 @@ pt-BR:
         other: 'Reservas'
     attributes:
       booking:
-        start_date: 'Início'
-        end_date: 'Fim'
-        price: 'Preço'
+        start_date: 'Entrada'
+        end_date: 'Saída'
+        prices: 'Valor total'
         number_guests: 'Número de hóspedes'

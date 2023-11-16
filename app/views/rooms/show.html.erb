@@ -21,8 +21,7 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Reservar', new_guesthouse_room_booking_path(@guesthouse.id, @room.id) %>
-
+<%= render 'availability', room: @room, guesthouse: @guesthouse %>
 <div>
 <%= link_to 'Voltar', guesthouse_path %>
 </div>

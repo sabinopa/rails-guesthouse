@@ -34,8 +34,11 @@ class CustomPricesController < ApplicationController
   end
 
   def check_host
-    if @room.guesthouse.host != @guesthouse.host
-      redirect_to root_path, notice: 'Ops, você não é o anfitrião dessa pousada.'
+    @room = Room.find(params[:room_id])
+    @guesthouse = @room.guesthouse
+  
+    unless current_host == @guesthouse.host
+      redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
     end
   end
 end

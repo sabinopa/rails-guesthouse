@@ -12,7 +12,7 @@ describe 'Guest starts booking a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 220.00, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    custom_price = CustomPrice.create!(room: room, start_date: '10/12/2023', end_date: '15/12/2023', price: 300.00)
+    custom_price = CustomPrice.create!(room: room, start_date: 7.days.from_now, end_date: 15.days.from_now, price: 300.00)
     guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
 
 
@@ -22,13 +22,19 @@ describe 'Guest starts booking a room' do
     click_on 'Tranquilidade - 4 pessoas'
     click_on 'Reservar'
 
-    fill_in 'Início', with: 5.days.from_now
-    fill_in 'Fim', with: 15.days.from_now
+    fill_in 'Entrada', with: 5.days.from_now
+    fill_in 'Saída', with: 15.days.from_now
     fill_in 'Número de hóspedes', with: '3'
     click_on 'Verificar'
 
-    expect(page).to have_content 'Confirmar dados da reserva'
-
-
+    expect(page).to have_content 'Antes de finalizar, confirme os dados da sua reserva:'
+    start_date = I18n.localize 5.days.from_now.to_date
+    end_date = I18n.localize 15.days.from_now.to_date
+    expect(page).to have_content "Entrada: #{start_date} - 14:00"
+    expect(page).to have_content '14:00'
+    expect(page).to have_content "Saída: #{end_date} - 10:00"
+    expect(page).to have_content '10:00'
+    expect(page).to have_content 'Número de hóspedes: 3'
+    expect(page).to have_content "Valor total: R$ 2840,00" 
   end
 end

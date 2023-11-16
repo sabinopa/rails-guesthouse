@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_host!, except: [:index, :show]
-  before_action :set_guesthouse, except: [:show]
-  before_action :set_room, only: [:show, :edit, :update, :active, :inactive]
+  before_action :authenticate_host!, except: [:index, :show, :availability]
+  before_action :set_guesthouse, except: [:show, :availability]
+  before_action :set_room, except: [:new]
   before_action :check_host, only: [:edit, :update]
 
   def index
@@ -53,6 +53,17 @@ class RoomsController < ApplicationController
   def inactive
     @room.inactive!
     redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto inativo!"
+  end
+
+  def availability
+    @guesthouse = @room.guesthouse
+    if @room.has_availability?(params[:start_date], params[:end_date])
+      flash.now[:notice] = 'Quarto disponível, você pode finalizar a sua reserva.'
+      redirect_to new_guesthouse_room_booking_path(guesthouse_id: @guesthouse.id , room_id: @room.id, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
+    else 
+      flash.now[:notice] = 'Esse quarto não está disponível nas datas escolhidas, tente novas datas.'
+      render :show
+    end
   end
 
   private

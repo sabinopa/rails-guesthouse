@@ -1,0 +1,25 @@
+<p>Verificar disponibilidade das datas: </p>
+
+<%= form_with(url: availability_guesthouse_room_path, method: :get) do |f| %>
+<div>
+  <%= f.hidden_field :guesthouse_id, value: guesthouse.id %>
+  <%= f.hidden_field :room_id, value: room.id %>
+</div>
+
+<div>
+  <%= f.label :start_date %>: 
+  <%= f.date_field :start_date %>
+</div>
+
+<div>
+  <%= f.label :end_date %>: 
+  <%= f.date_field :end_date %>
+</div>
+
+<div>
+  <%= f.label :number_guests %>: 
+  <%= f.number_field :number_guests %>
+</div>
+
+  <%= f.submit 'Verificar' %>
+<% end %>

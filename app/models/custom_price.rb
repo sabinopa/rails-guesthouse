@@ -1,11 +1,11 @@
 class CustomPrice < ApplicationRecord
+  belongs_to :room
+  
   validates :start_date, :end_date, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
   validate :avoid_overlapping_dates
   validate :start_date_is_future
   validate :start_date_before_end_date
-
-  belongs_to :room
 
   private
 

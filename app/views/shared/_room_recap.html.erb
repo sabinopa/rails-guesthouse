@@ -2,9 +2,10 @@
 <p>Pousada <%= @guesthouse.brand_name %></p>
 <p> <%= @room.description %></p>
 <div>
-    <dl>
-        <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
-        <dd><%= @room.max_people %> pessoas</dd> 
-        <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
-        <dd>R$ <%= @room.price %></dd>
+  <dl>
+    <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
+    <dd><%= @room.max_people %> pessoas</dd> 
+    <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
+    <dd>R$ <%= @room.price %></dd>
+  </dl>
 </div>

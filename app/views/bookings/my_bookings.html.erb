@@ -1,18 +1,19 @@
 <% if @bookings.present? %>
-  <% @bookings.each do |booking| %>
-    <h3><%= "Reserva #{booking.code}" %></h3>
-    <div>
-      <dl>
-          <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
-          <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
-          <dt><strong><%= Booking.human_attribute_name(:end_date) %>:</strong></dt>
-          <dd><%=  "#{I18n.localize booking.end_date.to_date} - #{booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
-          <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
-          <dd><%= booking.number_guests %></dd>
-          <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
-          <dd>R$ <%= booking.total_price %></dd>
-          <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
-          <dd><%= booking.room.guesthouse.payment_method.method %></dd>
+<% @bookings.each do |booking| %>
+<h3><%= "Reserva #{booking.code}" %></h3>
+<div>
+  <p><%= booking.room.guesthouse.brand_name %></p>
+  <dl>
+    <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
+    <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
+    <dt><strong><%= Booking.human_attribute_name(:end_date) %>:</strong></dt>
+    <dd><%=  "#{I18n.localize booking.end_date.to_date} - #{booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
+    <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
+    <dd><%= booking.number_guests %></dd>
+    <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
+        <dd>R$ <%= booking.prices %></dd>
+        <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
+        <dd><%= booking.room.guesthouse.payment_method.method %></dd>
       </dl>
     </div>
   <% end %>

@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController 
-  before_action :authenticate_guest!, only: [:booked, :my_bookings]
-  before_action :set_room_and_guesthouse, except: [:validation, :booked, :my_bookings]
+  before_action :authenticate_guest!, only: [:create, :show, :my_bookings]
+  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings]
 
   def new
     @guest = current_guest
@@ -11,27 +11,30 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.host = @guesthouse.host
     @booking.guest = current_guest
-
+    @total_price = @room.total_price(booking_params[:start_date], booking_params[:end_date])
+    @booking.prices = @total_price
+    
     if @booking.save
-      redirect_to guesthouse_room_booking_path(@guesthouse, @room, @booking)
+      return redirect_to guesthouse_room_booking_path(@guesthouse, @room, @booking)
     else
-      flash.now[:alert] = 'Não foi possível reservar o quarto.'
-      render :new
+      flash[:alert] = 'Não foi possível reservar o quarto.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
   end
 
   def show
-    #TO-DO
+    @booking = Booking.find(params[:id])
+    @total_price = @booking.room.total_price(@booking.start_date, @booking.end_date)
   end
 
   def my_bookings
-    @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })  
+    @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
   end
   
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :number_guests, :price, :room_id)
+    params.require(:booking).permit(:start_date, :end_date, :number_guests, :prices, :room_id)
   end
 
   def set_room_and_guesthouse

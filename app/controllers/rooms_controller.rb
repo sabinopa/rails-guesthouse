@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!, except: [:index, :show, :availability]
   before_action :set_guesthouse, except: [:show, :availability]
-  before_action :set_room, except: [:new]
+  before_action :set_room, except: [:new, :index]
   before_action :check_host, only: [:edit, :update]
 
   def index
@@ -57,12 +57,33 @@ class RoomsController < ApplicationController
 
   def availability
     @guesthouse = @room.guesthouse
+
+    if params[:start_date].blank? || params[:end_date].blank? || params[:number_guests].blank?
+      flash[:alert] = 'Por favor, preencha todos os campos.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
+    end
+
+    if Date.parse(params[:start_date]) < Date.today
+      flash[:alert] = 'A data de início não pode ser no passado.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
+    end
+
+    if Date.parse(params[:start_date]) >= Date.parse(params[:end_date])
+      flash[:alert] = 'A data de início deve ser anterior à data final.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
+    end
+
+    if params[:number_guests].to_i > @room.max_people.to_i
+      flash[:alert] = 'Este quarto não suporta tantas pessoas.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
+    end
+
     if @room.has_availability?(params[:start_date], params[:end_date])
-      flash.now[:notice] = 'Quarto disponível, você pode finalizar a sua reserva.'
-      redirect_to new_guesthouse_room_booking_path(guesthouse_id: @guesthouse.id , room_id: @room.id, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
+      flash[:notice] = 'Quarto disponível, você pode finalizar a sua reserva.'
+      return redirect_to new_guesthouse_room_booking_path(guesthouse_id: @guesthouse.id , room_id: @room.id, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
     else 
-      flash.now[:notice] = 'Esse quarto não está disponível nas datas escolhidas, tente novas datas.'
-      render :show
+      flash[:alert] = 'Esse quarto não está disponível nas datas escolhidas, tente novas datas.'
+      return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
   end
 

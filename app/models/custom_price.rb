@@ -24,12 +24,12 @@ class CustomPrice < ApplicationRecord
   def avoid_overlapping_dates
     return false if self.room.nil?
     new_period = Range.new(start_date, end_date)
-    overlapping_custom_price = self.room.custom_price.any? do |custom|
+    overlapping_custom_prices = self.room.custom_prices.any? do |custom|
       next if custom.id == self.id
       existing_period = Range.new(custom.start_date, custom.end_date)
       new_period.overlaps?(existing_period)
     end
-    errors.add(:start_date, 'Ops, você já tem um preço especial cadastrado nessa data.') if overlapping_custom_price
+    errors.add(:start_date, 'Ops, você já tem um preço especial cadastrado nessa data.') if overlapping_custom_prices
   end
 end
 

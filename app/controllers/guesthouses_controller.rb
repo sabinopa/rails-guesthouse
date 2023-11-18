@@ -75,12 +75,6 @@ class GuesthousesController < ApplicationController
                                       :email, :address, :neighborhood, :city, :state, :postal_code, :payment_method_id, 
                                       :pet_friendly, :usage_policy, :checkin, :checkout, :status)
   end
-  
-  def check_guesthouse_presence
-    if current_host.guesthouse
-      return redirect_to root_path, alert: 'Ops, você já tem uma pousada cadastrada!'
-    end
-  end
 
   def check_host
     if current_host.guesthouse != @guesthouse

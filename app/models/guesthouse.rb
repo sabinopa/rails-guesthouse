@@ -12,11 +12,9 @@ class Guesthouse < ApplicationRecord
 
   enum status: { inactive: 0, active: 1 }
 
-
   scope :brand_name_like, -> (query) { where("brand_name LIKE ?", "%#{query}%") }
   scope :neighborhood_like, -> (query) { where("neighborhood LIKE ?", "%#{query}%") }
   scope :city_like, -> (query) { where("city LIKE ?", "%#{query}%") }
-
 
   def self.search(query_params)
     active.brand_name_like(query_params)

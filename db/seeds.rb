@@ -63,10 +63,10 @@ p "Created #{Guesthouse.count} guesthouses"
 
 # Quartos
 room_a = Room.create(guesthouse_id: guesthouse_one.id, name: 'Harmonia', description: 'Um espaço sereno para relaxamento total.', size: 20, 
-                    max_people: '3', price: '250,00', bathroom: true, balcony: true, air_conditioner: true, tv: false, wardrobe: true, 
+                    max_people: '3', price: 250.00, bathroom: true, balcony: true, air_conditioner: true, tv: false, wardrobe: true, 
                     safe: false, accessibility: false, status: 1)
 room_b = Room.create(guesthouse_id: guesthouse_one.id, name: 'Elegância', description: 'Um quarto sofisticado para uma estadia luxuosa.', 
-                    size: 25, max_people: '2', price: '350,00', bathroom: true, balcony: true, air_conditioner: true, tv: true, 
+                    size: 25, max_people: '2', price: '350.00', bathroom: true, balcony: true, air_conditioner: true, tv: true, 
                     wardrobe: true, safe: true, accessibility: false, status: 1)
 room_c = Room.create(guesthouse_id: guesthouse_two.id, name: 'Serenidade Suite', description: 'Acomodação espaçosa com vista panorâmica.', 
                     size: 30, max_people: '5', price: '400,00', bathroom: true, balcony: true, air_conditioner: false, tv: true, 

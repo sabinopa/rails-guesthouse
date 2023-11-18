@@ -1,4 +1,5 @@
-<h3>Antes de finalizar, confirme os dados da sua reserva:</h3>
+<h1><%= "Reserva #{@booking.code} confirmada!" %></h1>
+
 <div>
   <p><%= @guesthouse.brand_name %></p>
   <dl>
@@ -9,20 +10,8 @@
     <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
     <dd><%= @booking.number_guests %></dd>
     <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
-    <dd>R$ <%=  @booking.room.total_price(params[:start_date], params[:end_date])  %></dd>
+    <dd>R$ <%= @total_price %></dd>
     <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
     <dd><%= @guesthouse.payment_method.method %></dd>
   </dl>
 </div>
-
-<%= form_with(model: [@guesthouse, @room, @booking]) do |f| %> 
-
-<%= f.hidden_field :guesthouse_id, value: @guesthouse.id %>
-<%= f.hidden_field :room_id, value: @room.id %>
-<%= f.hidden_field :start_date, value: @booking.start_date %>
-<%= f.hidden_field :end_date, value: @booking.end_date %>
-<%= f.hidden_field :number_guests, value: @booking.number_guests %>
-
-<%= f.submit 'Confirmar reserva' %>
-
-<% end %>

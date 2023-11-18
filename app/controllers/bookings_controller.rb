@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController 
-  before_action :authenticate_guest!, only: [:create, :show, :my_bookings]
+  before_action :store_location, only: [:new]
+  before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings]
   before_action :set_room_and_guesthouse, except: [:validation, :my_bookings]
 
   def new
@@ -29,6 +30,18 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
+    @bookings = Booking.where(status: [:booked, :ongoing])
+  end
+
+  def canceled
+    @booking = Booking.find(params[:id]) 
+
+    if @booking.cancellation_possibility?
+      @booking.canceled!
+      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!"
+    else
+      return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
+    end
   end
   
   private
@@ -40,5 +53,9 @@ class BookingsController < ApplicationController
   def set_room_and_guesthouse
     @room = Room.find(params[:room_id])
     @guesthouse = @room.guesthouse
+  end
+
+  def store_location
+    session[:guest_return_to] = request.original_url if request.get?
   end
 end

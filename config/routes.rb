@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     registrations: 'hosts/registrations' 
   }
   
+  get 'my_bookings', to: 'bookings#my_bookings'
   root to: 'home#index'
 
   resources :searches
@@ -22,8 +23,9 @@ Rails.application.routes.draw do
       post 'inactive', on: :member
       get 'availability', on: :member
       resources :custom_prices, except: [:destroy]
-      resources :bookings, except: [:destroy] 
+      resources :bookings, except: [:destroy] do
+        patch 'canceled', on: :member
+      end
     end
   end
-  get 'my_bookings', to: 'bookings#my_bookings'
 end

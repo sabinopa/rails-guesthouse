@@ -159,7 +159,8 @@ describe 'Guest checks availability of a room' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     first_guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
-    booking = Booking.create!(guest: first_guest, host: host, start_date: 2.days.from_now, end_date: 4.days.from_now, number_guests: '2', room: room, prices: 200.0, status: :booked)
+    booking = Booking.create!(guest: first_guest, host: host, start_date: 2.days.from_now, end_date: 4.days.from_now, number_guests: '2', room: room, 
+                              prices: 200.0, status: :booked)
     second_guest = Guest.create!(name: 'Lucas', lastname: 'Garcia', email: 'lucas@email.com', password: 'senhasenha')
 
     login_as(second_guest, :scope => :guest)  

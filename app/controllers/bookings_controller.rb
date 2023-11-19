@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController 
   before_action :store_location, only: [:new]
-  before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings]
-  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings]
+  before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :canceled]
+  before_action :authenticate_host!, only: [:guesthouse_bookings]
+  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings]
 
   def new
     @guest = current_guest
@@ -42,6 +43,16 @@ class BookingsController < ApplicationController
     else
       return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
     end
+  end
+
+  def guesthouse_bookings
+    @guesthouse = current_host.guesthouse
+    @rooms = @guesthouse.rooms.where(status: :active)
+    @bookings = Booking.joins(:room)
+                        .where(rooms: { id: @rooms.pluck(:id) })
+                        .where(status: :booked)
+                        .order(:start_date)
+                        .includes(room: { guesthouse: :payment_method })
   end
   
   private

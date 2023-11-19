@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
   
   get 'my_bookings', to: 'bookings#my_bookings'
+  get 'guesthouse_bookings', to: 'bookings#guesthouse_bookings'
   root to: 'home#index'
 
   resources :searches

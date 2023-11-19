@@ -6,6 +6,9 @@
       <ul class="navbar-nav">
         
         <% if host_signed_in? %>
+        <li class="nav-link active">
+          <%= link_to 'Reservas', guesthouse_bookings_path, class: "nav-link" %>
+        </li>
           <li class="nav-link disabled">
             <%= current_host.description %> 
           </li>
@@ -15,7 +18,7 @@
 
         <% elsif guest_signed_in? %>
           <li class="nav-link active">
-            <%= link_to 'Minhas Reservas', my_bookings_path %>
+            <%= link_to 'Minhas Reservas', my_bookings_path, class: "nav-link" %>
           </li> 
           <li class="nav-link disabled">
             <%= current_guest.description %>

@@ -4,6 +4,7 @@ Guesthouse.destroy_all
 Room.destroy_all
 CustomPrice.destroy_all
 Guest.destroy_all
+Booking.destroy_all
 
 # Métodos de Pagamento
 dinheiro = PaymentMethod.create(method: 'Dinheiro')

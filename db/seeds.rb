@@ -63,7 +63,7 @@ p "Created #{Guesthouse.count} guesthouses"
 
 # Quartos
 room_a = Room.create(guesthouse_id: guesthouse_one.id, name: 'Harmonia', description: 'Um espaço sereno para relaxamento total.', size: 20, 
-                    max_people: '3', price: 250.00, bathroom: true, balcony: true, air_conditioner: true, tv: false, wardrobe: true, 
+                    max_people: '3', price: '250.00', bathroom: true, balcony: true, air_conditioner: true, tv: false, wardrobe: true, 
                     safe: false, accessibility: false, status: 1)
 room_b = Room.create(guesthouse_id: guesthouse_one.id, name: 'Elegância', description: 'Um quarto sofisticado para uma estadia luxuosa.', 
                     size: 25, max_people: '2', price: '350.00', bathroom: true, balcony: true, air_conditioner: true, tv: true, 
@@ -96,26 +96,64 @@ room_j = Room.create(guesthouse_id: guesthouse_five.id, name: 'Tranquil Night', 
 p "Created #{Room.count} rooms"
 
 # Preços personalizados
-custom_price_a = CustomPrice.create(room_id: room_a.id, start_date: '16/12/2023', end_date: '20/12/2023', price: 280.00)
-custom_price_b = CustomPrice.create(room_id: room_a.id, start_date: '21/12/2023', end_date: '25/12/2023', price: 350.00)
-custom_price_c = CustomPrice.create(room_id: room_b.id, start_date: '26/12/2023', end_date: '31/12/2023', price: 400.00)
-custom_price_d = CustomPrice.create(room_id: room_b.id, start_date: '01/01/2024', end_date: '05/01/2024', price: 320.00)
-custom_price_e = CustomPrice.create(room_id: room_c.id, start_date: '06/01/2024', end_date: '10/01/2024', price: 290.00)
-custom_price_f = CustomPrice.create(room_id: room_c.id, start_date: '11/01/2024', end_date: '15/01/2024', price: 330.00)
-custom_price_g = CustomPrice.create(room_id: room_d.id, start_date: '16/01/2024', end_date: '20/01/2024', price: 310.00)
-custom_price_h = CustomPrice.create(room_id: room_d.id, start_date: '21/01/2024', end_date: '25/01/2024', price: 340.00)
-custom_price_i = CustomPrice.create(room_id: room_e.id, start_date: '26/01/2024', end_date: '31/01/2024', price: 380.00)
-custom_price_j = CustomPrice.create(room_id: room_e.id, start_date: '01/02/2024', end_date: '05/02/2024', price: 300.00)
-custom_price_k = CustomPrice.create(room_id: room_f.id, start_date: '06/02/2024', end_date: '10/02/2024', price: 320.00)
-custom_price_l = CustomPrice.create(room_id: room_f.id, start_date: '11/02/2024', end_date: '15/02/2024', price: 340.00)
-custom_price_m = CustomPrice.create(room_id: room_g.id, start_date: '16/02/2024', end_date: '20/02/2024', price: 360.00)
-custom_price_n = CustomPrice.create(room_id: room_g.id, start_date: '21/02/2024', end_date: '25/02/2024', price: 380.00)
-custom_price_o = CustomPrice.create(room_id: room_h.id, start_date: '26/02/2024', end_date: '29/02/2024', price: 300.00)
-custom_price_p = CustomPrice.create(room_id: room_h.id, start_date: '01/03/2024', end_date: '05/03/2024', price: 320.00)
-custom_price_q = CustomPrice.create(room_id: room_i.id, start_date: '06/03/2024', end_date: '10/03/2024', price: 340.00)
-custom_price_r = CustomPrice.create(room_id: room_i.id, start_date: '11/03/2024', end_date: '15/03/2024', price: 360.00)
-custom_price_s = CustomPrice.create(room_id: room_j.id, start_date: '16/03/2024', end_date: '20/03/2024', price: 380.00)
-custom_price_t = CustomPrice.create(room_id: room_j.id, start_date: '21/03/2024', end_date: '25/03/2024', price: 400.00)
+custom_price_a = CustomPrice.create(room_id: room_a.id, start_date: 3.days.from_now, end_date: 5.days.from_now, price: 280.00)
+custom_price_b = CustomPrice.create(room_id: room_a.id, start_date: 7.days.from_now, end_date: 10.days.from_now, price: 350.00)
+custom_price_c = CustomPrice.create(room_id: room_b.id, start_date: 12.days.from_now, end_date: 18.days.from_now, price: 400.00)
+custom_price_d = CustomPrice.create(room_id: room_b.id, start_date: 20.days.from_now, end_date: 25.days.from_now, price: 320.00)
+custom_price_e = CustomPrice.create(room_id: room_c.id, start_date: 10.days.from_now, end_date: 15.days.from_now, price: 290.00)
+custom_price_f = CustomPrice.create(room_id: room_c.id, start_date: 8.days.from_now, end_date: 16.days.from_now, price: 330.00)
+custom_price_g = CustomPrice.create(room_id: room_d.id, start_date: 4.days.from_now, end_date: 8.days.from_now, price: 310.00)
+custom_price_h = CustomPrice.create(room_id: room_d.id, start_date: 10.days.from_now, end_date: 20.days.from_now, price: 340.00)
+custom_price_i = CustomPrice.create(room_id: room_e.id, start_date: 45.days.from_now, end_date: 47.days.from_now, price: 380.00)
+custom_price_j = CustomPrice.create(room_id: room_e.id, start_date: 10.days.from_now, end_date: 14.days.from_now, price: 300.00)
+custom_price_k = CustomPrice.create(room_id: room_f.id, start_date: 2.days.from_now, end_date: 6.days.from_now, price: 320.00)
+custom_price_l = CustomPrice.create(room_id: room_f.id, start_date: 20.days.from_now, end_date: 25.days.from_now, price: 340.00)
+custom_price_m = CustomPrice.create(room_id: room_g.id, start_date: 5.days.from_now, end_date: 9.days.from_now, price: 360.00)
+custom_price_n = CustomPrice.create(room_id: room_g.id, start_date: 10.days.from_now, end_date: 12.days.from_now, price: 380.00)
+custom_price_o = CustomPrice.create(room_id: room_h.id, start_date: 5.days.from_now, end_date: 10.days.from_now, price: 300.00)
+custom_price_p = CustomPrice.create(room_id: room_h.id, start_date: 15.days.from_now, end_date: 20.days.from_now, price: 320.00)
+custom_price_q = CustomPrice.create(room_id: room_i.id, start_date: 5.days.from_now, end_date: 6.days.from_now, price: 340.00)
+custom_price_r = CustomPrice.create(room_id: room_i.id, start_date: 10.days.from_now, end_date: 20.days.from_now, price: 360.00)
+custom_price_s = CustomPrice.create(room_id: room_j.id, start_date: 20.days.from_now, end_date: 25.days.from_now, price: 380.00)
+custom_price_t = CustomPrice.create(room_id: room_j.id, start_date: 9.days.from_now, end_date: 13.days.from_now, price: 400.00)
 
 p "Created #{CustomPrice.count} custom prices"
+
+# Guests
+guest1 = Guest.create(name: 'Carlos', lastname: 'Rodrigues', email: 'carlos@email.com', password: 'senha123', document_number: '123.456.789-00')
+guest2 = Guest.create(name: 'Mariana', lastname: 'Ferreira', email: 'mariana@email.com', password: 'senha456', document_number: '987.654.321-11')
+guest3 = Guest.create(name: 'Pedro', lastname: 'Almeida', email: 'pedro@email.com', password: 'senha789', document_number: '567.890.123-22')
+guest4 = Guest.create(name: 'Juliana', lastname: 'Gonçalves', email: 'juliana@email.com', password: 'senha321', document_number: '345.678.912-33')
+guest5 = Guest.create(name: 'Fernando', lastname: 'Santana', email: 'fernando@email.com', password: 'senha654', document_number: '789.012.345-44')
+guest6 = Guest.create(name: 'Isabela', lastname: 'Silveira', email: 'isabela@email.com', password: 'senha987', document_number: '234.567.891-55')
+guest7 = Guest.create(name: 'Lucas', lastname: 'Costa', email: 'lucas@email.com', password: 'senha246', document_number: '876.543.219-66')
+guest8 = Guest.create(name: 'Camila', lastname: 'Melo', email: 'camila@email.com', password: 'senha135', document_number: '654.321.987-77')
+guest9 = Guest.create(name: 'Rafael', lastname: 'Nunes', email: 'rafael@email.com', password: 'senha879', document_number: '321.654.798-88')
+guest10 = Guest.create(name: 'Aline', lastname: 'Barbosa', email: 'aline@email.com', password: 'senha246', document_number: '987.654.321-99')
+
+p "Created #{Guest.count} guests"
+
+#Bookings
+booking1 = Booking.create(guest: guest1, host: priscila, start_date: 3.days.from_now, end_date: 5.days.from_now, number_guests: '1', room: room_a, prices: 320.0, status: 0)
+booking2 = Booking.create(guest: guest1, host: pedro, start_date: 4.days.from_now, end_date: 7.days.from_now, number_guests: '2', room: room_c, prices: 1200.0, status: 0)
+booking3 = Booking.create(guest: guest2, host: guilherme, start_date: 10.days.from_now, end_date: 20.days.from_now, number_guests: '3', room: room_e, prices: 2880.0, status: 0)
+booking4 = Booking.create(guest: guest2, host: isabel, start_date: 20.days.from_now, end_date: 25.days.from_now, number_guests: '1', room: room_g, prices: 800.0, status: 0)
+booking5 = Booking.create(guest: guest3, host: livia, start_date: 10.days.from_now, end_date: 12.days.from_now, number_guests: '2', room: room_i, prices: 720.0, status: 0)
+booking6 = Booking.create(guest: guest3, host: priscila, start_date: 7.days.from_now, end_date: 9.days.from_now, number_guests: '1', room: room_b, prices: 700.0, status: 0)
+booking7 = Booking.create(guest: guest4, host: pedro, start_date: 4.days.from_now, end_date: 8.days.from_now, number_guests: '2', room: room_d, prices: 1240.0, status: 0)
+booking8 = Booking.create(guest: guest4, host: guilherme, start_date: 3.days.from_now, end_date: 7.days.from_now, number_guests: '5', room: room_f, prices: 1410.0, status: 0)
+booking9 = Booking.create(guest: guest5, host: isabel, start_date: 6.days.from_now, end_date: 7.days.from_now, number_guests: '3', room: room_h, prices: 300.0, status: 0)
+booking10 = Booking.create(guest: guest5, host: livia, start_date: 20.days.from_now, end_date: 25.days.from_now, number_guests: '3', room: room_j, prices: 1520.0, status: 0)
+booking11 = Booking.create(guest: guest6, host: priscila, start_date: 54.days.from_now, end_date: 60.days.from_now, number_guests: '2', room: room_a, prices: 1500.0, status: 0)
+booking12 = Booking.create(guest: guest6, host: pedro, start_date: 10.days.from_now, end_date: 13.days.from_now, number_guests: '1', room: room_c, prices: 870.0, status: 0)
+booking13 = Booking.create(guest: guest7, host: guilherme, start_date: 18.days.from_now, end_date: 20.days.from_now, number_guests: '2', room: room_e, prices: 560.0, status: 0)
+booking14 = Booking.create(guest: guest7, host: isabel, start_date: 5.days.from_now, end_date: 10.days.from_now, number_guests: '2', room: room_g, prices: 1640.0, status: 0)
+booking15 = Booking.create(guest: guest8, host: livia, start_date: 10.days.from_now, end_date: 12.days.from_now, number_guests: '1', room: room_i, prices: 720.0, status: 0)
+booking16 = Booking.create(guest: guest8, host: priscila, start_date: 9.days.from_now, end_date: 14.days.from_now, number_guests: '2', room: room_b, prices: 1900.0, status: 0)
+booking17 = Booking.create(guest: guest9, host: pedro, start_date: 30.days.from_now, end_date: 33.days.from_now, number_guests: '2', room: room_d, prices: 540.0, status: 0)
+booking18 = Booking.create(guest: guest9, host: guilherme, start_date: 10.days.from_now, end_date: 18.days.from_now, number_guests: '6', room: room_f, prices: 3600.0, status: 0)
+booking19 = Booking.create(guest: guest10, host: isabel, start_date: 15.days.from_now, end_date: 19.days.from_now, number_guests: '4', room: room_h, prices: 1280.0, status: 0)
+booking20 = Booking.create(guest: guest10, host: livia, start_date: 45.days.from_now, end_date: 50.days.from_now, number_guests: '2', room: room_j, prices: 1500.0, status: 0)
+
+p "Created #{Booking.count} bookings"
 p "All done! :)"

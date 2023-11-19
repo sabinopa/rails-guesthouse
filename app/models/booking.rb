@@ -14,8 +14,13 @@ class Booking < ApplicationRecord
     self.code = SecureRandom.alphanumeric(8).upcase
   end
 
-  def cancellation_possibility?
+  def guest_cancellation_possibility?
     days_until_checkin = (self.start_date.to_date - Date.today).to_i
     days_until_checkin >= 7 ? true : false
+  end
+
+  def host_cancellation_possibility?
+    days_after_start_date = (Date.today - self.start_date.to_date).to_i
+    days_after_start_date >= 2 ? true : false
   end
 end

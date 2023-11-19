@@ -3,8 +3,8 @@
   <h3><%= "Reserva #{booking.code}" %></h3>
   <div>
     <p><%= booking.room.guesthouse.brand_name %></p>
-    <% if booking.cancellation_possibility? %>
-      <%= button_to 'Cancelar Reserva', canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
+    <% if booking.guest_cancellation_possibility? %>
+      <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
     <% else %> 
       <p> Essa reserva não pode mais ser cancelada. </p>
     <% end %>

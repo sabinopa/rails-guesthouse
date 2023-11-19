@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       get 'availability', on: :member
       resources :custom_prices, except: [:destroy]
       resources :bookings, except: [:destroy] do
-        patch 'canceled', on: :member
+        get 'host_control', on: :member
+        patch 'host_canceled', on: :member
+        patch 'guest_canceled', on: :member
       end
     end
   end

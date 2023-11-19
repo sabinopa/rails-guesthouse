@@ -72,6 +72,6 @@ describe 'Host sees bookings of your own guesthouse' do
     expect(page).to have_content "Valor total: R$ #{booking1.prices}"
     expect(page).to have_content "Valor total: R$ #{booking2.prices}"
     expect(page).to have_content "Valor total: R$ #{booking3.prices}"
-    expect(page).to have_button 'Cancelar Reserva'
+    expect(page).to have_button 'Gerenciar Reserva'
   end
 end

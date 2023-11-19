@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController 
   before_action :store_location, only: [:new]
-  before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :canceled]
-  before_action :authenticate_host!, only: [:guesthouse_bookings]
+  before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :guest_canceled]
+  before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled]
   before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings]
 
   def new
@@ -34,14 +34,23 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(status: [:booked, :ongoing])
   end
 
-  def canceled
+  def guest_canceled
     @booking = Booking.find(params[:id]) 
-
-    if @booking.cancellation_possibility?
+    if @booking.guest_cancellation_possibility?
       @booking.canceled!
-      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!"
+      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
     else
       return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
+    end
+  end
+
+  def host_canceled
+    @booking = Booking.find(params[:id]) 
+    if @booking.host_cancellation_possibility?
+      @booking.canceled!
+      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
+    else
+      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi possível cancelar reserva!'
     end
   end
 
@@ -53,6 +62,12 @@ class BookingsController < ApplicationController
                         .where(status: :booked)
                         .order(:start_date)
                         .includes(room: { guesthouse: :payment_method })
+  end
+
+  def host_control
+    @guesthouse = current_host.guesthouse
+    @rooms = @guesthouse.rooms.where(status: :active)
+    @booking = Booking.find(params[:id])
   end
   
   private

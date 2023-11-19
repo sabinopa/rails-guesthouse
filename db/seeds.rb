@@ -135,7 +135,7 @@ guest10 = Guest.create(name: 'Aline', lastname: 'Barbosa', email: 'aline@email.c
 p "Created #{Guest.count} guests"
 
 #Bookings
-booking1 = Booking.create(guest: guest1, host: priscila, start_date: 3.days.from_now, end_date: 5.days.from_now, number_guests: '1', room: room_a, prices: 320.0, status: 0)
+booking1 = Booking.create(guest: guest1, host: priscila, start_date: 2.day.ago, end_date: 1.day.from_now, number_guests: '1', room: room_a, prices: 750.0, status: 0)
 booking2 = Booking.create(guest: guest1, host: pedro, start_date: 4.days.from_now, end_date: 7.days.from_now, number_guests: '2', room: room_c, prices: 1200.0, status: 0)
 booking3 = Booking.create(guest: guest2, host: guilherme, start_date: 10.days.from_now, end_date: 20.days.from_now, number_guests: '3', room: room_e, prices: 2880.0, status: 0)
 booking4 = Booking.create(guest: guest2, host: isabel, start_date: 20.days.from_now, end_date: 25.days.from_now, number_guests: '1', room: room_g, prices: 800.0, status: 0)

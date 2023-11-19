@@ -21,11 +21,7 @@
                 <dd><%= booking.room.guesthouse.payment_method.method %></dd>
               </dl>
             </div>
-            <% if booking.cancellation_possibility? %>
-              <%= button_to 'Cancelar Reserva', canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
-            <% else %> 
-              <p> Essa reserva não pode mais ser cancelada. </p>
-          <% end %>
+            <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get %>
       <% end %>      
   <% end %>
 <% else %>

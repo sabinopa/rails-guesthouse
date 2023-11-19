@@ -1,0 +1,21 @@
+<h3><%= "Reservas em #{@guesthouse.brand_name}" %></h3>
+  <h5><%= "Quarto #{@room.name}" %></h5>
+      <div>
+        <dl>
+          <dt><strong><%= Guest.human_attribute_name(:name) %>:</strong></dt>
+          <dd><%= @booking.guest.name %></dd>
+          <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
+          <dd><%= "#{I18n.localize @booking.start_date.to_date} - #{@booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
+          <dt><strong><%= Booking.human_attribute_name(:end_date) %>:</strong></dt>
+          <dd><%=  "#{I18n.localize @booking.end_date.to_date} - #{@booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
+          <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
+          <dd><%= @booking.number_guests %></dd>
+          <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
+              <dd>R$ <%= @booking.prices %></dd>
+              <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
+              <dd><%= @booking.room.guesthouse.payment_method.method %></dd>
+            </dl>
+          </div>
+          <% if @booking.host_cancellation_possibility? %>
+            <%= button_to 'Cancelar Reserva', host_canceled_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
+          <% end %>

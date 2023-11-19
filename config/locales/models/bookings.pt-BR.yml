@@ -10,3 +10,10 @@ pt-BR:
         end_date: 'Saída'
         prices: 'Valor total'
         number_guests: 'Número de hóspedes'
+        status:
+          booked: 'Reservado'
+          ongoing: 'Reserva em andamento'
+          done: 'Reserva finalizada'
+          canceled: 'Reserva cancelada'
+        checkin: 'Data e horário do checkin'
+        checkout: 'Data e horário do checkout'

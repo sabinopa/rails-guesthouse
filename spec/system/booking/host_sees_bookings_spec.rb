@@ -15,7 +15,7 @@ describe 'Host sees bookings of your own guesthouse' do
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
     guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 30.days.from_now, end_date: 35.days.from_now, number_guests: '3', 
-                              room: room, prices: 180.0, status: 0)
+                              room: room, prices: 750.0, status: 0)
 
     login_as(host, :scope => :host)
     visit root_path    

@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController 
   before_action :store_location, only: [:new]
   before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :guest_canceled]
-  before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled]
-  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings]
+  before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled, :ongoing_bookings, :checkin]
+  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings, :ongoing_bookings]
 
   def new
     @guest = current_guest
@@ -30,18 +30,18 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
+    # @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
     @bookings = Booking.where(status: [:booked, :ongoing])
   end
-
-  def guest_canceled
-    @booking = Booking.find(params[:id]) 
-    if @booking.guest_cancellation_possibility?
-      @booking.canceled!
-      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
-    else
-      return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
-    end
+  
+  def guesthouse_bookings
+    @guesthouse = current_host.guesthouse
+    @rooms = @guesthouse.rooms.where(status: :active)
+    @bookings = Booking.joins(:room)
+                        .where(rooms: { id: @rooms.pluck(:id) })
+                        .where(status: :booked)
+                        .order(:start_date)
+                        .includes(room: { guesthouse: :payment_method })
   end
 
   def host_canceled
@@ -54,14 +54,20 @@ class BookingsController < ApplicationController
     end
   end
 
-  def guesthouse_bookings
+  def ongoing_bookings
     @guesthouse = current_host.guesthouse
     @rooms = @guesthouse.rooms.where(status: :active)
-    @bookings = Booking.joins(:room)
-                        .where(rooms: { id: @rooms.pluck(:id) })
-                        .where(status: :booked)
-                        .order(:start_date)
-                        .includes(room: { guesthouse: :payment_method })
+    @bookings = Booking.where(status: :ongoing)
+  end
+  
+  def guest_canceled
+    @booking = Booking.find(params[:id]) 
+    if @booking.guest_cancellation_possibility?
+      @booking.canceled!
+      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
+    else
+      return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
+    end
   end
 
   def host_control
@@ -70,6 +76,16 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
   
+  def checkin
+    @booking = Booking.find(params[:id]) 
+    if @booking.checkin_possibility?
+      @booking.set_checkin
+      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} em andamento!" 
+    else
+      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi realizar o checkin!'
+    end
+  end
+
   private
 
   def booking_params

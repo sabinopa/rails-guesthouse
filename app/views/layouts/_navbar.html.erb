@@ -8,7 +8,10 @@
         <% if host_signed_in? %>
         <li class="nav-link active">
           <%= link_to 'Reservas', guesthouse_bookings_path, class: "nav-link" %>
-        </li>
+        </li>  
+        <li class="nav-link active">
+          <%= link_to 'Estadias Ativas', ongoing_bookings_path, class: "nav-link" %>
+        </li>    
           <li class="nav-link disabled">
             <%= current_host.description %> 
           </li>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   get 'my_bookings', to: 'bookings#my_bookings'
   get 'guesthouse_bookings', to: 'bookings#guesthouse_bookings'
+  get 'ongoing_bookings', to: 'bookings#ongoing_bookings'
   root to: 'home#index'
 
   resources :searches
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
       resources :custom_prices, except: [:destroy]
       resources :bookings, except: [:destroy] do
         get 'host_control', on: :member
+        patch 'checkin', on: :member
+        patch 'checkout', on: :member
         patch 'host_canceled', on: :member
         patch 'guest_canceled', on: :member
       end

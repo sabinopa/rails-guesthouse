@@ -1,14 +1,13 @@
+<h1>Estadias Ativas</h1>
+
 <% if @bookings.present? %>
   <h3><%= "Reservas em #{@guesthouse.brand_name}" %></h3>
   <% @rooms.each do |room| %>
-    <% room.bookings.where(status: :booked).each do |booking| %>
+    <% room.bookings.where(status: :ongoing).each do |booking| %>
   <h4><%= "Reserva #{booking.code}" %></h4>
     <h5><%= "Quarto #{room.name}" %></h5>
         <div>
-          <p><%= booking.room.guesthouse.brand_name %></p>
           <dl>
-            <dt><strong><%= Guest.human_attribute_name(:status) %>:</strong></dt>
-            <dd><%= I18n.t("activerecord.attributes.booking.status.#{booking.status}") %></dd>
             <dt><strong><%= Guest.human_attribute_name(:name) %>:</strong></dt>
             <dd><%= booking.guest.name %></dd>
             <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
@@ -18,12 +17,14 @@
             <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
             <dd><%= booking.number_guests %></dd>
             <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
-                <dd>R$ <%= booking.prices %></dd>
-                <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
-                <dd><%= booking.room.guesthouse.payment_method.method %></dd>
-              </dl>
-            </div>
-            <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get %>
+            <dd>R$ <%= booking.prices %></dd>
+            <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
+            <dd><%= booking.room.guesthouse.payment_method.method %></dd>
+            <dt><strong><%= Booking.human_attribute_name(:checkin) %>:</strong></dt>
+            <dd><%= I18n.l((booking.checkin_time - 3.hours), format: '%d/%m/%Y %H:%M:%S')  %></dd>
+          </dl>
+        </div>
+        <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get %>
       <% end %>      
   <% end %>
 <% else %>

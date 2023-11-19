@@ -2,6 +2,8 @@
   <h5><%= "Quarto #{@room.name}" %></h5>
       <div>
         <dl>
+          <dt><strong><%= Guest.human_attribute_name(:status) %>:</strong></dt>
+          <dd><%= I18n.t("activerecord.attributes.booking.status.#{@booking.status}") %></dd>
           <dt><strong><%= Guest.human_attribute_name(:name) %>:</strong></dt>
           <dd><%= @booking.guest.name %></dd>
           <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
@@ -18,4 +20,7 @@
           </div>
           <% if @booking.host_cancellation_possibility? %>
             <%= button_to 'Cancelar Reserva', host_canceled_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
+          <% end %>
+          <% if @booking.checkin_possibility? %>
+            <%= button_to 'Registrar Check-in', checkin_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch%>
           <% end %>

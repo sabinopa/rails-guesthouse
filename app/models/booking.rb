@@ -23,4 +23,16 @@ class Booking < ApplicationRecord
     days_after_start_date = (Date.today - self.start_date.to_date).to_i
     days_after_start_date >= 2 ? true : false
   end
+
+  def checkin_possibility?
+    return false if self.status == 'ongoing'
+    (self.start_date.to_date..self.end_date.to_date).include?(Date.today)
+  end
+
+  def set_checkin
+    if checkin_possibility?
+      self.checkin_time = DateTime.now
+      self.update(status: :ongoing)
+    end
+  end
 end

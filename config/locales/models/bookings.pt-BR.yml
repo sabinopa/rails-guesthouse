@@ -17,3 +17,5 @@ pt-BR:
           canceled: 'Reserva cancelada'
         checkin: 'Data e horário do checkin'
         checkout: 'Data e horário do checkout'
+        final_price: 'Valor final até a data atual'
+        checkin_time: 'Horário do Check-in'

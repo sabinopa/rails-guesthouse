@@ -107,7 +107,7 @@ custom_price_g = CustomPrice.create(room_id: room_d.id, start_date: 4.days.from_
 custom_price_h = CustomPrice.create(room_id: room_d.id, start_date: 10.days.from_now, end_date: 20.days.from_now, price: 340.00)
 custom_price_i = CustomPrice.create(room_id: room_e.id, start_date: 45.days.from_now, end_date: 47.days.from_now, price: 380.00)
 custom_price_j = CustomPrice.create(room_id: room_e.id, start_date: 10.days.from_now, end_date: 14.days.from_now, price: 300.00)
-custom_price_k = CustomPrice.create(room_id: room_f.id, start_date: 2.days.from_now, end_date: 6.days.from_now, price: 320.00)
+custom_price_k = CustomPrice.create(room_id: room_f.id, start_date: 2.days.from_now - 3.hours, end_date: 6.days.from_now, price: 320.00)
 custom_price_l = CustomPrice.create(room_id: room_f.id, start_date: 20.days.from_now, end_date: 25.days.from_now, price: 340.00)
 custom_price_m = CustomPrice.create(room_id: room_g.id, start_date: 5.days.from_now, end_date: 9.days.from_now, price: 360.00)
 custom_price_n = CustomPrice.create(room_id: room_g.id, start_date: 10.days.from_now, end_date: 12.days.from_now, price: 380.00)
@@ -135,8 +135,9 @@ guest10 = Guest.create(name: 'Aline', lastname: 'Barbosa', email: 'aline@email.c
 p "Created #{Guest.count} guests"
 
 #Bookings
-booking1 = Booking.create(guest: guest1, host: priscila, start_date: 2.day.ago, end_date: 1.day.from_now, number_guests: '1', room: room_a, prices: 750.0, status: 0)
-booking2 = Booking.create(guest: guest1, host: pedro, start_date: 4.days.from_now, end_date: 7.days.from_now, number_guests: '2', room: room_c, prices: 1200.0, status: 0)
+booking_teste = Booking.create(guest: guest1, host: priscila, start_date: 2.day.ago - 3.hours, end_date: Date.today, number_guests: '1', room: room_a, prices: 750.0, status: 2, checkin_time: 40.hours.ago )
+booking1 = Booking.create(guest: guest1, host: priscila, start_date: 2.day.ago - 3.hours, end_date: 1.day.from_now, number_guests: '1', room: room_a, prices: 750.0, status: 2, checkin_time: 40.hours.ago )
+booking2 = Booking.create(guest: guest1, host: pedro, start_date: 25.days.from_now, end_date: 20.days.from_now, number_guests: '2', room: room_c, prices: 1200.0, status: 0)
 booking3 = Booking.create(guest: guest2, host: guilherme, start_date: 10.days.from_now, end_date: 20.days.from_now, number_guests: '3', room: room_e, prices: 2880.0, status: 0)
 booking4 = Booking.create(guest: guest2, host: isabel, start_date: 20.days.from_now, end_date: 25.days.from_now, number_guests: '1', room: room_g, prices: 800.0, status: 0)
 booking5 = Booking.create(guest: guest3, host: livia, start_date: 10.days.from_now, end_date: 12.days.from_now, number_guests: '2', room: room_i, prices: 720.0, status: 0)

@@ -1,4 +1,4 @@
-<% if @bookings.present? %>
+<% if current_guest.bookings.present? %>
   <% @bookings.each do |booking| %>
   <h3><%= "Reserva #{booking.code}" %></h3>
   <div>
@@ -9,16 +9,16 @@
       <p> Essa reserva não pode mais ser cancelada. </p>
     <% end %>
     <dl>
-      <dt><strong><%= Booking.human_attribute_name(:start_date) %>:</strong></dt>
+      <dt><%= Booking.human_attribute_name(:start_date) %>:</dt>
       <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
-      <dt><strong><%= Booking.human_attribute_name(:end_date) %>:</strong></dt>
+      <dt><%= Booking.human_attribute_name(:end_date) %>:</dt>
       <dd><%=  "#{I18n.localize booking.end_date.to_date} - #{booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
-      <dt><strong><%= Booking.human_attribute_name(:number_guests) %>:</strong></dt>
+      <dt><%= Booking.human_attribute_name(:number_guests) %>:</dt>
       <dd><%= booking.number_guests %></dd>
-      <dt><strong><%= Booking.human_attribute_name(:prices) %>:</strong></dt>
-          <dd>R$ <%= booking.prices %></dd>
-          <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
-          <dd><%= booking.room.guesthouse.payment_method.method %></dd>
+      <dt><%= Booking.human_attribute_name(:prices) %>:</dt>
+      <dd>R$ <%= booking.prices %></dd>
+      <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
+      <dd><%= booking.room.guesthouse.payment_method.method %></dd>
         </dl>
       </div>
   <% end %>

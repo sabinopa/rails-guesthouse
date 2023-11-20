@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController 
   before_action :store_location, only: [:new]
   before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :guest_canceled]
-  before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled, :ongoing_bookings, :checkin]
+  before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled, :ongoing_bookings, :checkin, :checkout, :checkout_register]
   before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings, :ongoing_bookings]
 
   def new
@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.host = @guesthouse.host
     @booking.guest = current_guest
-    @total_price = @room.total_price(booking_params[:start_date], booking_params[:end_date])
+    @total_price = total_price(params[:start_date], params[:end_date])
     @booking.prices = @total_price
     
     if @booking.save
@@ -30,8 +30,8 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    # @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
-    @bookings = Booking.where(status: [:booked, :ongoing])
+    @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
+                                      .where(status: [:booked, :ongoing])
   end
   
   def guesthouse_bookings
@@ -86,10 +86,26 @@ class BookingsController < ApplicationController
     end
   end
 
+  def checkout
+    @booking = Booking.find(params[:id]) 
+    if @booking.status == 'ongoing'
+      @booking.set_checkout
+      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} finalizada!" 
+    else
+      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi realizar o checkout!'
+    end
+  end
+
+  def checkout_register 
+    @booking = Booking.find(params[:id])
+    @final_price = @booking.final_price
+    @payment_methods = @guesthouse.payment_method_id
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :number_guests, :prices, :room_id)
+    params.permit(:start_date, :end_date, :number_guests, :prices, :room_id)
   end
 
   def set_room_and_guesthouse

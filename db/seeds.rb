@@ -19,7 +19,7 @@ p "Created #{PaymentMethod.count} payment methods"
 priscila = Host.create(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
 pedro = Host.create(name: 'Pedro', lastname: 'Araujo', email: 'pedro@email.com', password: 'senhasenha')
 guilherme = Host.create(name: 'Guilherme', lastname: 'Alvares', email: 'guilherme@email.com', password: 'password')
-isabel = Host.create(name: 'Isabel', lastname: 'Maria', email: 'isabel@email.com', password: 'secret123')
+isabel = Host.create(name: 'Isabel', lastname: 'Maria', email: 'isabel@lagoaserena.com', password: 'secret123')
 livia = Host.create(name: 'Livia', lastname: 'Alves', email: 'livia@email.com', password: '09876543')
 
 p "Created #{Host.count} hosts"

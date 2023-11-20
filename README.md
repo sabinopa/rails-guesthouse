@@ -64,7 +64,7 @@ Para acessar páginas que requerem autenticação, utilize as contas abaixo:
 
 |   Usuário   |          E-mail         |    Senha    |
 |-------------|-------------------------|-------------|
-|   Hóspede   |     lucas @email.com    |   senha246  |
+|   Hóspede   |     lucas@email.com     |   senha246  |
 |  Anfitrião  |  isabel@lagoaserena.com |   secret123 |
 
 

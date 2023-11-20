@@ -76,8 +76,8 @@ class GuesthousesController < ApplicationController
                                       :pet_friendly, :usage_policy, :checkin, :checkout, :status)
   end
 
-  def check_host
-    if current_host.guesthouse != @guesthouse
+  def check_host 
+    if current_host != @guesthouse.host 
       return redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
     end
   end

@@ -30,7 +30,7 @@ describe 'Host sets checkout in booking' do
     expect(page).not_to have_button 'Cancelar Reserva' 
   end
 
-  it 'before booking end date and price is adjusted' do
+  it 'before end date and price is adjusted' do
     host = Host.create!(name: 'Ana', lastname: 'Silva', email: 'ana@email.com', password: 'senha123')
     payment_method = PaymentMethod.create!(method: 'Débito')
     guesthouse = Guesthouse.create!(host: host, description: 'Local aconchegante para momentos especiais', brand_name: 'Pousada Encanto',
@@ -56,11 +56,10 @@ describe 'Host sets checkout in booking' do
     expect(page).to have_content "Horário do Check-in: #{45.hours.ago.strftime('%d/%m/%Y %H:%M')}"
     expect(page).to have_content "Valor final até a data atual: R$ 200,00"
     expect(page).to have_content "Método de pagamento: #{payment_method.method}"
-    expect(page).to have_content "Método de pagamento: #{payment_method.method}"
     expect(page).to have_button 'Finalizar Check-out'
   end
 
-  it 'after booking end date and price is adjusted' do
+  it 'after end date and price is adjusted' do
     host = Host.create!(name: 'Ana', lastname: 'Silva', email: 'ana@email.com', password: 'senha123')
     payment_method = PaymentMethod.create!(method: 'Débito')
     guesthouse = Guesthouse.create!(host: host, description: 'Local aconchegante para momentos especiais', brand_name: 'Pousada Encanto',

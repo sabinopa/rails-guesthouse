@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
-                                      .where(status: [:booked, :ongoing])
+                                      .where(status: [:booked, :ongoing, :done])
   end
   
   def guesthouse_bookings

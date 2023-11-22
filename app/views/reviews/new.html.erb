@@ -1,0 +1,22 @@
+<h3>Avaliação da <%= "#{@guesthouse.brand_name}" %></h3>
+<h5>Reserva <%= "#{@booking.code}" %></h5>
+<p>Deixe sua nota de 1(péssimo) a 5(ótimo) :)</p>
+
+<% if @review.errors.any? %>
+  <% @review.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
+<%= form_with(model: @review, url: guesthouse_room_booking_reviews_path(@guesthouse, @room, @booking)) do |f| %>
+  <%= f.hidden_field :booking_id, value: @booking.id %>
+  <div>
+    <%= f.label :rating %>:
+    <%= f.select :rating, (0..5).to_a %>
+  </div>
+  <div>
+    <%= f.label :comment %>:
+    <%= f.text_field :comment %>
+  </div>
+  <%= f.submit %>
+<% end %>

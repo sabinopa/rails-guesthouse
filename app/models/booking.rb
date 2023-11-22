@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :host
   belongs_to :guest
   belongs_to :room
+  has_one :review
 
   validates :start_date, :end_date, :number_guests, presence: true
   validates :code, uniqueness: true

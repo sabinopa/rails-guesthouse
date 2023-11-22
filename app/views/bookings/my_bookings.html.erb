@@ -8,6 +8,9 @@
     <% else %> 
       <p> Essa reserva não pode mais ser cancelada. </p>
     <% end %>
+    <% if booking.status == 'done' && booking.review.blank? %>
+      <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking), class: "btn btn-outline-primary" %>
+    <% end %>
     <dl>
       <dt><%= Booking.human_attribute_name(:start_date) %>:</dt>
       <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>

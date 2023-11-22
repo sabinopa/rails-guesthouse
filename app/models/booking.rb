@@ -27,7 +27,7 @@ class Booking < ApplicationRecord
 
   def set_checkin
     if checkin_possibility?
-      self.checkin_time = DateTime.now - 3.hours
+      self.checkin_time = Time.zone.now 
       self.update(status: :ongoing)
     end
   end
@@ -43,10 +43,10 @@ class Booking < ApplicationRecord
   end
   
   def final_price
-    current_time = Time.now.strftime("%H:%M")
+    current_time = Time.zone.now.strftime("%H:%M")
     guesthouse_checkout = self.room.guesthouse.checkout.strftime("%H:%M")
     guest_checkin = self.checkin_time.to_date
-    guest_checkout = Date.today
+    guest_checkout = Time.zone.now
     guest_checkout += 1 if current_time > guesthouse_checkout
     guest_checkout -= 1 if guest_checkout < end_date.to_date
     
@@ -54,7 +54,7 @@ class Booking < ApplicationRecord
   end
   
   def set_checkout
-    self.checkout_time = DateTime.now - 3.hours
+    self.checkout_time = Time.zone.now
     self.update(status: :done)
   end
   

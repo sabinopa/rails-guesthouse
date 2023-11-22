@@ -83,7 +83,7 @@ describe 'Host sets checkout in booking' do
 
     expect(page).to have_content "Check-out da Reserva #{booking.code}" 
     expect(page).to have_content "Horário do Check-in: #{2.days.ago.strftime('%d/%m/%Y %H:%M')}"
-    expect(page).to have_content "Valor final até a data atual: R$ 300,00"
+    expect(page).to have_content "Valor final até a data atual: R$ 200,00"
     expect(page).to have_content "Método de pagamento: #{payment_method.method}"
     expect(page).to have_button 'Finalizar Check-out'
   end

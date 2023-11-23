@@ -82,6 +82,7 @@ describe 'Guesthouse API' do
       expect(response.status).to eq 200
       expect(response.content_type).to include 'application/json'
       json_response = JSON.parse(response.body)
+      expect(json_response.class).to eq Array
       expect(json_response).to eq []
     end
 

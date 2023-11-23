@@ -15,8 +15,6 @@ class ReviewsController < ApplicationController
       flash.now[:alert] = 'Não foi possível salvar a sua avaliação'
       render :new
     end
-
-
   end
 
   private

@@ -1,6 +1,5 @@
-<h3>Avaliação da <%= "#{@guesthouse.brand_name}" %></h3>
-<h5>Reserva <%= "#{@booking.code}" %></h5>
-<p>Deixe sua nota de 1(péssimo) a 5(ótimo) :)</p>
+<h5>Como foi sua experiência em <%= "#{@guesthouse.brand_name}" %> durante a reserva <%= "#{@booking.code}" %> </h5>
+<p>Por favor, classifique de 1 (insatisfatório) a 5 (excelente)</p>
 
 <% if @review.errors.any? %>
   <% @review.errors.full_messages.each do |msg| %>
@@ -12,11 +11,13 @@
   <%= f.hidden_field :booking_id, value: @booking.id %>
   <div>
     <%= f.label :rating %>:
-    <%= f.select :rating, (0..5).to_a %>
+    <%= f.select :rating, (1..5).to_a, required: true %>
   </div>
   <div>
     <%= f.label :comment %>:
-    <%= f.text_field :comment %>
+    <%= f.text_area :comment, required: true %>
   </div>
-  <%= f.submit %>
+    <%= f.submit %>
 <% end %>
+
+

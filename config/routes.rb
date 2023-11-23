@@ -32,13 +32,18 @@ Rails.application.routes.draw do
         patch 'checkout', on: :member
         patch 'host_canceled', on: :member
         patch 'guest_canceled', on: :member
+        resources :reviews, only: [:new, :create]
       end
     end
   end
 
   namespace :api do
     namespace :v1 do
-      resources :guesthouses, only: [:show]
+      resources :guesthouses, only: [:show, :index] do
+        resources :rooms, only: [:index, :show] do
+          get 'availability', on: :member
+        end
+      end
     end
   end
 end

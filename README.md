@@ -25,11 +25,9 @@ O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o
 - [Capybara](https://github.com/teamcapybara/capybara)
 
 ### APIS
-
-Acesse a documetação de APIS presentes no projeto [aqui](https://github.com/sabinopa/guesthouse-app/blob/main/docs/routes.md).
+Acesse a documentação de APIS presentes no projeto [aqui](https://github.com/sabinopa/guesthouse-app/blob/main/docs/routes.md).
 
 ### Como executar o projeto 
-
 Para executar esse projeto, você deve instalar a linguagem [Ruby v3.2.2](https://www.ruby-lang.org/pt/) e o framework [Rails v7.0.8](https://guides.rubyonrails.org/) em seu computador.
 
 Em seguida, siga os passos abaixo: 
@@ -63,7 +61,6 @@ rails server
 - Acesse a aplicação no link http://localhost:3000/
 
 ### Navegação
-
 Para acessar páginas que requerem autenticação, utilize as contas abaixo:
 
 |   Usuário   |          E-mail         |    Senha    |

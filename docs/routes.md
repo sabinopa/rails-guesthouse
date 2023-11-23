@@ -8,7 +8,6 @@
     * 1.3 - [GET ```/api/v1/guesthouses?search=palavra_da_busca```]
   2. [Availability]</br>
     * 2.1 [GET ```/api/v1/guesthouses/:id/rooms/:id/availability```]</br>
-      Retorna nomes de todos os quartos ativos da pousada.
 
 ##  🏡 1. Guesthouses
 

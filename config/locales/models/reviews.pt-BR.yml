@@ -8,3 +8,4 @@ pt-BR:
       review:
         rating: 'Nota'
         comment: 'Comentário'
+        answer: 'Resposta'

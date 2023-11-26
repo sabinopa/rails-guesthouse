@@ -104,7 +104,7 @@ class RoomsController < ApplicationController
 
   def check_host
     if @room.guesthouse.host != @guesthouse.host
-      return redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
+      return redirect_to root_path, alert: 'Desculpe, mas você não tem permissão para realizar essa ação.'
     end
   end
 end

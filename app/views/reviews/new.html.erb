@@ -1,4 +1,4 @@
-<h5>Como foi sua experiência em <%= "#{@guesthouse.brand_name}" %> durante a reserva <%= "#{@booking.code}" %> </h5>
+<h5>Como foi sua experiência em <%= "#{@guesthouse.brand_name}" %> durante a reserva <%= "#{@booking.code}" %> ? </h5>
 <p>Por favor, classifique de 1 (insatisfatório) a 5 (excelente)</p>
 
 <% if @review.errors.any? %>
@@ -11,11 +11,11 @@
   <%= f.hidden_field :booking_id, value: @booking.id %>
   <div>
     <%= f.label :rating %>:
-    <%= f.select :rating, (1..5).to_a, required: true %>
+    <%= f.select :rating, (1..5).to_a %>
   </div>
   <div>
     <%= f.label :comment %>:
-    <%= f.text_area :comment, required: true %>
+    <%= f.text_area :comment %>
   </div>
     <%= f.submit %>
 <% end %>

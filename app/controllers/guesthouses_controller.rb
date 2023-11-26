@@ -1,11 +1,13 @@
 class GuesthousesController < ApplicationController
-  before_action :authenticate_host!, except: [:show, :cities, :search]
-  before_action :set_guesthouse, only: [:show, :edit, :update, :active, :inactive]
+  before_action :authenticate_host!, except: [:show, :cities, :search, :guesthouse_reviews]
+  before_action :set_guesthouse, only: [:show, :edit, :update, :active, :inactive, :guesthouse_reviews]
   before_action :check_host, only: [:edit, :update, :active, :inactive]
 
   def show 
     @available_rooms = @guesthouse.rooms.where(status: :active)
     @all_rooms = @guesthouse.rooms
+    @reviews = @guesthouse.reviews.order(created_at: :desc)
+    @newest_reviews = @reviews.first(3)
   end
 
   def new
@@ -62,6 +64,11 @@ class GuesthousesController < ApplicationController
   def cities
     @city = params[:city]
     @guesthouses = Guesthouse.active.where(city: @city).order(:brand_name)
+  end
+
+  def guesthouse_reviews
+    @reviews = @guesthouse.reviews.order(created_at: :desc)
+    @average_rating = @guesthouse.reviews.pluck(:rating).sum.to_f / @guesthouse.reviews.count
   end
 
   private

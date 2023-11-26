@@ -11,7 +11,10 @@
         </li>  
         <li class="nav-link active">
           <%= link_to 'Estadias Ativas', ongoing_bookings_path, class: "btn btn-outline-primary" %>
-        </li>    
+        </li>   
+        <li class="nav-link active">
+          <%= link_to 'Avaliações', host_reviews_path, class: "btn btn-outline-primary" %>
+        </li>      
         <li class="nav-link disabled">
           <%= current_host.description %> 
         </li>

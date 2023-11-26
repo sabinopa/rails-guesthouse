@@ -3,15 +3,19 @@
   <h3><%= "Reserva #{booking.code}" %></h3>
   <div>
     <p><%= booking.room.guesthouse.brand_name %></p>
-    <% if booking.guest_cancellation_possibility? %>
-      <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
-    <% else %> 
-      <p> Essa reserva não pode mais ser cancelada. </p>
+    <% if booking.status == 'booked' %>
+      <% if booking.guest_cancellation_possibility? %>
+        <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
+      <% else %>
+        <p> Essa reserva não pode mais ser cancelada. </p>
+      <% end %>
     <% end %>
     <% if booking.status == 'done' && booking.review.blank? %>
       <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking), class: "btn btn-outline-primary" %>
-    <% end %>
+    <% end %>   
     <dl>
+      <dt><%= Guest.human_attribute_name(:status) %>:</dt>
+      <dd><%= I18n.t("activerecord.attributes.booking.status.#{booking.status}") %></dd>
       <dt><%= Booking.human_attribute_name(:start_date) %>:</dt>
       <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
       <dt><%= Booking.human_attribute_name(:end_date) %>:</dt>

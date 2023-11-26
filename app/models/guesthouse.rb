@@ -2,6 +2,8 @@ class Guesthouse < ApplicationRecord
   belongs_to :payment_method
   belongs_to :host
   has_many :rooms
+  has_many :bookings, through: :rooms
+  has_many :reviews, through: :bookings
   
   validates :description, :brand_name, :corporate_name, :registration_number, 
             :phone_number, :email, :address, :neighborhood, :city, :state, 

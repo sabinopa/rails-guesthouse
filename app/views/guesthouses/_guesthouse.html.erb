@@ -4,28 +4,28 @@
 <div>
     <dl>
         <% if host_signed_in? %> 
-          <dt><strong><%= Guesthouse.human_attribute_name(:corporate_name) %>:</strong></dt>
+          <dt><%= Guesthouse.human_attribute_name(:corporate_name) %>:</dt>
           <dd><%= @guesthouse.corporate_name %></dd>
-          <dt><strong><%= Guesthouse.human_attribute_name(:registration_number) %>:</strong></dt>
+          <dt><%= Guesthouse.human_attribute_name(:registration_number) %>:</dt>
           <dd><%= @guesthouse.registration_number %></dd>
         <% end %>
-        <dt><strong><%= Guesthouse.human_attribute_name(:brand_name) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:brand_name) %>:</dt>
         <dd><%= @guesthouse.brand_name %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:phone_number) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:phone_number) %>:</dt>
         <dd><%= @guesthouse.phone_number %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:email) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:email) %>:</dt>
         <dd><%= @guesthouse.email %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:address) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:address) %>:</dt>
         <dd><%= @guesthouse.address %> - <%= @guesthouse.neighborhood %>, <%= @guesthouse.city %> - <%= @guesthouse.state %> - <%= @guesthouse.postal_code %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:pet_friendly) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:pet_friendly) %>:</dt>
         <dd><%= @guesthouse.pet_friendly? ? 'Aceita' : 'Não aceita' %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:usage_policy) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:usage_policy) %>:</dt>
         <dd><%= @guesthouse.usage_policy %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
         <dd><%= @guesthouse.payment_method.method %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:checkin) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:checkin) %>:</dt>
         <dd><%= @guesthouse.checkin.strftime("%H:%M") %></dd>
-        <dt><strong><%= Guesthouse.human_attribute_name(:checkout) %>:</strong></dt>
+        <dt><%= Guesthouse.human_attribute_name(:checkout) %>:</dt>
         <dd><%= @guesthouse.checkout.strftime("%H:%M") %></dd>
         <dt><%= Guesthouse.human_attribute_name(:status) %>:</dt>
         <dd><%= I18n.translate(@guesthouse.status) %></dd>

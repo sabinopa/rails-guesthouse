@@ -76,7 +76,7 @@ describe 'Host edits room' do
      login_as(second_host, :scope => :host)  
      visit edit_guesthouse_room_path(first_guesthouse.id, first_room.id)
 
-     expect(page).to have_content 'Ops, você não é o anfitrião dessa pousada.'
+     expect(page).to have_content 'Desculpe, mas você não tem permissão para realizar essa ação.'
      expect(current_path).to eq root_path
   end
 

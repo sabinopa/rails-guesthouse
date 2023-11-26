@@ -1,0 +1,12 @@
+<h4>Avaliações de <%= @guesthouse.brand_name %></h4>
+
+<h6>Nota média: <%= @average_rating %> </h6>
+
+<% @reviews.each do |review| %>
+<p><strong><%= review.guest.name %></strong></p>
+<p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
+<p>Nota: <%= review.rating %></p>
+<p><%= review.comment %></p>
+<% end %>
+
+<%= link_to 'Voltar', @guesthouse %>

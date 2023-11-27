@@ -5,7 +5,7 @@ class Api::V1::GuesthousesController < Api::V1::ApiController
     if params[:search].present?
       guesthouses = guesthouses.brand_name_like(params[:search])
     end
-    render status: 200, json: guesthouses.order(:brand_name).as_json(only: [:brand_name])
+    render status: 200, json: guesthouses.order(:brand_name).as_json(only: [:id, :brand_name])
   end
 
   def show

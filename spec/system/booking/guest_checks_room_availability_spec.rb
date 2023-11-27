@@ -171,7 +171,7 @@ describe 'Guest checks availability of a room' do
     click_on 'Verificar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, room.id)
-    expect(page).to have_content 'Esse quarto não está disponível nas datas escolhidas, tente novas datas.'
+    expect(page).to have_content 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
   end
 
   it 'and selected a number of people greater than the capacity' do
@@ -196,7 +196,7 @@ describe 'Guest checks availability of a room' do
     click_on 'Verificar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, room.id)
-    expect(page).to have_content 'Este quarto não suporta tantas pessoas.'
+    expect(page).to have_content 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
   end
 
   it 'and insert past dates' do
@@ -221,7 +221,7 @@ describe 'Guest checks availability of a room' do
     click_on 'Verificar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, room.id)
-    expect(page).to have_content 'A data de início não pode ser no passado.'
+    expect(page).to have_content 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
   end
 
   it 'and insert end_date before start_date' do
@@ -246,6 +246,6 @@ describe 'Guest checks availability of a room' do
     click_on 'Verificar'
 
     expect(current_path).to eq guesthouse_room_path(guesthouse.id, room.id)
-    expect(page).to have_content 'A data de início deve ser anterior à data final.'
+    expect(page).to have_content 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
   end
 end

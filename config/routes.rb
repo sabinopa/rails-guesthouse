@@ -35,7 +35,6 @@ Rails.application.routes.draw do
         patch 'host_canceled', on: :member
         patch 'guest_canceled', on: :member
         resources :reviews, only: [:new, :create], shallow: true do
-          get 'answer', on: :member
           post 'create_answer', on: :member
         end
       end

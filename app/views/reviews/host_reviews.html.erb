@@ -17,7 +17,7 @@
         <dd><%= review.answer %></dd>
       </dl>
     <% else %>
-      <%= form_with(model: @review, url: create_answer_review_path(@review.id), method: :post) do |f| %>
+      <%= form_with(model: review, url: create_answer_review_path(review.id), method: :post) do |f| %>
         <div><%= f.label :answer %>:</div> 
         <div><%= f.text_area :answer %></div>
         <div><%= f.submit 'Enviar' %></div>

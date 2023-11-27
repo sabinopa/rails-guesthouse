@@ -23,13 +23,7 @@ class ReviewsController < ApplicationController
   end
 
   def host_reviews
-    @review = Review.find_by(params[:id])
     @reviews = current_host.guesthouse.reviews
-  end
-
-  def answer
-    @review = Review.find(params[:id])
-    @booking = @review.booking
   end
 
   def create_answer
@@ -38,7 +32,7 @@ class ReviewsController < ApplicationController
     @review.answer = params[:review][:answer]
 
     if @review.save
-      redirect_to host_reviews_path(review_id: @review.id), notice: 'Resposta salva com sucesso!'
+      return redirect_to host_reviews_path, notice: 'Resposta salva com sucesso!'
     else
       flash.now[:alert] = 'Resposta não cadastrada.'
       render :answer

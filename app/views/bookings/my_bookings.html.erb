@@ -5,13 +5,13 @@
     <p><%= booking.room.guesthouse.brand_name %></p>
     <% if booking.status == 'booked' %>
       <% if booking.guest_cancellation_possibility? %>
-        <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :patch %>
+        <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking.id), method: :patch %>
       <% else %>
         <p> Essa reserva não pode mais ser cancelada. </p>
       <% end %>
     <% end %>
     <% if booking.status == 'done' && booking.review.blank? %>
-      <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking), class: "btn btn-outline-primary" %>
+      <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking.id), class: "btn btn-outline-primary" %>
     <% end %>   
     <dl>
       <dt><%= Guest.human_attribute_name(:status) %>:</dt>
@@ -27,6 +27,16 @@
       <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
       <dd><%= booking.room.guesthouse.payment_method.method %></dd>
         </dl>
+        <% if booking.review.present? %>
+          <dl>
+            <dt><%= Review.human_attribute_name(:rating) %>:</dt>
+            <dd><%= booking.review.rating %></dd>
+            <dt><%= Review.human_attribute_name(:comment) %>:</dt>
+            <dd><%= booking.review.comment %></dd>
+            <dt><%= Review.human_attribute_name(:answer) %>:</dt>
+            <dd><%= booking.review.answer %></dd>
+          </dl>
+        <% end %>
       </div>
   <% end %>
 <% else %>

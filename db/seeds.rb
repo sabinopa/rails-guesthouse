@@ -158,8 +158,8 @@ booking20 = Booking.create(guest: guest10, host: livia, start_date: 45.days.from
 
 p "Created #{Booking.count} bookings"
 
-review1 = Review.create(rating: 5, comment: 'Lugar maravilhoso, recomendo muito!', booking: booking2)
-review2 = Review.create(rating: 4, comment: 'Espaço aconchegante!', booking: booking4)
+review1 = Review.create(rating: 5, comment: 'Lugar maravilhoso, recomendo muito!', booking: booking2, answer: 'Foi um prazer lhe receber!')
+review2 = Review.create(rating: 4, comment: 'Espaço aconchegante!', booking: booking4, answer: 'Volte sempre!!')
 review3 = Review.create(rating: 2, comment: 'Vizinhos incomodaram!', booking: booking7)
 review4 = Review.create(rating: 3, comment: 'Ótimo anfitrião, porém café da manhã mediano!', booking: booking11)
 review5 = Review.create(rating: 5, comment: 'Quero voltar logo!', booking: booking13)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_185226) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_26_232852) do
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -102,10 +102,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_185226) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
-    t.string "comment"
+    t.text "comment"
     t.integer "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "answer"
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 

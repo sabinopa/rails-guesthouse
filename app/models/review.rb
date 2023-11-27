@@ -4,4 +4,5 @@ class Review < ApplicationRecord
   has_one :guesthouse, through: :booking
 
   validates :rating, :comment, presence: true
+  validates :answer, presence: true, on: :create_answer
 end

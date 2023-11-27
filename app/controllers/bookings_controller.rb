@@ -5,14 +5,12 @@ class BookingsController < ApplicationController
   before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings, :ongoing_bookings]
 
   def new
-    @guest = current_guest
     @booking = Booking.new(room: @room, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.host = @guesthouse.host
-    @booking.guest = current_guest
     @total_price = total_price(params[:start_date], params[:end_date])
     @booking.prices = @total_price
     

@@ -19,3 +19,4 @@ pt-BR:
         checkout: 'Data e horário do checkout'
         final_price: 'Valor final até a data atual'
         checkin_time: 'Horário do Check-in'
+        room: 'Quarto'

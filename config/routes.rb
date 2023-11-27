@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'guesthouse_bookings', to: 'bookings#guesthouse_bookings'
   get 'ongoing_bookings', to: 'bookings#ongoing_bookings'
   get 'host_reviews', to: 'reviews#host_reviews'
+  
   root to: 'home#index'
 
   resources :searches
@@ -21,8 +22,6 @@ Rails.application.routes.draw do
     get 'cities', on: :collection
     get 'search', on: :collection
     get 'guesthouse_reviews', on: :member
-
-    
     resources :rooms, except: [:destroy] do
       post 'active', on: :member
       post 'inactive', on: :member
@@ -35,7 +34,7 @@ Rails.application.routes.draw do
         patch 'checkout', on: :member
         patch 'host_canceled', on: :member
         patch 'guest_canceled', on: :member
-        resources :reviews, only: [:new, :create] do
+        resources :reviews, only: [:new, :create], shallow: true do
           get 'answer', on: :member
           post 'create_answer', on: :member
         end

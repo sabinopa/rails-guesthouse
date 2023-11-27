@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_host!, only: [:host_reviews, :answer, :create_answer]
   before_action :authenticate_guest!, only: [:new, :create]
-  before_action :set_booking
+  before_action :set_booking, only: [:new, :create]
   before_action :check_guest, only: [:new, :create]
-  before_action :check_host, only: [:host_reviews, :answer, :create_answer]
-  before_action :only_after_checkout
+  # before_action :check_host, only: [:answer, :create_answer]
+  before_action :only_after_checkout, only: [:new, :create]
 
   def new
-    @review = Review.new(booking: @booking)
+    @review = Review.new
   end
 
   def create
@@ -23,18 +23,22 @@ class ReviewsController < ApplicationController
   end
 
   def host_reviews
+    @review = Review.find_by(params[:id])
     @reviews = current_host.guesthouse.reviews
   end
 
   def answer
     @review = Review.find(params[:id])
+    @booking = @review.booking
   end
 
   def create_answer
     @review = Review.find(params[:id])
+    @booking = @review.booking
+    @review.answer = params[:review][:answer]
 
     if @review.save
-      redirect_to host_reviews_guesthouse_room_booking_review_path, notice: 'Resposta salva com sucesso!'
+      redirect_to host_reviews_path(review_id: @review.id), notice: 'Resposta salva com sucesso!'
     else
       flash.now[:alert] = 'Resposta não cadastrada.'
       render :answer
@@ -44,7 +48,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_booking
-    @booking = Booking.find_by(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
     if @booking.present?
       @room = @booking.room
       @guesthouse = @booking.room.guesthouse
@@ -57,9 +61,8 @@ class ReviewsController < ApplicationController
     end
   end
   
-
   def check_host
-    unless @review.guesthouse.host == current_host
+    unless @guesthouse.host == current_host
       redirect_to root_path, alert: 'Desculpe, mas você não tem permissão para realizar essa ação.'
     end
   end

@@ -7,13 +7,10 @@ class Room < ApplicationRecord
   
   enum status: { inactive: 0, active: 1 }
 
-  def has_availability?(start_date, end_date)
-    new_period = Range.new(start_date.to_date, end_date.to_date)
-    bookings.where(status: [:booked, :ongoing]).each do |booking|
-      existing_period = Range.new(booking.start_date, booking.end_date)
-      return false if new_period.overlaps?(existing_period)
-    end
-    true
+
+  def has_availability?(start_date, end_date, number_guests)
+    start_date_valid?(start_date) && end_date_valid?(start_date, end_date) &&
+      dates_available?(start_date, end_date) && has_capacity?(number_guests)  
   end
 
   def total_price(start_date, end_date)
@@ -27,6 +24,27 @@ class Room < ApplicationRecord
   end
   
   private 
+
+  def start_date_valid?(start_date)
+    start_date.to_date >= Date.today
+  end
+
+  def end_date_valid?(start_date, end_date)
+    start_date.to_date < end_date.to_date
+  end
+
+  def dates_available?(start_date, end_date)
+    new_period = Range.new(start_date.to_date, end_date.to_date)
+    bookings.where(status: [:booked, :ongoing]).each do |booking|
+      existing_period = Range.new(booking.start_date, booking.end_date)
+      return false if new_period.overlaps?(existing_period)
+    end
+    true
+  end
+
+  def has_capacity?(number_guests)
+    number_guests.to_i <= max_people.to_i  
+  end
 
   def find_custom_price(date)
     custom_prices.where('? BETWEEN start_date AND end_date', date).first

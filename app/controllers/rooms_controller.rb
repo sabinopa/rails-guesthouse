@@ -63,26 +63,11 @@ class RoomsController < ApplicationController
       return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
 
-    if Date.parse(params[:start_date]) < Date.today
-      flash[:alert] = 'A data de início não pode ser no passado.'
-      return redirect_to guesthouse_room_path(@guesthouse, @room)
-    end
-
-    if Date.parse(params[:start_date]) >= Date.parse(params[:end_date])
-      flash[:alert] = 'A data de início deve ser anterior à data final.'
-      return redirect_to guesthouse_room_path(@guesthouse, @room)
-    end
-
-    if params[:number_guests].to_i > @room.max_people.to_i
-      flash[:alert] = 'Este quarto não suporta tantas pessoas.'
-      return redirect_to guesthouse_room_path(@guesthouse, @room)
-    end
-
-    if @room.has_availability?(params[:start_date], params[:end_date])
+    if @room.has_availability?(params[:start_date], params[:end_date], params[:number_guests])
       flash[:notice] = 'Quarto disponível, você pode finalizar a sua reserva.'
       return redirect_to new_guesthouse_room_booking_path(guesthouse_id: @guesthouse.id , room_id: @room.id, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
     else 
-      flash[:alert] = 'Esse quarto não está disponível nas datas escolhidas, tente novas datas.'
+      flash[:alert] = 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
       return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
   end

@@ -24,6 +24,10 @@ class Guesthouse < ApplicationRecord
           .or(city_like(query_params)))
   end
 
+  def available_rooms
+    rooms.active
+  end
+
   private 
 
   def host_has_guesthouse

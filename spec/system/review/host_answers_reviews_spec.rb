@@ -77,11 +77,11 @@ describe 'Host answer review' do
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
                                           max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1) 
     second_booking = Booking.create!(guest: guest, host: second_host, start_date: 4.days.ago, end_date: 2.days.ago, number_guests: '2', room: room, prices: 200.0, status: :done)
-    recond_review = Review.create!(guest: guest, booking: second_booking, rating: 5, comment: 'Lugar maravilhoso!')
+    second_review = Review.create!(guest: guest, booking: second_booking, rating: 5, comment: 'Lugar maravilhoso!')
 
     login_as(host, :scope => :host) 
-    visit host_reviews_path
+    visit host_reviews_path(second_review)
 
-    expect(page).to have_content 'Resposta: Foi uma prazer lhe receber em nossa pousada!'
+    expect(page).to have_content 'AOISUDIAOSUDOAISU'
   end
 end

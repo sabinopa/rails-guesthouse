@@ -1,17 +1,17 @@
 class Search < ApplicationRecord
   self.inheritance_column = "not_sti"
   
-  def search_room
-    room = Room.active
+  def search_rooms
+    rooms = Room.active
 
-    room = room.where(['bathroom LIKE ?', bathroom]) if bathroom.present?
-    room = room.where(['balcony LIKE ?', balcony]) if balcony.present?
-    room = room.where(['air_conditioner LIKE ?', air_conditioner]) if air_conditioner.present?
-    room = room.where(['tv LIKE ?', tv]) if tv.present?
-    room = room.where(['wardrobe LIKE ?', wardrobe]) if wardrobe.present?
-    room = room.where(['safe LIKE ?', safe]) if safe.present?
-    room = room.where(['accessibility LIKE ?', accessibility]) if accessibility.present?
+    rooms = rooms.where(['bathroom LIKE ?', bathroom]) if bathroom.present?
+    rooms = rooms.where(['balcony LIKE ?', balcony]) if balcony.present?
+    rooms = rooms.where(['air_conditioner LIKE ?', air_conditioner]) if air_conditioner.present?
+    rooms = rooms.where(['tv LIKE ?', tv]) if tv.present?
+    rooms = rooms.where(['wardrobe LIKE ?', wardrobe]) if wardrobe.present?
+    rooms = rooms.where(['safe LIKE ?', safe]) if safe.present?
+    rooms = rooms.where(['accessibility LIKE ?', accessibility]) if accessibility.present?
 
-    return room
+    return rooms
   end
 end

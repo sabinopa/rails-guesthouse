@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_26_232852) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_235137) do
   create_table "bookings", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -131,13 +131,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_26_232852) do
   end
 
   create_table "searches", force: :cascade do |t|
-    t.string "bathroom"
-    t.string "balcony"
-    t.string "air_conditioner"
-    t.string "tv"
-    t.string "wardrobe"
-    t.string "safe"
-    t.string "accessibility"
+    t.boolean "bathroom"
+    t.boolean "balcony"
+    t.boolean "air_conditioner"
+    t.boolean "tv"
+    t.boolean "wardrobe"
+    t.boolean "safe"
+    t.boolean "accessibility"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

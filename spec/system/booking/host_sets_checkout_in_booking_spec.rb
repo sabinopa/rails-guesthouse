@@ -47,14 +47,16 @@ describe 'Host sets checkout in booking' do
                               room: room, prices: 700.0, status: :ongoing, checkin_time: 45.hours.ago)
 
     login_as(host, :scope => :host)
-    visit root_path
-    click_on 'Estadias Ativas'
-    click_on 'Gerenciar Reserva'
-    click_on 'Registrar Check-out'
+    travel_to 1.day.from_now.end_of_day do
+      visit root_path
+      click_on 'Estadias Ativas'
+      click_on 'Gerenciar Reserva'
+      click_on 'Registrar Check-out'
+    end
 
     expect(page).to have_content "Check-out da Reserva #{booking.code}" 
     expect(page).to have_content "Horário do Check-in: #{45.hours.ago.strftime('%d/%m/%Y %H:%M')}"
-    expect(page).to have_content "Valor final até a data atual: R$ 200,00"
+    expect(page).to have_content "Valor final até a data atual: R$ 300,00"
     expect(page).to have_content "Método de pagamento: #{payment_method.method}"
     expect(page).to have_button 'Finalizar Check-out'
   end

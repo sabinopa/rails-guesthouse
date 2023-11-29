@@ -1,18 +1,21 @@
 <div class="container">
-<% if @host && @guesthouse == @host.guesthouse && @all_rooms.any? %>
-<p>Quartos:</p>
-  <ul>
-    <% @all_rooms.each do |room| %>
-      <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
-    <% end %>
-  </ul>
-<% elsif @available_rooms.any? %>
-<p>Quartos:</p>
-  <ul>
-    <% @available_rooms.each do |room| %>
-      <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @host && @guesthouse == @host.guesthouse && @all_rooms.any? %>
+    <strong>Quartos:</strong>
+    <div class="list-group">
+      <ul>
+        <% @all_rooms.each do |room| %>
+          <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% elsif @available_rooms.any? %>
+    <p>Quartos:</p>
+    <ul>
+      <% @available_rooms.each do |room| %>
+        <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
+
 

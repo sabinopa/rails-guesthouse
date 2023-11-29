@@ -1,27 +1,33 @@
-
 <% if current_host.present? && current_host.guesthouse == @guesthouse %>
-<%= link_to 'Editar', edit_guesthouse_path %>
-<% if @guesthouse.inactive? %>
-<%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id) %>
-<% else %>  
-    <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id) %>
+  <%= link_to 'Editar', edit_guesthouse_path, class: "btn btn-outline-primary"  %>
+  <% if @guesthouse.inactive? %>
+    <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
+  <% else %>  
+    <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id), class: "btn btn-outline-danger" %>
   <% end %>
 <% end %>
 
 <%= render 'guesthouse' %>
-
 <%= render 'rooms' %>
 
 <div class="container">
-<h5>Últimas Avaliações</h5>
-  <% @newest_reviews.each do |review| %>
-    <p><strong><%= review.guest.name %></strong></p>
-    <p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
-    <p>Nota: <%= review.rating %></p>
-    <p><%= review.comment %></p>
+  <% if @reviews.any? %>
+    <h5>Avaliações recentes:</h5>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center">
+          <% @newest_reviews.each do |review| %>
+            <p><strong><%= review.guest.name %></strong></p>
+            <p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
+            <p>Nota: <%= review.rating %></p>
+            <p><%= review.comment %></p>
+          <% end %>
+        </h5>
+      </div>
+    </div>
+    <%= link_to 'Ver todas as avaliações', guesthouse_reviews_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
   <% end %>
-  <%= link_to 'Ver todas as avaliações', guesthouse_reviews_guesthouse_path(@guesthouse.id) %>
-  <%= link_to 'Voltar', root_path %>
+  <%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>
 </div>
 
 

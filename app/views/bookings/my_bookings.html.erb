@@ -1,44 +1,60 @@
+<h1>Minhas Reservas</h1>
+
 <% if current_guest.bookings.present? %>
-  <% @bookings.each do |booking| %>
-  <h3><%= "Reserva #{booking.code}" %></h3>
-  <div>
-    <p><%= booking.room.guesthouse.brand_name %></p>
-    <% if booking.status == 'booked' %>
-      <% if booking.guest_cancellation_possibility? %>
-        <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking.id), method: :patch %>
-      <% else %>
-        <p> Essa reserva não pode mais ser cancelada. </p>
-      <% end %>
-    <% end %>
-    <% if booking.status == 'done' && booking.review.blank? %>
-      <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking.id), class: "btn btn-outline-primary" %>
-    <% end %>   
-    <dl>
-      <dt><%= Guest.human_attribute_name(:status) %>:</dt>
-      <dd><%= I18n.t("activerecord.attributes.booking.status.#{booking.status}") %></dd>
-      <dt><%= Booking.human_attribute_name(:start_date) %>:</dt>
-      <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
-      <dt><%= Booking.human_attribute_name(:end_date) %>:</dt>
-      <dd><%=  "#{I18n.localize booking.end_date.to_date} - #{booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
-      <dt><%= Booking.human_attribute_name(:number_guests) %>:</dt>
-      <dd><%= booking.number_guests %></dd>
-      <dt><%= Booking.human_attribute_name(:prices) %>:</dt>
-      <dd>R$ <%= booking.prices %></dd>
-      <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
-      <dd><%= booking.room.guesthouse.payment_method.method %></dd>
-        </dl>
-        <% if booking.review.present? %>
-          <dl>
-            <dt><%= Review.human_attribute_name(:rating) %>:</dt>
-            <dd><%= booking.review.rating %></dd>
-            <dt><%= Review.human_attribute_name(:comment) %>:</dt>
-            <dd><%= booking.review.comment %></dd>
-            <dt><%= Review.human_attribute_name(:answer) %>:</dt>
-            <dd><%= booking.review.answer %></dd>
-          </dl>
-        <% end %>
+  <div class="d-flex flex-wrap justify-content-around mt-5">
+    <% @bookings.each do |booking| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body text-center">
+          <h5 class="card-title">
+            <h3><%= "Reserva #{booking.code}" %></h3>
+          </h5>
+          <p><%= booking.room.guesthouse.brand_name %></p>
+
+          <% if booking.status == 'booked' %>
+            <% if booking.guest_cancellation_possibility? %>
+              <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking.id), method: :patch, class: "btn btn-outline-danger" %>
+            <% else %>
+              <p>Essa reserva não pode mais ser cancelada.</p>
+            <% end %>
+          <% end %>
+
+          <% if booking.status == 'done' && booking.review.blank? %>
+            <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking.id), class: "btn btn-outline-primary" %>
+          <% end %> 
+
+          <div class="text-center"> 
+            <dl>
+              <dt><%= Guest.human_attribute_name(:status) %>:</dt>
+              <dd><%= I18n.t("activerecord.attributes.booking.status.#{booking.status}") %></dd>
+              <dt><%= Booking.human_attribute_name(:start_date) %>:</dt>
+              <dd><%= "#{I18n.localize booking.start_date.to_date} - #{booking.room.guesthouse.checkin.strftime("%H:%M")}" %></dd>
+              <dt><%= Booking.human_attribute_name(:end_date) %>:</dt>
+              <dd><%= "#{I18n.localize booking.end_date.to_date} - #{booking.room.guesthouse.checkout.strftime("%H:%M")}" %></dd>
+              <dt><%= Booking.human_attribute_name(:number_guests) %>:</dt>
+              <dd><%= booking.number_guests %></dd>
+              <dt><%= Booking.human_attribute_name(:prices) %>:</dt>
+              <dd>R$ <%= booking.prices %></dd>
+              <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
+              <dd><%= booking.room.guesthouse.payment_method.method %></dd>
+            </dl>
+            
+            <% if booking.review.present? %>
+              <dl>
+                <dt><%= Review.human_attribute_name(:rating) %>:</dt>
+                <dd><%= booking.review.rating %></dd>
+                <dt><%= Review.human_attribute_name(:comment) %>:</dt>
+                <dd><%= booking.review.comment %></dd>
+                <% if booking.review.answer.present? %>
+                  <dt><%= Review.human_attribute_name(:answer) %>:</dt>
+                  <dd><%= booking.review.answer %></dd>
+                <% end %>
+              </dl>
+            <% end %>
+          </div>
+        </div>
       </div>
-  <% end %>
+    <% end %>
+  </div>
 <% else %>
   <p>Você ainda não tem reservas.</p>
 <% end %>

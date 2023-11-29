@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :store_location, only: [:new]
   before_action :authenticate_guest!, only: [:new, :create, :show, :my_bookings, :guest_canceled]
   before_action :authenticate_host!, only: [:guesthouse_bookings, :host_control, :host_canceled, :ongoing_bookings, :checkin, :checkout, :checkout_register]
-  before_action :set_room_and_guesthouse, except: [:validation, :my_bookings, :guesthouse_bookings, :ongoing_bookings]
+  before_action :set_room_and_guesthouse, only: [:new, :create, :show, :host_canceled, :guest_canceled, :host_control, :checkin, :checkout, :checkout_register]
 
   def new
     @booking = Booking.new(room: @room, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])

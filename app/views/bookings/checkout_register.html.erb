@@ -2,10 +2,11 @@
 <div>
   <dl>
     <dt><%= Booking.human_attribute_name(:checkin_time) %>:</dt>
-    <dd><%= I18n.l((@booking.checkin_time), format: '%d/%m/%Y %H:%M:%S')  %></dd>
+    <dd><%= I18n.l((@booking.checkin_time), format: '%d/%m/%Y %H:%M:%S') %></dd>
     <dt><%= Booking.human_attribute_name(:final_price) %>:</dt>
     <dd><%= number_to_currency(@final_price) %></dd>
-  <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
-  <dd><%= @booking.room.guesthouse.payment_method.method %></dd>
-</dl>
-<%= button_to 'Finalizar Check-out', checkout_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
+    <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
+    <dd><%= @booking.room.guesthouse.payment_method.method %></dd>
+  </dl>
+  <%= button_to 'Finalizar Check-out', checkout_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
+</div>

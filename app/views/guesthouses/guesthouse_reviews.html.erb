@@ -1,13 +1,20 @@
 <h4>Avaliações de <%= @guesthouse.brand_name %></h4>
-
-<h6>Nota média: <%= @average_rating %> </h6>
-
-<% @reviews.each do |review| %>
-  <p><strong><%= review.guest.name %></strong></p>
-  <p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
-  <p>Nota: <%= review.rating %></p>
-  <p><%= review.comment %></p>
-<% end %>
-
-
 <%= link_to 'Voltar', @guesthouse %>
+<div class="d-flex flex-wrap justify-content-around mt-5">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">
+        Nota média: <%= @average_rating %>
+      </h5>
+
+      <% @reviews.each do |review| %>
+        <div class="text-center">
+          <p><strong><%= review.guest.name %></strong></p>
+          <p><sup>Visitou a pousada em: <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
+          <p>Nota: <%= review.rating %></p>
+          <p><%= review.comment %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -52,8 +52,9 @@ describe 'Guest creates review' do
     fill_in 'Comentário', with: 'O atendimento da equipe é excepcional!'
     click_on 'Criar Avaliação'
                          
-    expect(current_path).to eq my_bookings_path
     expect(page).not_to have_content 'Avaliar Estadia'
+    expect(page).to have_content 'Avaliação salva com sucesso!'
+    expect(current_path).to eq my_bookings_path
   end
 
   it 'with empties fields' do

@@ -12,7 +12,7 @@ O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o
  - [x]  Destacar as pousadas mais recentes para os visitantes.
  - [x]  Facilitar aos visitantes a busca por pousadas através de um menu categorizado por cidades.
  - [x]  Permitir que os visitantes pesquisem pousadas por nome, cidade ou bairro.
- - [ ]  Habilitar aos visitantes a pesquisa por atributos específicos do estabelecimento.
+ - [x]  Habilitar aos visitantes a pesquisa por atributos específicos do estabelecimento.
  - [x]  Apresentar aos visitantes os quartos disponíveis em cada pousada, juntamente com detalhes sobre cada tipo de acomodação.
  - [x]  Permitir que os visitantes verifiquem a disponibilidade de quartos em datas específicas.
  - [x]  Possibilitar que os hóspedes façam reservas diretamente.

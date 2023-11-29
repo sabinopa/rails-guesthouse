@@ -1,7 +1,7 @@
-<h1>Estadias Ativas</h1>
+<h3>Estadias Ativas</h3>
 
 <% if @bookings.present? %>
-<h3><%= "Reservas em #{@guesthouse.brand_name}" %></h3>
+<h6><%= "Reservas em #{@guesthouse.brand_name}" %></h6>
   <div class="d-flex flex-wrap justify-content-around mt-5">
     <% @rooms.each do |room| %>
       <% room.bookings.where(status: :ongoing).each do |booking| %>
@@ -38,3 +38,4 @@
 <% else %>
   <p>Você ainda não tem reservas.</p>
 <% end %>
+<%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>

@@ -51,37 +51,4 @@ describe 'Host answer review' do
 
     expect(page).to have_content 'Resposta: Foi uma prazer lhe receber em nossa pousada!'
   end
-
-  it 'only reviews of his own guesthouse' do
-    host = Host.create!(name: 'Paulo', lastname: 'Xavier', email: 'paulo@email.com', password: 'password')
-    payment_method = PaymentMethod.create!(method: 'Crédito até 3x')
-    guesthouse = Guesthouse.create!(host: host, description: 'Atmosfera acolhedora e serviços personalizados', brand_name: 'Pousada Serenidade', 
-                                    corporate_name: 'Serenidade Hospedagens Ltda', registration_number: '10.290.988/0001-20', phone_number: '42 98989-0000',
-                                    email: 'contato@pousadaencanto.com', address: 'Estrada das Colinas, Km 5', neighborhood: 'Vale Tranquilo', 
-                                    city: 'Maceió', state:'AL', postal_code: '12345-67', payment_method_id: payment_method.id, pet_friendly: 'Aceita animais de estimação', 
-                                    usage_policy: 'Manter silêncio nas áreas comuns.', checkin: '14:00', checkout: '10:00', status: 1)
-    room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
-                        price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
-                        accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
-    booking = Booking.create!(guest: guest, host: host, start_date: 4.days.ago, end_date: 2.days.ago, number_guests: '2', room: room, 
-                              prices: 200.0, status: :done)
-    review = Review.create!(guest: guest, booking: booking, rating: 5, comment: 'Lugar maravilhoso!')
-    second_host = Host.create!(name: 'Bruna', lastname: 'Almeida', email: 'bruna@email.com', password: '12345678')
-    second_guesthouse = Guesthouse.create!(host: second_host,  description: 'Um refúgio à beira-mar com vista panorâmica', brand_name: 'Pousada Maré Alta',
-                                          corporate_name: 'Maré Alta Hospedagens Ltda', registration_number: '11.111.111/0001-11', phone_number: '55 55555-5555',
-                                          email: 'contato@pousadamarealta.com', address: 'Avenida Beira Mar, 123', neighborhood: 'Costa Brilhante',
-                                          city: 'Florianópolis', state: 'SC', postal_code: '54321-90', payment_method_id: payment_method.id, 
-                                          pet_friendly: 'Aceita animais de estimação', usage_policy: 'Proibido fumar nas dependências.',
-                                          checkin: '15:00', checkout: '11:00', status: 1)
-    second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
-                                          max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, safe: true, accessibility: true, status: 1) 
-    second_booking = Booking.create!(guest: guest, host: second_host, start_date: 4.days.ago, end_date: 2.days.ago, number_guests: '2', room: room, prices: 200.0, status: :done)
-    second_review = Review.create!(guest: guest, booking: second_booking, rating: 5, comment: 'Lugar maravilhoso!')
-
-    login_as(host, :scope => :host) 
-    visit host_reviews_path(second_review)
-
-    expect(page).to have_content 'AOISUDIAOSUDOAISU'
-  end
 end

@@ -1,12 +1,12 @@
-<h1>Gerenciar pousada: </h1>
+<h1>Gerenciar pousada:</h1>
 
-<% if(@guesthouse.errors.any?) %>
-<p>Verifique os erros abaixo:</p>
-<ul>
-  <% @guesthouse.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-  <% end %>
-</ul>
+<% if @guesthouse.errors.any? %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @guesthouse.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= render partial: 'form', locals: { guesthouse: @guesthouse } %>

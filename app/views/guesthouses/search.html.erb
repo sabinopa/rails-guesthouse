@@ -1,9 +1,14 @@
-<h1>Resultados da busca por: <%= @query_params %></h1>
+<h3>Resultados da busca por: <%= @query_params %></h3>
 
-<p><%= @guesthouses.count %> <%= Guesthouse.model_name.human(count: @guesthouses.count).downcase %> 
-<%= t(:found, count: @guesthouses.count) %></p>
+<p>
+  <%= @guesthouses.count %> <%= Guesthouse.model_name.human(count: @guesthouses.count).downcase %> 
+  <%= t(:found, count: @guesthouses.count) %>
+</p>
+
 <% @guesthouses.each do |guesthouse| %> 
-<ul>
-  <li><%= link_to guesthouse.brand_name, guesthouse %></li>
-</ul>
+  <ul>
+    <li><%= link_to guesthouse.brand_name, guesthouse %></li>
+  </ul>
 <% end %>
+
+<%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>

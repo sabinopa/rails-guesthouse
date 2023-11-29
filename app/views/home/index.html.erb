@@ -1,7 +1,5 @@
 <% if host_signed_in? %>
   <%= render 'host', locals: { guesthouse: @guesthouse } %>
-<% elsif guest_signed_in? %>
-  <%= render 'guest' %>
 <% end %>
 
 <div class="d-flex flex-row justify-content-around mt-5">

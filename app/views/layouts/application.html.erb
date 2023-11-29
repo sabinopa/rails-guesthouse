@@ -9,21 +9,22 @@
     <%= stylesheet_link_tag "application" %>
   </head>
   <body>
-  </script>
-  <header>
-    <%= render 'layouts/navbar' %>
+    <header>
+      <%= render 'layouts/navbar' %>
     </header>
 
     <main class="container-fluid">
       <div>
         <% if alert %>
           <div class="alert alert-danger" role="alert"><%= alert %></div>
-          <% end %> 
-          <% if notice %>
+        <% end %> 
+        <% if notice %>
           <div class="alert alert-primary" role="alert"><%= notice %></div>
-          <% end %>
+        <% end %>
       </div>
       
       <%= yield %>
-      </main>
+    </main>
+  </body>
 </html>
+

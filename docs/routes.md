@@ -106,7 +106,7 @@ Exemplo: Buscar por "Marítima"
   [{ "brand_name":"Pousada Marítima" }]
 ```
 
-### 🏡🏙️ 1.4 - GET /api/v1/guesthouses/cities 
+### 🏡🏙️ 1.4 - GET ```/api/v1/guesthouses/cities```
 Retorna um hash com as cidades disponíveis onde há pousadas cadastradas e ativas.
 
 ```json

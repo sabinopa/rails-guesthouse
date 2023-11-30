@@ -17,7 +17,7 @@ class Api::V1::GuesthousesController < Api::V1::ApiController
   def cities
     cities = Guesthouse.active.pluck(:city).uniq
 
-    render status: 200, json: { cities: cities.as_json }
+    render status: 200, json: cities.as_json
   end
 
   def by_city

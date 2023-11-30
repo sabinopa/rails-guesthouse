@@ -106,14 +106,14 @@ Exemplo: Buscar por "Marítima"
   [{ "brand_name":"Pousada Marítima" }]
 ```
 
-### 🏡🏙️ 1.4 - GET ```/api/v1/guesthouses/cities```
+### 🏙️ 1.4 - GET ```/api/v1/guesthouses/cities```
 Retorna um hash com as cidades disponíveis onde há pousadas cadastradas e ativas.
 
 ```json
   { "cities":["Florianópolis", "Campos do Jordão", "Ouro Preto", "Gramado", "Gonçalves"] }
 ```
 
-### 🏡🌆 1.5 - GET /api/v1/guesthouses/by_city (Novo)
+### 🏡🌆 1.5 - GET /api/v1/guesthouses/by_city
 Retorna as pousadas cadastradas e ativas de uma cidade específica.
 
 Exemplo: ```/api/v1/guesthouses/by_city?city=Florianópolis```

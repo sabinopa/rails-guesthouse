@@ -6,6 +6,8 @@
     * 1.1 - [GET ```/api/v1/guesthouses```]</br>
     * 1.2 - [GET ```/api/v1/guesthouses/:id```]</br>
     * 1.3 - [GET ```/api/v1/guesthouses?search=palavra_da_busca```]
+    * 1.4 - [GET ```/api/v1/guesthouses/cities```]
+    * 1.5 - [GET ```/api/v1/guesthouses/by_city```]
   2. [Availability]</br>
     * 2.1 [GET ```/api/v1/guesthouses/:id/rooms/:id/availability```]</br>
 
@@ -101,7 +103,43 @@ O resultado da busca é um hash contendo os nomes ('brand_name') das pousadas en
 Exemplo: Buscar por "Marítima"
 
 ```json
-[{"brand_name":"Pousada Marítima"}]
+  [{ "brand_name":"Pousada Marítima" }]
+```
+
+### 🏡🏙️ 1.4 - GET /api/v1/guesthouses/cities 
+Retorna um hash com as cidades disponíveis onde há pousadas cadastradas e ativas.
+
+```json
+  { "cities":["Florianópolis", "Campos do Jordão", "Ouro Preto", "Gramado", "Gonçalves"] }
+```
+
+### 🏡🌆 1.5 - GET /api/v1/guesthouses/by_city (Novo)
+Retorna as pousadas cadastradas e ativas de uma cidade específica.
+
+Exemplo: ```/api/v1/guesthouses/by_city?city=Florianópolis```
+
+```json
+[
+  {
+    "id":1,
+    "description":"Um paraíso à beira-mar",
+    "brand_name":"Pousada Marítima",
+    "phone_number":"42 98765-9876",
+    "email":"contato@pousadamaritima.com",
+    "address":"Rua das Ondas, 456",
+    "neighborhood":"Praia Tranquila",
+    "city":"Florianópolis",
+    "state":"SC",
+    "payment_method_id":1,
+    "pet_friendly":true,
+    "usage_policy":"Área de piscina exclusiva para adultos.",
+    "checkin":"2000-01-01T14:30:00.000-02:00",
+    "checkout":"2000-01-01T12:00:00.000-02:00",
+    "status":"active",
+    "postal_code":"87654-321",
+    "host_id":1
+    }
+]
 ```
 
 ##  🛏️ 2. Availability

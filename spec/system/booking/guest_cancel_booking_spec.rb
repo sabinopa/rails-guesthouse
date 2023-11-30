@@ -12,7 +12,7 @@ describe 'Guest cancels booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
     booking = Booking.create!(guest: guest, host: host, start_date: 40.days.from_now, end_date: 45.days.from_now, number_guests: '2', room: room, prices: 200.0, status: 0)
 
     login_as(guest, :scope => :guest)  
@@ -38,7 +38,7 @@ describe 'Guest cancels booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
     booking = Booking.create!(guest: guest, host: host, start_date: 4.days.from_now, end_date: 8.days.from_now, number_guests: '2', room: room, prices: 200.0, status: 0)
 
     login_as(guest, :scope => :guest)  

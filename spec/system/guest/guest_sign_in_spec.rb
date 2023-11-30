@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Guest sign in' do
   it 'successfully' do
-    Guest.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
+    Guest.create!(name: 'Priscila', lastname: 'Sabino', document_number: '10.111.222-3', email: 'priscila@email.com', password: '12345678')
 
     visit root_path
     click_on 'Entrar como Hóspede'
@@ -17,9 +17,9 @@ describe 'Guest sign in' do
   end
 
     it 'and logs out' do
-      host = Host.create!(name: 'Priscila', lastname: 'Sabino', email: 'priscila@email.com', password: '12345678')
+      guest = Guest.create!(name: 'Priscila', lastname: 'Sabino', document_number: '10.111.222-3', email: 'priscila@email.com', password: '12345678')
   
-      login_as(host)
+      login_as(guest)
       visit root_path
       click_on 'Sair'
   

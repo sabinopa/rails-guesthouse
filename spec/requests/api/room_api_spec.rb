@@ -36,7 +36,7 @@ describe 'Room Availability API' do
       room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                                       price: '220,00', bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                                       accessibility: 'Acessível para pessoas com deficiência', status: 0)
-      guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+      guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
       booking = Booking.create!(guest: guest, host: host, start_date: 20.days.ago, end_date: 25.days.from_now, number_guests: '3', 
                                       room: room, prices: 100.0, status: :ongoing, checkin_time: 2.days.ago)
     

@@ -13,7 +13,7 @@ describe 'Host sees bookings of your own guesthouse' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                     price: 150.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 30.days.from_now, end_date: 35.days.from_now, number_guests: '3', 
                               room: room, prices: 750.0, status: 0)
 
@@ -35,9 +35,9 @@ describe 'Host sees bookings of your own guesthouse' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                     price: 150.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest1 = Guest.create!(name: 'Maria', lastname: 'Silva', email: 'maria@email.com', password: 'senha1234')
-    guest2 = Guest.create!(name: 'João', lastname: 'Pereira', email: 'joao@email.com', password: 'senha5678')
-    guest3 = Guest.create!(name: 'Sophia', lastname: 'Oliveira', email: 'sophia@email.com', password: 'senha9876')
+    guest1 = Guest.create!(name: 'Maria', lastname: 'Silva', document_number: '10.111.222-3', email: 'maria@email.com', password: 'senha1234')
+    guest2 = Guest.create!(name: 'João', lastname: 'Pereira', document_number: '10.111.444-3', email: 'joao@email.com', password: 'senha5678')
+    guest3 = Guest.create!(name: 'Sophia', lastname: 'Oliveira', document_number: '10.111.555-3', email: 'sophia@email.com', password: 'senha9876')
     booking1 = Booking.create!(guest: guest1, host: host, start_date: 25.days.from_now, end_date: 28.days.from_now, 
                               number_guests: '2', room: room, prices: 450.0, status: 0)
     booking2 = Booking.create!(guest: guest2, host: host, start_date: 20.days.from_now, end_date: 23.days.from_now, 

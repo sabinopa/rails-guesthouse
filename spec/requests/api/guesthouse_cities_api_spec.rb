@@ -25,9 +25,9 @@ describe 'Guesthouse API' do
       expect(response.status).to eq 200
       expect(response.content_type).to include 'application/json'
       json_response = JSON.parse(response.body)
-      expect(json_response["cities"].length).to eq 2
-      expect(json_response["cities"]).to include('Florianópolis')
-      expect(json_response["cities"]).to include('Maceió')
+      expect(json_response.length).to eq 2
+      expect(json_response).to include('Florianópolis')
+      expect(json_response).to include('Maceió')
     end
   end
 

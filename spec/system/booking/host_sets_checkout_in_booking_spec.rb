@@ -13,7 +13,7 @@ describe 'Host sets checkout in booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                         price: 100.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                         safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 3.days.ago, end_date: Date.today, number_guests: '3', 
                               room: room, prices: 400.0, status: :ongoing, checkin_time: 3.days.ago)
 
@@ -42,7 +42,7 @@ describe 'Host sets checkout in booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                     price: 100.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago, end_date: 5.days.from_now, number_guests: '3', 
                               room: room, prices: 700.0, status: :ongoing, checkin_time: 45.hours.ago)
 
@@ -73,7 +73,7 @@ describe 'Host sets checkout in booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                     price: 100.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago, end_date: 1.day.ago, number_guests: '3', 
                               room: room, prices: 100.0, status: :ongoing, checkin_time: 2.days.ago)
 
@@ -104,7 +104,7 @@ describe 'Host sets checkout in booking' do
     room = Room.create!(guesthouse: guesthouse, name: 'Harmonia', description: 'Espaço agradável para relaxar.', size: 20, max_people: '3',
                     price: 100.0, bathroom: 'Compartilhado', balcony: 'Possui', tv: 'Não possui', wardrobe: 'Possui',
                     safe: 'Não possui', accessibility: 'Não acessível para cadeiras de rodas', status: 1)
-    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', email: 'guilherme@email.com', password: 'senha1234')
+    guest = Guest.create!(name: 'Guilherme', lastname: 'Oliveira', document_number: '10.111.222-3', email: 'guilherme@email.com', password: 'senha1234')
     booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago, end_date: 2.days.from_now, number_guests: '3', 
                               room: room, prices: 400.0, status: :booked)
 

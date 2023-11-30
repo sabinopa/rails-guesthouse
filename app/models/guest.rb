@@ -6,6 +6,8 @@ class Guest < ApplicationRecord
 
   has_many :bookings
 
+  validates :name, :lastname, presence: true
+
   def description
     "#{name} #{lastname} - #{email}"
   end

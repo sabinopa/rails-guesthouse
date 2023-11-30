@@ -13,8 +13,8 @@ describe 'Visitor sees all guesthouse reviews' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                       price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                       accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest1 = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
-    guest2 = Guest.create!(name: 'Maria', lastname: 'Barros', email: 'maris@email.com', password: '87654321')
+    guest1 = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
+    guest2 = Guest.create!(name: 'Maria', lastname: 'Barros', document_number: '10.111.555-3',email: 'maris@email.com', password: '87654321')
     booking1 = Booking.create!(guest: guest1, host: host, start_date: 15.days.ago, end_date: 10.days.ago, number_guests: '3', room: room, 
                             prices: 600.0, status: :done)
     booking2 = Booking.create!(guest: guest2, host: host, start_date: 6.days.ago, end_date: 3.days.ago, number_guests: '2', room: room, 

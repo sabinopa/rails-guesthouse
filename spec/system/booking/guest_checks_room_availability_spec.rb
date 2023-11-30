@@ -13,7 +13,7 @@ describe 'Guest checks availability of a room' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     custom_price = CustomPrice.create!(room: room, start_date: 2.days.from_now, end_date: 4.days.from_now, price: 300.0)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  
@@ -46,7 +46,7 @@ describe 'Guest checks availability of a room' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     custom_price = CustomPrice.create!(room: room, start_date: 2.days.from_now, end_date: 12.days.from_now, price: 300.0)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
     visit root_path
     click_on 'Pousada Serenidade'
@@ -76,7 +76,7 @@ describe 'Guest checks availability of a room' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     custom_price = CustomPrice.create!(room: room, start_date: 2.days.from_now, end_date: 12.days.from_now, price: 300.0)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
     visit guesthouse_room_path(guesthouse.id, room.id)
     fill_in 'Entrada', with: 5.days.from_now
@@ -108,7 +108,7 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  
@@ -133,7 +133,7 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  
@@ -158,10 +158,10 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    first_guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    first_guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.555-3', email: 'leticia@email.com', password: '12345678')
     booking = Booking.create!(guest: first_guest, host: host, start_date: 2.days.from_now, end_date: 4.days.from_now, number_guests: '2', room: room, 
                               prices: 200.0, status: :booked)
-    second_guest = Guest.create!(name: 'Lucas', lastname: 'Garcia', email: 'lucas@email.com', password: 'senhasenha')
+    second_guest = Guest.create!(name: 'Lucas', lastname: 'Garcia', document_number: '10.111.222-3', email: 'lucas@email.com', password: 'senhasenha')
 
     login_as(second_guest, :scope => :guest)  
     visit guesthouse_room_path(guesthouse.id, room.id)
@@ -185,7 +185,7 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  
@@ -210,7 +210,7 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  
@@ -235,7 +235,7 @@ describe 'Guest checks availability of a room' do
     room = Room.create!(guesthouse: guesthouse, name: 'Tranquilidade', description: 'Um ambiente calmo e reconfortante.', size: 15, max_people: '4', 
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
-    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
+    guest = Guest.create!(name: 'Leticia', lastname: 'Souza', document_number: '10.111.222-3', email: 'leticia@email.com', password: '12345678')
 
 
     login_as(guest, :scope => :guest)  

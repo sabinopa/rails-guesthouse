@@ -10,4 +10,38 @@ RSpec.describe Host, type: :model do
       expect(result).to eq 'Julia Almeida - julia@yahoo.com'
     end
   end
+
+  describe '#valid?' do
+    it 'returns false when name is empty' do
+      host = Host.new(name: '', lastname: 'Xavier', email: 'paulo@email.com', password: 'password')
+
+      result = host.valid?
+      
+      expect(result).to eq false
+    end
+
+    it 'returns false when lastname is empty' do
+      host = Host.new(name: 'Paulo', lastname: '', email: 'paulo@email.com', password: 'password')
+
+      result = host.valid?
+      
+      expect(result).to eq false
+    end
+
+    it 'returns false when email is empty' do
+      host = Host.new(name: 'Paulo', lastname: 'Xavier', email: '', password: 'password')
+
+      result = host.valid?
+      
+      expect(result).to eq false
+    end
+
+    it 'returns false when password is empty' do
+      host = Host.new(name: 'Paulo', lastname: 'Xavier', email: 'paulo@email.com', password: '')
+
+      result = host.valid?
+      
+      expect(result).to eq false
+    end
+  end
 end

@@ -6,6 +6,8 @@ class Host < ApplicationRecord
 
   has_one :guesthouse
 
+  validates :name, :lastname, presence: true
+
   def description
     "#{name} #{lastname} - #{email}"
   end

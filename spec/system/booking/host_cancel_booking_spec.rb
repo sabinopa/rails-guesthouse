@@ -13,7 +13,7 @@ describe 'Host cancels booking' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
-    booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago - 3.hours, end_date: 3.days.from_now, number_guests: '2', room: room, prices: 500.0, status: 0)
+    booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago, end_date: 3.days.from_now, number_guests: '2', room: room, prices: 500.0, status: 0)
 
     login_as(host, :scope => :host)  
     visit root_path
@@ -37,7 +37,7 @@ describe 'Host cancels booking' do
                         price: 100.0, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     guest = Guest.create!(name: 'Leticia', lastname: 'Souza', email: 'leticia@email.com', password: '12345678')
-    booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago - 3.hours, end_date: 3.days.from_now, number_guests: '2', room: room, prices: 500.0, status: 0)
+    booking = Booking.create!(guest: guest, host: host, start_date: 2.days.ago, end_date: 3.days.from_now, number_guests: '2', room: room, prices: 500.0, status: 0)
 
     login_as(host, :scope => :host)  
     visit root_path

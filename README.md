@@ -1,5 +1,33 @@
 # Pousadaria - Plataforma de Reservas em Pousadas
 
+<p>
+  <img src="https://img.shields.io/badge/Ruby_3.1.2-CC342D?style=for-the-badge&logo=ruby&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Ruby_on_Rails_7.0.6-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white"/>
+  <img src="http://img.shields.io/badge/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
+  <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/> 
+</p>
+
+## Tópicos
+
+:arrow_forward: [Descrição do projeto](#descrição-do-projeto)
+
+:arrow_forward: [Funcionalidades](#funcionalidades)
+
+:arrow_forward: [Gems utilizadas](#gems-utilizadas)
+
+:arrow_forward: [APIs](#apis)
+
+:arrow_forward: [Pré-requisitos](#pré-requisitos)
+
+:arrow_forward: [Como executar a aplicação](#como-executar-a-aplicação)
+
+:arrow_forward: [Como executar os testes](#como-executar-os-testes)
+
+:arrow_forward: [Navegação](#navegação)
+
+:arrow_forward: [Tarefas em aberto](#tarefas-em-aberto)
+
+## Descrição do Projeto
 O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o objetivo de oferecer uma plataforma para a busca, visualização e reserva de quartos em pousadas espalhadas por todo o país. 
 
 ## Funcionalidades
@@ -27,12 +55,14 @@ O Pousadaria é uma aplicação web desenvolvida com Ruby on Rails, criada com o
 ### APIS
 Acesse a documentação de APIS presentes no projeto [aqui](https://github.com/sabinopa/guesthouse-app/blob/main/docs/routes.md).
 
-### Como executar o projeto 
-Para executar esse projeto, você deve instalar a linguagem [Ruby v3.2.2](https://www.ruby-lang.org/pt/) e o framework [Rails v7.0.8](https://guides.rubyonrails.org/) em seu computador.
+### Pré-requisitos
 
-Em seguida, siga os passos abaixo: 
+:heavy_exclamation_mark: [Ruby v3.2.2](https://www.ruby-lang.org/pt/) 
 
-- Clone este repostório
+:heavy_exclamation_mark: [Rails v7.0.8](https://guides.rubyonrails.org/)
+
+### Como executar a aplicação
+- Clone este repositório
 ```
 git clone https://github.com/sabinopa/guesthouse-app
 ```
@@ -60,6 +90,12 @@ rails server
 
 - Acesse a aplicação no link http://localhost:3000/
 
+### Como executar os testes
+
+```
+rspec
+```
+
 ### Navegação
 Para acessar páginas que requerem autenticação, utilize as contas abaixo:
 
@@ -68,4 +104,18 @@ Para acessar páginas que requerem autenticação, utilize as contas abaixo:
 |   Hóspede   |     lucas@email.com     |   senha246  |
 |  Anfitrião  |  isabel@lagoaserena.com |   secret123 |
 
+### Tarefas em aberto 
 
+ :camera: **Galeria de Fotos** 
+
+Um usuário autenticado como dono de uma pousada deve ser capaz de cadastrar fotos para sua pousada e também para os quartos de sua pousada. Deve ser possível fazer o upload de fotos em formatos PNG e JPEG. Deve ser possível remover uma foto anteriormente cadastrada.
+
+Todas as fotos cadastradas devem ser listadas na página de detalhes da pousada ou do quarto.
+
+:pizza: **Consumíveis** 
+
+Um usuário autenticado como dono de uma pousada, pode acessar uma hospedagem ativa no momento e fazer lançamentos de itens consumidos pelos hóspedes. Cada item deve ter uma descrição e um valor, por exemplo: Suco de laranja - R$ 8; Hambúrguer com batata frita - R$ 30. Ao fazer o check-out, estes itens devem ser adicionados ao valor total da hospedagem.
+
+:family: **Check in com cadastro de hóspedes** 
+
+Ao fazer o check in de uma reserva, o dono da pousada deve informar o nome completo e RG ou CPF de cada uma das pessoas que está se hospedando. O formulário deve ser dinâmico e permitir a inserção de N pessoas, sendo N o número de pessoas informadas no momento da criação da reserva.

@@ -1,11 +1,13 @@
 # Pousadaria - Plataforma de Reservas em Pousadas
 
-<p>
-  <img src="https://img.shields.io/badge/Ruby_3.1.2-CC342D?style=for-the-badge&logo=ruby&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Ruby_on_Rails_7.0.6-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white"/>
-  <img src="http://img.shields.io/badge/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
-  <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/> 
-</p>
+
+![Static Badge](https://img.shields.io/badge/Ruby_3.1.2-CC342D?style=for-the-badge&logo=ruby&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Ruby_on_Rails_7.0.6-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
+
+![Static Badge](https://img.shields.io/badge/COBERTURA_DE_TESTES-84%25-blue)
+
+![Static Badge](https://img.shields.io/badge/STATUS-EM_DESENVOLVIMENTO-green)
+
 
 ## Tópicos
 

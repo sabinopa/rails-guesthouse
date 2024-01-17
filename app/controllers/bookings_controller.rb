@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       return redirect_to guesthouse_room_booking_path(@guesthouse, @room, @booking)
     else
-      flash[:alert] = 'Não foi possível reservar o quarto.'
+      flash.now[:alert] = t('.error')
       return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
   end
@@ -46,9 +46,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.host_cancellation_possibility?
       @booking.canceled!
-      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
+      flash[:notice] = t('.canceled')
+      return redirect_to host_control_guesthouse_room_booking_path
     else
-      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi possível cancelar reserva!'
+      flash[:alert] = t('.error')
+      return redirect_to host_control_guesthouse_room_booking_path
     end
   end
 
@@ -62,9 +64,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.guest_cancellation_possibility?
       @booking.canceled!
-      return redirect_to my_bookings_path, notice: "Reserva #{@booking.code} cancelada com sucesso!" 
+      flash[:notice] = t('.canceled')
+      return redirect_to host_control_guesthouse_room_booking_path
     else
-      return redirect_to my_bookings_path, alert: 'Não foi possível cancelar reserva!'
+      flash[:alert] = t('.error')
+      return redirect_to host_control_guesthouse_room_booking_path
     end
   end
 
@@ -78,9 +82,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.checkin_possibility?
       @booking.set_checkin
-      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} em andamento!" 
+      flash[:notice] = t('.success') 
+      return redirect_to host_control_guesthouse_room_booking_path
     else
-      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi realizar o checkin!'
+      flash[:alert] = t('.error')
+      return redirect_to host_control_guesthouse_room_booking_path
     end
   end
 
@@ -88,9 +94,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.status == 'ongoing'
       @booking.set_checkout
-      return redirect_to host_control_guesthouse_room_booking_path, notice: "Reserva #{@booking.code} finalizada!" 
+      flash[:notice] = t('.success')
+      return redirect_to host_control_guesthouse_room_booking_path
     else
-      return redirect_to host_control_guesthouse_room_booking_path, alert: 'Não foi realizar o checkout!'
+      flash[:alert] = t('.error')
+      return redirect_to host_control_guesthouse_room_booking_path
     end
   end
 

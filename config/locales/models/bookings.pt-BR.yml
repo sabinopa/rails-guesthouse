@@ -20,3 +20,18 @@ pt-BR:
         final_price: 'Valor final até a data atual'
         checkin_time: 'Horário do Check-in'
         room: 'Quarto'
+        create:
+          success: "Reserva #{@booking.code} realizada com sucesso!" 
+          error:  'Não foi possível reservar o quarto.'
+        host_canceled:
+          canceled: "Reserva #{@booking.code} cancelada com sucesso!" 
+          error:  'Não foi possível cancelar a reserva.'
+        guest_canceled:
+          canceled: "Reserva #{@booking.code} cancelada com sucesso!" 
+          error: 'Não foi possível cancelar a reserva.'
+        checkin:
+          success: "Reserva #{@booking.code} em andamento!" 
+          error: 'Não foi possível realizar o checkin!'
+        checkout:
+          success: "Reserva #{@booking.code} finalizada!" 
+          error: 'Não foi possível realizar o checkout!'

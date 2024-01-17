@@ -35,6 +35,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem 'byebug', '~> 9.0', '>= 9.0.5'
+  gem 'simplecov', require: false
 end
 
 group :development do

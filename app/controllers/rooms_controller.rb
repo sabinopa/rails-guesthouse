@@ -26,9 +26,10 @@ class RoomsController < ApplicationController
     @room.guesthouse = @guesthouse
 
     if @room.save
-      redirect_to guesthouse_rooms_path, notice: "Quarto #{@room.name}: Criado com sucesso!"
+      flash[:notice] = t('.success', room_name: @room.name)
+      redirect_to guesthouse_rooms_path
     else
-      flash.now[:alert] = 'Quarto não cadastrado.'
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
@@ -38,36 +39,39 @@ class RoomsController < ApplicationController
 
   def update
     if @room.update(room_params)
-      redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "#{@room.name}: Atualizado com sucesso!"
+      flash[:notice] = t('.success', room_name: @room.name)
+      redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id)
     else
-      flash.now[:alert] = 'Não foi possível atualizar o quarto.'
+      flash.now[:alert] = t('.error')
       render :new
     end 
   end
 
   def active
     @room.active!
-    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto ativo!"
+    flash[:notice] = t('.success')
+    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id)
   end
 
   def inactive
     @room.inactive!
-    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id), notice: "Quarto inativo!"
+    flash[:alert] = t('.success')
+    redirect_to guesthouse_room_path(guesthouse_id: @guesthouse, id: @room.id)
   end
 
   def availability
     @guesthouse = @room.guesthouse
 
     if params[:start_date].blank? || params[:end_date].blank? || params[:number_guests].blank?
-      flash[:alert] = 'Por favor, preencha todos os campos.'
+      flash[:alert] = t('.missing')
       return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
 
     if @room.has_availability?(params[:start_date], params[:end_date], params[:number_guests])
-      flash[:notice] = 'Quarto disponível, você pode finalizar a sua reserva.'
+      flash[:notice] = t('.success')
       return redirect_to new_guesthouse_room_booking_path(guesthouse_id: @guesthouse.id , room_id: @room.id, start_date: params[:start_date], end_date: params[:end_date], number_guests: params[:number_guests])
     else 
-      flash[:alert] = 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
+      flash[:alert] = t('.error')
       return redirect_to guesthouse_room_path(@guesthouse, @room)
     end
   end
@@ -89,7 +93,8 @@ class RoomsController < ApplicationController
 
   def check_host
     if @room.guesthouse.host != @guesthouse.host
-      return redirect_to root_path, alert: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+      flash[:alert] = t('.error')
+      return redirect_to root_path
     end
   end
 end

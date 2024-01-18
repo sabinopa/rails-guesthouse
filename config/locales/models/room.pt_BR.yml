@@ -20,4 +20,21 @@ pt-BR:
         wardrobe: 'Armário'
         safe: 'Cofre'
         accessibility: 'Acessibilidade'
-
+  rooms:
+    create:
+      success: "Quarto %{room_name}: Criado com sucesso!"
+      error: 'Quarto não cadastrado.'
+    edit: 
+      error: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+    update: 
+      success: "%{room_name}: Atualizado com sucesso!"
+      error: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+    active: 
+      success: 'Quarto ativo!'
+    inactive: 
+      success: 'Quarto inativo!'
+    availability:
+      missing: 'Por favor, preencha todos os campos.'
+      success: 'Quarto disponível, você pode finalizar a sua reserva.'
+      error: 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
+    

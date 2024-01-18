@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_host!, except: [:index, :show, :availability]
   before_action :set_guesthouse, except: [:show, :availability]
-  before_action :set_room, except: [:new, :index]
+  before_action :set_room, except: [:new, :create, :index]
   before_action :check_host, only: [:edit, :update]
 
   def index

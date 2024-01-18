@@ -9,3 +9,9 @@ pt-BR:
         start_date: 'Início'
         end_date: 'Fim'
         price: 'Preço'
+  custom_prices:
+    new: 
+      error: 'Ops, você não é o anfitrião dessa pousada.'
+    create:
+      success: 'Novo preço cadastrado com sucesso!'
+      error: 'Não foi possível cadastrar preço personalizado.'

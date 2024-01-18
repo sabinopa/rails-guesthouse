@@ -14,9 +14,10 @@ class ReviewsController < ApplicationController
     @review = @booking.create_review(review_params)
     
     if @review.save
-      return redirect_to my_bookings_path, notice: 'Avaliação salva com sucesso!'
+      flash[:notice] = t('.success')
+      return redirect_to my_bookings_path
     else 
-      flash.now[:alert] = 'Não foi possível salvar a sua avaliação.'
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
@@ -31,9 +32,10 @@ class ReviewsController < ApplicationController
     @review.answer = params[:review][:answer]
 
     if @review.save
-      return redirect_to host_reviews_path, notice: 'Resposta salva com sucesso!'
+      flash[:notice] = t('.success')
+      return redirect_to host_reviews_path
     else
-      flash.now[:alert] = 'Resposta não cadastrada.'
+      flash.now[:alert] = t('.error')
       render :answer
     end
   end
@@ -50,13 +52,15 @@ class ReviewsController < ApplicationController
 
   def only_after_checkout
     if @booking.status != 'done'
-      redirect_to my_bookings_path, alert: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+      flash[:alert] = t('.error')
+      redirect_to my_bookings_path 
     end
   end
 
   def check_guest
     if @booking.guest != current_guest
-      redirect_to my_bookings_path, alert: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+      flash[:alert] = t('.error')
+      redirect_to my_bookings_path
     end
   end
 end

@@ -10,3 +10,12 @@ pt-BR:
         comment: 'Comentário'
         answer: 'Resposta'
         room: 'Quarto'
+  reviews:
+    new: 
+      error: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+    create: 
+      success: 'Avaliação salva com sucesso!'
+      error: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+    create_answer:
+      success: 'Resposta salva com sucesso!'
+      error: 'Desculpe, mas você não tem permissão para realizar essa ação.'

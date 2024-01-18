@@ -12,7 +12,8 @@ class GuesthousesController < ApplicationController
 
   def new
     if current_host.guesthouse.present?
-      return redirect_to guesthouse_path(current_host.guesthouse), notice: 'Ops, você já tem uma pousada cadastrada!'
+      flash[:alert] = t('.error')
+      return redirect_to guesthouse_path(current_host.guesthouse)
     end
     @guesthouse = Guesthouse.new
   end
@@ -21,24 +22,27 @@ class GuesthousesController < ApplicationController
     @guesthouse = current_host.create_guesthouse(guesthouse_params)
 
     if @guesthouse.save
-      redirect_to guesthouse_path(@guesthouse), notice: "#{@guesthouse.brand_name}: Criado com sucesso!"
+      flash[:notice] = t('.success', brand_name: @guesthouse.brand_name)
+      redirect_to guesthouse_path(@guesthouse)
     else
-      flash.now[:alert] = 'Pousada não cadastrada.'
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
       
   def edit
     if @guesthouse.host != current_host
-      redirect_to root_path, alert: 'Você não pode editar essa pousada!'
+      flash[:alert] = t('.error')
+      redirect_to root_path
     end
   end
 
   def update
     if @guesthouse.update(guesthouse_params)
-      redirect_to guesthouse_path(@guesthouse.id), notice: "#{@guesthouse.brand_name}: Atualizado com sucesso!"
+      flash[:notice] = t('.success', brand_name: @guesthouse.brand_name)
+      redirect_to guesthouse_path(@guesthouse.id)
     else
-      flash.now[:alert] = 'Não foi possível atualizar a pousada.'
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
@@ -47,18 +51,20 @@ class GuesthousesController < ApplicationController
     @query_params = params["query"]
     @guesthouses = Guesthouse.search(@query_params)
     if @guesthouses.empty?
-      flash.now[:alert] = 'Nenhuma pousada encontrada!'
+      flash.now[:alert] = t('.error')
     end
   end
 
   def active
     @guesthouse.active!
-    redirect_to @guesthouse, notice: 'Sua pousada está ativa!'
+    flash[:notice] = t('.success')
+    redirect_to @guesthouse
   end
 
   def inactive
     @guesthouse.inactive!
-    redirect_to @guesthouse, notice: 'Sua pousada está inativa!'
+    flash[:alert] = t('.success')
+    redirect_to @guesthouse
   end
 
   def cities
@@ -84,8 +90,9 @@ class GuesthousesController < ApplicationController
   end
 
   def check_host 
-    if current_host != @guesthouse.host 
-      return redirect_to root_path, alert: 'Ops, você não é o anfitrião dessa pousada.'
+    if current_host != @guesthouse.host
+      flash[:alert] = t('.error')
+      return redirect_to root_path
     end
   end
 end

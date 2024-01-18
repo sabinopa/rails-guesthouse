@@ -28,7 +28,27 @@ pt-BR:
         usage_policy: 'Regras de uso'
         checkin: 'Entrada'
         checkout: 'Saída'
-        
+  guesthouses:
+    new:
+      error: 'Ops, você já tem uma pousada cadastrada!'
+    create:
+      success: "%{brand_name}: Criado com sucesso!"
+      error: 'Pousada não cadastrada.'
+    edit: 
+      error: 'Ops, você não é o anfitrião dessa pousada.'
+    update: 
+      success: "%{brand_name}: Atualizado com sucesso!"
+      error: 'Ops, você não é o anfitrião dessa pousada.'
+    search: 
+      error: 'Nenhuma pousada encontrada!'
+    active: 
+      success: 'Sua pousada está ativa!'
+      error: 'Ops, você não é o anfitrião dessa pousada.'
+    inactive: 
+      success: 'Sua pousada está inativa!'
+      error: 'Ops, você não é o anfitrião dessa pousada.'
+    
+      
 
 
 

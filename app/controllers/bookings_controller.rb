@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     @booking.prices = @total_price
     
     if @booking.save
+      flash.now[:notice] = t('.success', booking_code: @booking.code)
       return redirect_to guesthouse_room_booking_path(@guesthouse, @room, @booking)
     else
       flash.now[:alert] = t('.error')
@@ -46,10 +47,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.host_cancellation_possibility?
       @booking.canceled!
-      flash[:notice] = t('.canceled')
+      flash[:notice] = t('.success', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     else
-      flash[:alert] = t('.error')
+      flash[:alert] = t('.error', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     end
   end
@@ -64,11 +65,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.guest_cancellation_possibility?
       @booking.canceled!
-      flash[:notice] = t('.canceled')
-      return redirect_to host_control_guesthouse_room_booking_path
+      flash[:notice] = t('.success', booking_code: @booking.code)
+      return redirect_to my_bookings_path
     else
-      flash[:alert] = t('.error')
-      return redirect_to host_control_guesthouse_room_booking_path
+      flash[:alert] = t('.error', booking_code: @booking.code)
+      return redirect_to my_bookings_path
     end
   end
 
@@ -82,10 +83,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.checkin_possibility?
       @booking.set_checkin
-      flash[:notice] = t('.success') 
+      flash[:notice] = t('.success', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     else
-      flash[:alert] = t('.error')
+      flash[:alert] = t('.error', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     end
   end
@@ -94,10 +95,10 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id]) 
     if @booking.status == 'ongoing'
       @booking.set_checkout
-      flash[:notice] = t('.success')
+      flash[:notice] = t('.success', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     else
-      flash[:alert] = t('.error')
+      flash[:alert] = t('.error', booking_code: @booking.code)
       return redirect_to host_control_guesthouse_room_booking_path
     end
   end

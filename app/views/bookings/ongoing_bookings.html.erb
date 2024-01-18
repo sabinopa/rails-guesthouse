@@ -25,8 +25,8 @@
                 <dd>R$ <%= booking.prices %></dd>
                 <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
                 <dd><%= booking.room.guesthouse.payment_method.method %></dd>
-                <dt><%= Booking.human_attribute_name(:checkin) %>:</dt>
-                <dd><%= I18n.l((booking.checkin_time - 3.hours), format: '%d/%m/%Y %H:%M:%S')  %></dd>
+                <dt><%= Booking.human_attribute_name(:register_checkin) %>:</dt>
+                <dd><%= I18n.l((booking.checkin_time), format: '%d/%m/%Y %H:%M:%S') %></dd>
               </dl>
               <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get, class: "btn btn-outline-primary"  %>
             </div>

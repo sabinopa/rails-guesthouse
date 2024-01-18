@@ -58,7 +58,7 @@ describe 'Host sets checkin in booking' do
     expect(page).to have_content "Saída: #{end_date} - 11:00"
     expect(page).to have_content "Valor total: R$ #{booking.prices}"
     expect(page).to have_content "Método de pagamento: #{payment_method.method}"
-    expect(page).to have_content "Data e horário do checkin: #{I18n.l((booking.checkin_time - 3.hours), format: '%d/%m/%Y %H:%M:%S')}"
+    expect(page).to have_content "Data e horário do checkin: #{I18n.l((booking.checkin_time), format: '%d/%m/%Y %H:%M:%S')}"
     expect(page).to have_button 'Gerenciar Reserva'
   end
 end

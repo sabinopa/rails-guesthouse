@@ -15,23 +15,27 @@ pt-BR:
           ongoing: 'Reserva em andamento'
           done: 'Reserva finalizada'
           canceled: 'Reserva cancelada'
-        checkin: 'Data e horário do checkin'
-        checkout: 'Data e horário do checkout'
+        register_checkin: 'Data e horário do checkin'
+        register_checkout: 'Data e horário do checkout'
         final_price: 'Valor final até a data atual'
         checkin_time: 'Horário do Check-in'
         room: 'Quarto'
-        create:
-          success: "Reserva #{@booking.code} realizada com sucesso!" 
-          error:  'Não foi possível reservar o quarto.'
-        host_canceled:
-          canceled: "Reserva #{@booking.code} cancelada com sucesso!" 
-          error:  'Não foi possível cancelar a reserva.'
-        guest_canceled:
-          canceled: "Reserva #{@booking.code} cancelada com sucesso!" 
-          error: 'Não foi possível cancelar a reserva.'
-        checkin:
-          success: "Reserva #{@booking.code} em andamento!" 
-          error: 'Não foi possível realizar o checkin!'
-        checkout:
-          success: "Reserva #{@booking.code} finalizada!" 
-          error: 'Não foi possível realizar o checkout!'
+  bookings:
+    create:
+      success: "Reserva %{booking_code} realizada com sucesso!" 
+      error:  'Não foi possível reservar o quarto.'
+    host_canceled:
+      success: "Reserva %{booking_code} cancelada com sucesso!" 
+      error:  'Não foi possível cancelar a reserva.'
+    guest_canceled:
+      success: "Reserva %{booking_code} cancelada com sucesso!" 
+      error: 'Não foi possível cancelar a reserva.'
+    checkin:
+      success: "Reserva %{booking_code} em andamento!" 
+      error: 'Não foi possível realizar o checkin!'
+    checkout:
+      success: "Reserva %{booking_code} finalizada!" 
+      error: 'Não foi possível realizar o checkout!'
+    ongoing_bookings:
+      reservation: "Reserva %{code}"
+      

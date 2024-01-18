@@ -221,7 +221,7 @@ describe 'Host adds custom price to a room' do
                         price: 220.00, bathroom: 'Privado', balcony: 'Não possui', tv: 'Possui', wardrobe: 'Possui', safe: 'Possui', 
                         accessibility: 'Acessível para pessoas com deficiência', status: 1)
     
-    custom_price = CustomPrice.create!(room: room, start_date: '10/12/2023', end_date: '15/12/2023', price: 300.00)
+    custom_price = CustomPrice.create!(room: room, start_date: 8.days.from_now, end_date: 20.days.from_now, price: 300.00)
 
     second_room = Room.create!(guesthouse: guesthouse, name: 'Calmaria', description: 'Decoração adorável.', size: 10, 
                               max_people: '2', price: '180,00', bathroom: false, balcony: false, tv: true, wardrobe: true, 

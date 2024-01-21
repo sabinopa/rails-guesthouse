@@ -1,7 +1,7 @@
-<h1>Cadastrar pousada:</h1>
+<h1> <%= t('views.home.register_guesthouse') %></h1>
 
 <% if(@guesthouse.errors.any?) %>
-  <p>Verifique os erros abaixo:</p>
+  <p><%= t('messages.verify_error') %></p>
   <ul>
     <% @guesthouse.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

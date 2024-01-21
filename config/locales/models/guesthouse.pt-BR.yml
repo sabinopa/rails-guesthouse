@@ -60,7 +60,9 @@ pt-BR:
       search_destination: 'Buscar destino'
       search: 'Buscar'
       recent_guesthouse: 'Pousadas recentes'
+      other_guesthouse: 'Demais pousadas'
       guesthouse_empty: 'Não existem pousadas cadastradas.'
+
       
       
 

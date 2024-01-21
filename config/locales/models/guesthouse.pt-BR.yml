@@ -64,6 +64,8 @@ pt-BR:
       guesthouse_empty: 'Não existem pousadas cadastradas.'
     cities: 
       guesthouses_in: 'Nossas pousadas em'
+    edit: 
+      manage_guesthouse: 'Gerenciar pousada:'
 
       
       

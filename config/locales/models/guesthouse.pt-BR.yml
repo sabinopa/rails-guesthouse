@@ -47,7 +47,17 @@ pt-BR:
     inactive: 
       success: 'Sua pousada está inativa!'
       error: 'Ops, você não é o anfitrião dessa pousada.'
-    
+  views:
+    home:
+      register_guesthouse: 'Cadastrar pousada'
+      active_guesthouse: 'Ativar pousada'
+      inactive_guesthouse: 'Desativar pousada'
+      your_guesthouse: 'Sua pousada:'
+      see_details: 'Ver detalhes da pousada' 
+      add_rooms: 'Adicionar quartos'
+      see_rooms: 'Ver quartos'
+      total_rooms: 'Total de quartos:'
+      
       
 
 

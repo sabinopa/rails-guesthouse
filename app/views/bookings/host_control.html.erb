@@ -15,7 +15,7 @@
         <% end %>
 
         <% if @booking.status == 'ongoing' %>
-          <%= button_to 'Registrar Check-out', checkout_register_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :get, class: "btn btn-outline-primary" %>
+          <%= button_to t(:register_checkout), checkout_register_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :get, class: "btn btn-outline-primary" %>
         <% end %>
         <dl>
           <dt><%= Guest.human_attribute_name(:status) %>:</dt>

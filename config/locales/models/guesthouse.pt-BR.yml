@@ -57,6 +57,10 @@ pt-BR:
       add_rooms: 'Adicionar quartos'
       see_rooms: 'Ver quartos'
       total_rooms: 'Total de quartos:'
+      search_destination: 'Buscar destino'
+      search: 'Buscar'
+      recent_guesthouse: 'Pousadas recentes'
+      guesthouse_empty: 'Não existem pousadas cadastradas.'
       
       
 

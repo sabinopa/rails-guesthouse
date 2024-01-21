@@ -5,20 +5,20 @@
 <div class="d-flex flex-row justify-content-around mt-5">
   <form class="d-flex" action="<%= cities_guesthouses_path %>" method="get">
     <select class="form-select me-2" name="city" aria-label="Default select example">
-      <option selected>Buscar destinos</option>
+      <option selected><%= t('views.home.search_destination') %></option>
       <% if @cities.present? %>
         <% @cities.each do |city| %>
         <option value="<%= city %>"><%= city %></option>
         <% end %>
       <% end %>
     </select>
-    <button type="submit" class="btn btn-primary">Buscar</button>
+    <button type="submit" class="btn btn-primary"><%= t('views.home.search') %></button>
   </form>
 </div>
 
 <div class="d-flex flex-row justify-content-around mt-5" >
   <div class="card text-center" style="width: 18rem;">
-    <p> Pousadas recentes </p>
+    <p> <%= t('views.home.recent_gueshouse') %> </p>
     <ul class="list-group list-group-flush">
     <% @recent_guesthouses.each do |guesthouse| %> 
       <li class="list-group-item">
@@ -45,7 +45,7 @@
 <div class="d-flex flex-row justify-content-around mt-5" >
   <div class="card text-center" style="width: 18rem;">
     <% if @guesthouses.empty? %> 
-      <p>Não existem pousadas cadastradas.</p>
+      <p><%= t('views.home.guesthouse_empty') %></p>
     <% end %>
   </div>
 </div>

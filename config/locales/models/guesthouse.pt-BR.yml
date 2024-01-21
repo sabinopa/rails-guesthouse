@@ -66,6 +66,11 @@ pt-BR:
       guesthouses_in: 'Nossas pousadas em'
     edit: 
       manage_guesthouse: 'Gerenciar pousada:'
+    guesthouse_reviews:
+      reviews_of: 'Avaliações de'
+      average_rating: 'Nota média:'
+      visit_guesthouse: 'Visitou a pousada em:'
+      rating: 'Nota:'
 
       
       

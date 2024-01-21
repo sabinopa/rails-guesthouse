@@ -1,17 +1,17 @@
-<h4>Avaliações de <%= @guesthouse.brand_name %></h4>
-<%= link_to 'Voltar', @guesthouse %>
+<h4><%= t('views.guesthouse_reviews.reviews_of') %> <%= @guesthouse.brand_name %></h4>
+<%= link_to t('helpers.buttons.back'), @guesthouse %>
 <div class="d-flex flex-wrap justify-content-around mt-5">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title text-center">
-        Nota média: <%= @average_rating %>
+        <%= t('views.guesthouse_reviews.average_rating') %> <%= @average_rating %>
       </h5>
 
       <% @reviews.each do |review| %>
         <div class="text-center">
           <p><strong><%= review.guest.name %></strong></p>
-          <p><sup>Visitou a pousada em: <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
-          <p>Nota: <%= review.rating %></p>
+          <p><sup><%= t('views.guesthouse_reviews.visit_guesthouse') %> <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
+          <p><%= t('views.guesthouse_reviews.rating') %> <%= review.rating %></p>
           <p><%= review.comment %></p>
         </div>
       <% end %>

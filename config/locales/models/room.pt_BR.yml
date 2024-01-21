@@ -37,4 +37,5 @@ pt-BR:
       missing: 'Por favor, preencha todos os campos.'
       success: 'Quarto disponível, você pode finalizar a sua reserva.'
       error: 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
-    
+    views:
+      rooms: 'Quartos:'

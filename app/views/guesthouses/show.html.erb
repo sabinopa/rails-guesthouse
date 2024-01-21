@@ -1,9 +1,9 @@
 <% if current_host.present? && current_host.guesthouse == @guesthouse %>
-  <%= link_to 'Editar', edit_guesthouse_path, class: "btn btn-outline-primary"  %>
+  <%= link_to t('helpers.buttons.edit'), edit_guesthouse_path, class: "btn btn-outline-primary"  %>
   <% if @guesthouse.inactive? %>
-    <%= button_to 'Ativar pousada', active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
+    <%= button_to t('views.home.active_guesthouse'), active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
   <% else %>  
-    <%= button_to 'Desativar pousada', inactive_guesthouse_path(@guesthouse.id), class: "btn btn-outline-danger" %>
+    <%= button_to t('views.home.inactive_guesthouse'), inactive_guesthouse_path(@guesthouse.id), class: "btn btn-outline-danger" %>
   <% end %>
 <% end %>
 
@@ -12,22 +12,22 @@
 
 <div class="container">
   <% if @reviews.any? %>
-    <h5>Avaliações recentes:</h5>
+    <h5><%= t('views.guesthouse_reviews.recent_reviews') %></h5>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title text-center">
           <% @newest_reviews.each do |review| %>
             <p><strong><%= review.guest.name %></strong></p>
-            <p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
+            <p><sup> <%= t('views.guesthouse_reviews.visit_guesthouse') %> <%= review.booking.start_date.strftime('%d/%m/%Y') %></sup></p>
             <p>Nota: <%= review.rating %></p>
             <p><%= review.comment %></p>
           <% end %>
         </h5>
       </div>
     </div>
-    <%= link_to 'Ver todas as avaliações', guesthouse_reviews_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
+    <%= link_to t('views.guesthouse_reviews.all_reviews'), guesthouse_reviews_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
   <% end %>
-  <%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>
+  <%= link_to t('helpers.buttons.back'), root_path, class: "btn btn-outline-secondary"  %>
 </div>
 
 

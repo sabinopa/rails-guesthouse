@@ -71,8 +71,10 @@ pt-BR:
       average_rating: 'Nota média:'
       visit_guesthouse: 'Visitou a pousada em:'
       rating: 'Nota:'
+      recent_reviews: 'Avaliações recentes:'
+      all_reviews: 'Ver todas as avaliações'
     search: 
-      result: 'Resultados da buscar por:'
+      result: 'Resultados da busca por:'
 
       
       

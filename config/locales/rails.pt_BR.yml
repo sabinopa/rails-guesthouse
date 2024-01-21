@@ -153,6 +153,7 @@ pt-BR:
       update: Atualizar %{model}
     buttons:
       back: Voltar
+      edit: Editar
   number:
     currency:
       format:

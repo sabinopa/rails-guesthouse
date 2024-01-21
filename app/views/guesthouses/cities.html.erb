@@ -1,4 +1,4 @@
-<p> Nossas pousadas em <%= @city %></p>
+<p> <%= t('views.cities.guesthouses_in') %> <%= @city %></p>
 
 <% @guesthouses.each do |guesthouse| %> 
   <%= link_to "#{guesthouse.brand_name}", guesthouse %></br>

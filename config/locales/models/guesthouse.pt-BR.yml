@@ -62,6 +62,8 @@ pt-BR:
       recent_guesthouse: 'Pousadas recentes'
       other_guesthouse: 'Demais pousadas'
       guesthouse_empty: 'Não existem pousadas cadastradas.'
+    cities: 
+      guesthouses_in: 'Nossas pousadas em'
 
       
       

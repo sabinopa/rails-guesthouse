@@ -62,15 +62,17 @@ pt-BR:
       recent_guesthouse: 'Pousadas recentes'
       other_guesthouse: 'Demais pousadas'
       guesthouse_empty: 'Não existem pousadas cadastradas.'
-    cities: 
-      guesthouses_in: 'Nossas pousadas em'
     edit: 
       manage_guesthouse: 'Gerenciar pousada:'
+    cities: 
+      guesthouses_in: 'Nossas pousadas em'
     guesthouse_reviews:
       reviews_of: 'Avaliações de'
       average_rating: 'Nota média:'
       visit_guesthouse: 'Visitou a pousada em:'
       rating: 'Nota:'
+    search: 
+      result: 'Resultados da buscar por:'
 
       
       

@@ -1,4 +1,4 @@
-<h3>Resultados da busca por: <%= @query_params %></h3>
+<h3><%= t('views.search.result') %> <%= @query_params %></h3>
 
 <p>
   <%= @guesthouses.count %> <%= Guesthouse.model_name.human(count: @guesthouses.count).downcase %> 
@@ -11,4 +11,4 @@
   </ul>
 <% end %>
 
-<%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>
+<%= link_to t('helpers.buttons.back'), root_path, class: "btn btn-outline-secondary"  %>

@@ -1,4 +1,4 @@
-<h1><%= "Reserva #{@booking.code} confirmada!" %></h1>
+<h1><%= t('views.show.confirmed', code: @booking.code) %></h1>
 
 <div>
   <p><%= @guesthouse.brand_name %></p>

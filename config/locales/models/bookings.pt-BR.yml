@@ -42,6 +42,8 @@ pt-BR:
     new: 
       before_finalize: 'Antes de finalizar, confirme os dados da sua reserva:'
       submit: 'Confirmar Reserva'
+    show: 
+      confirmed: 'Reserva %{code} confirmada!'
     checkout_register:
       checkout: 'Check-out da Reserva'      
       register_checkout: 'Registrar Check-out'

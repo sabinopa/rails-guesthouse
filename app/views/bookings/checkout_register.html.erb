@@ -1,4 +1,4 @@
-<h2>Check-out da Reserva <%= @booking.code %></h2>
+<h2><%= t('views.checkout_register.checkout') %> <%= @booking.code %></h2>
 <div>
   <dl>
     <dt><%= Booking.human_attribute_name(:checkin_time) %>:</dt>
@@ -8,5 +8,5 @@
     <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
     <dd><%= @booking.room.guesthouse.payment_method.method %></dd>
   </dl>
-  <%= button_to 'Finalizar Check-out', checkout_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
+  <%= button_to t('views.checkout_register.finalize'), checkout_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch %>
 </div>

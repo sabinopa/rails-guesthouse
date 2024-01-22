@@ -123,7 +123,7 @@ describe 'Host adds custom price to a room' do
     expect(page).to have_content 'Verifique os erros abaixo:'   
     expect(page).to have_content 'Início não pode ficar em branco'
     expect(page).to have_content 'Fim não pode ficar em branco'
-    expect(page).to have_content 'Preço não pode ficar em branco'
+    expect(page).to have_content 'Preço no período não pode ficar em branco'
   end
 
   it 'fill in start date with past date' do 

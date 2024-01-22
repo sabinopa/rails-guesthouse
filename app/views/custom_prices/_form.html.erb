@@ -1,18 +1,18 @@
 <%= form_with model: [@room.guesthouse, @room, @custom_price] do |f| %>
 <div>
-  <%= f.label :start_date, 'Início' %>:
+  <%= f.label :start_date %>:
   <%= f.date_field :start_date %>
 </div>
 
 <div>
-  <%= f.label :end_date, 'Fim' %>:
+  <%= f.label :end_date %>:
   <%= f.date_field :end_date %>
 </div>
 
 <div>
-  <%= f.label :price, 'Preço no período' %>:
+  <%= f.label :price %>:
   <%= f.number_field :price %>
 </div>
 
-  <%= f.submit 'Salvar' %>
+  <%= f.submit t('helpers.submit.submit') %>
 <% end %>

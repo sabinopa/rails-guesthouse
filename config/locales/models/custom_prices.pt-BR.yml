@@ -8,10 +8,16 @@ pt-BR:
       custom_price:
         start_date: 'Início'
         end_date: 'Fim'
-        price: 'Preço'
+        price: 'Preço no período'
   custom_prices:
     new: 
       error: 'Ops, você não é o anfitrião dessa pousada.'
     create:
       success: 'Novo preço cadastrado com sucesso!'
       error: 'Não foi possível cadastrar preço personalizado.'
+  views: 
+    new:
+      personalize: 'Personalizar preço no período:'
+  errors:
+    messages:
+      verify_error: 'Verifique os erros abaixo:'

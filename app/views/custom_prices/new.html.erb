@@ -1,7 +1,7 @@
-<h1>Personalizar preço no período: </h1>
+<h1> <%= t('views.new.personalize') %></h1>
 
 <% if(@custom_price.errors.any?) %>
-  <p>Verifique os erros abaixo:</p>
+  <p><%= t('errors.messages.verify_error') %></p>
   <ul>
     <% @custom_price.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

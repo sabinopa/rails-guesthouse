@@ -49,6 +49,9 @@ pt-BR:
       error: 'Ops, você não é o anfitrião dessa pousada.'
   views:
     home:
+      guesthouse_app: 'Pousadaria'
+      bookings: 'Reservas'
+      reviews: 'Avaliações'
       register_guesthouse: 'Cadastrar pousada'
       active_guesthouse: 'Ativar pousada'
       inactive_guesthouse: 'Desativar pousada'

@@ -151,6 +151,9 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar 
       update: Atualizar %{model}
+      exit: Sair
+      enter_host: Entrar como Anfitrião
+      enter_guest: Entrar como Hóspede
     buttons:
       back: Voltar
       edit: Editar

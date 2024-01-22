@@ -1,55 +1,53 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <%= link_to 'Pousadaria', root_path, class: "navbar-brand" %>
+    <%= link_to t('views.home.guesthouse_app'), root_path, class: "navbar-brand" %>
 
     <div class="navbar-collapse justify-content-start">
       <ul class="navbar-nav">
-        
-      <% if host_signed_in? %>
-        <li class="nav-link active">
-          <%= link_to 'Reservas', guesthouse_bookings_path, class: "btn btn-outline-primary" %>
-        </li>  
-        <li class="nav-link active">
-          <%= link_to 'Estadias Ativas', ongoing_bookings_path, class: "btn btn-outline-primary" %>
-        </li>   
-        <li class="nav-link active">
-          <%= link_to 'Avaliações', host_reviews_path, class: "btn btn-outline-primary" %>
-        </li>      
-        <li class="nav-link disabled">
-          <%= current_host.description %> 
-        </li>
-        <li class="nav-item active">
-          <%= button_to 'Sair', destroy_host_session_path, method: :delete, class: "btn btn-outline-secondary" %> 
-        </li>
-
-      <% elsif guest_signed_in? %>
-        <li class="nav-link active">
-          <%= link_to 'Minhas Reservas', my_bookings_path, class: "nav-link" %>
-        </li> 
-        <li class="nav-link disabled">
-          <%= current_guest.description %>
-        </li>
-        <li class="nav-item active">
-          <%= button_to 'Sair', destroy_guest_session_path, method: :delete, class: "btn btn-outline-secondary" %> 
-        </li>
-
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Entrar como Anfitrião', new_host_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Entrar como Hóspede', new_guest_session_path, class: "nav-link" %>
-        </li> 
-      <% end %>
+        <% if host_signed_in? %>
+          <li class="nav-link active">
+            <%= link_to t('views.home.bookings'), guesthouse_bookings_path, class: "btn btn-outline-primary" %>
+          </li>  
+          <li class="nav-link active">
+            <%= link_to t('views.ongoing_bookings.active_bookings'), ongoing_bookings_path, class: "btn btn-outline-primary" %>
+          </li>   
+          <li class="nav-link active">
+            <%= link_to t('views.home.reviews'), host_reviews_path, class: "btn btn-outline-primary" %>
+          </li>      
+          <li class="nav-link disabled">
+            <%= current_host.description %> 
+          </li>
+          <li class="nav-item active">
+            <%= button_to t('helpers.submit.exit'), destroy_host_session_path, method: :delete, class: "btn btn-outline-secondary" %> 
+          </li>
+        <% elsif guest_signed_in? %>
+          <li class="nav-link active">
+            <%= link_to t('views.my_bookings.my'), my_bookings_path, class: "nav-link" %>
+          </li> 
+          <li class="nav-link disabled">
+            <%= current_guest.description %>
+          </li>
+          <li class="nav-item active">
+            <%= button_to t('helpers.submit.exit'), destroy_guest_session_path, method: :delete, class: "btn btn-outline-secondary" %> 
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to t('helpers.submit.enter_host'), new_host_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('helpers.submit.enter_guest'), new_guest_session_path, class: "nav-link" %>
+          </li> 
+        <% end %>
       </ul>
     </div>
 
     <div class="d-flex">
       <%= form_with(url: search_guesthouses_path, method: :get) do |f| %>
-      <%= f.text_field :query, placeholder: 'Busque aqui...', class: "form-control me-2" %>
-      <%= f.submit 'Buscar Pousada', class: "btn btn-outline-primary" %>
+        <%= f.text_field :query, placeholder: t('views.home.search_here'), class: "form-control me-2" %>
+        <%= f.submit t('views.home.search_guesthouse'), class: "btn btn-outline-primary" %>
       <% end %>
-      <small><%= link_to "Busca detalhada", new_search_path %></small>
+      <small><%= link_to t('views.home.search_detailed'), new_search_path %></small>
     </div>
   </div>
 </nav>
+

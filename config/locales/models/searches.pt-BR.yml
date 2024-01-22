@@ -18,3 +18,9 @@ pt-BR:
         wardrobe: 'Armário'
         safe: 'Cofre'
         accessibility: 'Acessibilidade'
+  views: 
+    home: 
+      search: 'Buscar'
+      search_guesthouse: 'Buscar Pousada'
+      search_detailed: 'Busca detalhada'
+      search_here: 'Busque aqui...'

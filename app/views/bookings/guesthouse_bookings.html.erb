@@ -1,13 +1,13 @@
 <% if @bookings.present? %>
-  <h3><%= "Reservas em #{@guesthouse.brand_name}" %></h3>
+  <h3><%= t('views.guesthouse_bookings.booking_in', brand_name: @guesthouse.brand_name) %></h3>
   <div class="d-flex flex-wrap justify-content-around mt-5">
     <% @rooms.each do |room| %>
       <% room.bookings.where(status: :booked).each do |booking| %>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">
-              <p><%= "Reserva #{booking.code}" %></p>
-              <p><%= "Quarto #{room.name}" %></p>
+              <p><%= t('views.guesthouse_bookings.booking_code', code: booking.code) %></p>
+              <p><%= t('views.guesthouse_bookings.room_name', name: room.name) %></p>
             </h5>
             <div class="text-center">
               <dl>
@@ -26,7 +26,7 @@
                 <dt><%= Guesthouse.human_attribute_name(:payment_method_id) %>:</dt>
                 <dd><%= booking.room.guesthouse.payment_method.method %></dd>
               </dl>
-              <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get, class: "btn btn-outline-primary" %>
+              <%= button_to t('views.guesthouse_bookings.manage'), host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get, class: "btn btn-outline-primary" %>
             </div>
           </div>
         </div>
@@ -34,5 +34,5 @@
     <% end %>
   </div>
 <% else %>
-  <p>Você ainda não tem reservas.</p>
+  <p><%= t('views.guesthouse_bookings.no_bookings') %></p>
 <% end %>

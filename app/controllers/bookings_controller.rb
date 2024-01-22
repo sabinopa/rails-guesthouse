@@ -60,6 +60,7 @@ class BookingsController < ApplicationController
     @room = Room.find_by(params[:id])
     @guesthouse = current_host.guesthouse
     @rooms = @guesthouse.rooms.where(status: :active)
+    @booking = Booking.where(status: :ongoing)
     @bookings = Booking.where(status: :ongoing)
   end
   

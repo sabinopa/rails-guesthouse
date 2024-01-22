@@ -135,12 +135,12 @@ guest10 = Guest.create(name: 'Aline', lastname: 'Barbosa', email: 'aline@email.c
 p "Created #{Guest.count} guests"
 
 #Bookings
-booking1 = Booking.create(guest: guest1, host: priscila, start_date: 2.day.ago, end_date: 1.day.from_now, number_guests: '1', room: room_a, prices: 750.0, status: 2, checkin_time: 40.hours.ago )
+booking1 = Booking.create(guest: guest1, host: priscila, start_date: 2.days.ago, end_date: 1.day.from_now, number_guests: '1', room: room_a, prices: 750.0, status: 2, checkin_time: 40.hours.ago )
 booking2 = Booking.create(guest: guest1, host: pedro, start_date: 25.days.ago, end_date: 20.days.ago, number_guests: '2', room: room_c, prices: 1200.0, status: 4, checkin_time: 25.days.ago, checkout_time: 20.days.ago)
 booking3 = Booking.create(guest: guest2, host: guilherme, start_date: 10.days.from_now, end_date: 20.days.from_now, number_guests: '3', room: room_e, prices: 2880.0, status: 0)
 booking4 = Booking.create(guest: guest2, host: isabel, start_date: 25.days.ago, end_date: 20.days.ago, number_guests: '1', room: room_g, prices: 800.0, status: 4, checkin_time: 25.days.ago, checkout_time: 20.days.ago)
 booking5 = Booking.create(guest: guest3, host: livia, start_date: 1.day.ago, end_date: 2.days.from_now, number_guests: '2', room: room_i, prices: 1650.0, status: 2, checkin_time: 1.day.ago)
-booking6 = Booking.create(guest: guest3, host: priscila, start_date: 7.days.from_now, end_date: 9.days.from_now, number_guests: '1', room: room_b, prices: 700.0, status: 0)
+booking6 = Booking.create(guest: guest3, host: priscila, start_date: 1.day.from_now, end_date: 9.days.from_now, number_guests: '1', room: room_b, prices: 700.0, status: 0)
 booking7 = Booking.create(guest: guest4, host: pedro, start_date: 8.days.ago, end_date: 4.days.ago, number_guests: '2', room: room_d, prices: 1240.0, status: 4, checkin_time: 8.days.ago, checkout_time: 4.days.ago)
 booking8 = Booking.create(guest: guest4, host: guilherme, start_date: 3.days.from_now, end_date: 7.days.from_now, number_guests: '5', room: room_f, prices: 1410.0, status: 0)
 booking9 = Booking.create(guest: guest5, host: isabel, start_date: 6.days.from_now, end_date: 7.days.from_now, number_guests: '3', room: room_h, prices: 300.0, status: 0)

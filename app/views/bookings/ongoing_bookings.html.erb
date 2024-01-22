@@ -1,15 +1,15 @@
 <h3><%= t('views.ongoing_bookings.active_bookings') %></h3>
 
 <% if @bookings.present? %>
-<h6><%= "Reservas em #{@guesthouse.brand_name}" %></h6>
+  <h6><%= t('views.guesthouse_bookings.booking_in', brand_name: @guesthouse.brand_name) %></h6>
   <div class="d-flex flex-wrap justify-content-around mt-5">
     <% @rooms.each do |room| %>
       <% room.bookings.where(status: :ongoing).each do |booking| %>
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">
-            <p><%= t('views.guesthouse_bookings.booking_code', code: @guesthouse.brand_name) %></p>
-            <p><%= t('views.guesthouse_bookings.room_name', name: @room.name) %></p>
+              <p><%= t('views.guesthouse_bookings.booking_code', code: booking.code) %></p>
+              <p><%= t('views.guesthouse_bookings.room_name', name: room.name) %></p>
             </h5>
             <div class="text-center">
               <dl>

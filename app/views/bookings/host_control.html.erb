@@ -1,21 +1,21 @@
-<h3><%= "Reservas em #{@guesthouse.brand_name}" %></h3>
+<h3><%= t('views.guesthouse_bookings.booking_in', brand_name: @guesthouse.brand_name) %></h3>
 <div class="d-flex flex-wrap justify-content-around mt-5">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title text-center">
-        <%= "Quarto #{@room.name}" %>
+        <%= t('views.guesthouse_bookings.room_name', name: @room.name) %>
       </h5>
       <div class="text-center">
         <% if @booking.host_cancellation_possibility? %>
-          <%= button_to 'Cancelar Reserva', host_canceled_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch, class: "btn btn-outline-danger" %>
+          <%= button_to t('views.host_control.cancel'), host_canceled_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch, class: "btn btn-outline-danger" %>
         <% end %>
 
         <% if @booking.checkin_possibility? %>
-          <%= button_to 'Registrar Check-in', checkin_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch, class: "btn btn-outline-primary" %>
+          <%= button_to t('views.host_control.register_checkin'), checkin_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :patch, class: "btn btn-outline-primary" %>
         <% end %>
 
         <% if @booking.status == 'ongoing' %>
-          <%= button_to t(:register_checkout), checkout_register_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :get, class: "btn btn-outline-primary" %>
+          <%= button_to t('views.checkout_register.register_checkout'), checkout_register_guesthouse_room_booking_path(@booking.room.guesthouse, @booking.room, @booking), method: :get, class: "btn btn-outline-primary" %>
         <% end %>
         <dl>
           <dt><%= Guest.human_attribute_name(:status) %>:</dt>

@@ -45,9 +45,12 @@ pt-BR:
       finalize: 'Finalizar Check-out'
     guesthouse_bookings:
       booking_in: "Reservas em %{brand_name}"
-      manage: 'Gerenciar reserva'
+      manage: 'Gerenciar Reserva'
       no_bookings: 'Você ainda não tem reservas.'
       booking_code: 'Reserva %{code}'
       room_name: 'Quarto %{name}'
+    host_control: 
+      cancel: 'Cancelar Reserva'
+      register_checkin: 'Registrar Check-in'
 
         

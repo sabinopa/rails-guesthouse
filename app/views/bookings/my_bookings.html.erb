@@ -1,4 +1,4 @@
-<h1>Minhas Reservas</h1>
+<h1><%= t('views.my_bookings.my') %></h1>
 
 <% if current_guest.bookings.present? %>
   <div class="d-flex flex-wrap justify-content-around mt-5">
@@ -6,20 +6,20 @@
       <div class="card" style="width: 18rem;">
         <div class="card-body text-center">
           <h5 class="card-title">
-            <h3><%= "Reserva #{booking.code}" %></h3>
+            <h3><%= t('views.guesthouse_bookings.booking_in', brand_name: @guesthouse.brand_name) %></h3>
           </h5>
           <p><%= booking.room.guesthouse.brand_name %></p>
 
           <% if booking.status == 'booked' %>
             <% if booking.guest_cancellation_possibility? %>
-              <%= button_to 'Cancelar Reserva', guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking.id), method: :patch, class: "btn btn-outline-danger" %>
+              <%= button_to t('views.my_bookings.cancel'), guest_canceled_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking.id), method: :patch, class: "btn btn-outline-danger" %>
             <% else %>
-              <p>Essa reserva não pode mais ser cancelada.</p>
+              <p><%= t('views.my_bookings.no_cancel') %></p>
             <% end %>
           <% end %>
 
           <% if booking.status == 'done' && booking.review.blank? %>
-            <%= link_to 'Avaliar Estadia', new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking.id), class: "btn btn-outline-primary" %>
+            <%= link_to t('views.my_bookings.review'), new_guesthouse_room_booking_review_path(booking.room.guesthouse, booking.room, booking.id), class: "btn btn-outline-primary" %>
           <% end %> 
 
           <div class="text-center"> 
@@ -56,5 +56,5 @@
     <% end %>
   </div>
 <% else %>
-  <p>Você ainda não tem reservas.</p>
+  <p><%= t('views.guesthouse_bookings.no_bookings') %></p>
 <% end %>

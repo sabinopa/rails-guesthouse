@@ -29,6 +29,7 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
+    @guesthouse = Guesthouse.find_by(params[:guesthouse_id])
     @bookings = current_guest.bookings.includes(room: { guesthouse: :payment_method })
                                       .where(status: [:booked, :ongoing, :done])
   end

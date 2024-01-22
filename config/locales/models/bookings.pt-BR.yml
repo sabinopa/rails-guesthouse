@@ -52,5 +52,9 @@ pt-BR:
     host_control: 
       cancel: 'Cancelar Reserva'
       register_checkin: 'Registrar Check-in'
-
+    my_bookings:
+      my: 'Minhas Reservas'
+      cancel: 'Cancelar Reserva'
+      no_cancel: 'Essa reserva não pode mais ser cancelada.'
+      review: 'Avaliar Estadia'
         

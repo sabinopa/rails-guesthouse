@@ -1,9 +1,9 @@
 <% if @reviews.any? %>
-  <h2>Veja todas as suas avaliações:</h2>
+  <h2><%= t('views.host_reviews.all') %></h2>
   <% @reviews.each do |review| %>
     <dl>
       <p><strong><%= review.guest.name %></strong></p>
-      <p><sup> Visitou a pousada em:  <%= review.booking.start_date.strftime('%d/%m/%Y') %> - Reserva <%= review.booking.code %></sup></p>
+      <p><sup> <%= t('views.host_reviews.visit') %>  <%= review.booking.start_date.strftime('%d/%m/%Y') %> - Reserva <%= review.booking.code %></sup></p>
       <dt><%= Room.human_attribute_name(:room) %>:</dt>
       <dd><%= review.booking.room.name %></dd>
       <dt><%= Review.human_attribute_name(:rating) %>:</dt>
@@ -20,10 +20,10 @@
       <%= form_with(model: review, url: create_answer_review_path(review.id), method: :post) do |f| %>
         <div><%= f.label :answer %>:</div> 
         <div><%= f.text_area :answer %></div>
-        <div><%= f.submit 'Enviar' %></div>
+        <div><%= f.submit t('helpers.submit.send') %></div>
       <% end %>
     <% end %>
   <% end %>
 <% else %>
-  <p>Ainda não existem avaliações.</p>
+  <p><%= t('views.host_reviews.none') %></p>
 <% end %>

@@ -152,6 +152,7 @@ pt-BR:
       submit: Salvar 
       update: Atualizar %{model}
       exit: Sair
+      send: Enviar
       enter_host: Entrar como Anfitrião
       enter_guest: Entrar como Hóspede
     buttons:

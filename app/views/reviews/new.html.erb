@@ -1,23 +1,26 @@
-<h5>Como foi sua experiência em <%= "#{@guesthouse.brand_name}" %> durante a reserva <%= "#{@booking.code}" %> ? </h5>
-<p>Por favor, classifique de 1 (insatisfatório) a 5 (excelente)</p>
+<h5><%= t('views.new.experience', brand_name: @guesthouse.brand_name, code: @booking.code) %></h5>
+<p><%= t('views.new.rating') %></p>
 
 <% if @review.errors.any? %>
-  <% @review.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
+  <div class="alert alert-danger">
+    <strong><%= t('messages.verify_error') %></strong>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= form_with(model: @review, url: guesthouse_room_booking_reviews_path(@guesthouse, @room, @booking)) do |f| %>
   <%= f.hidden_field :booking_id, value: @booking.id %>
-  <div>
-    <%= f.label :rating %>:
-    <%= f.select :rating, (1..5).to_a %>
-  </div>
-  <div>
-    <%= f.label :comment %>:
-    <%= f.text_area :comment %>
-  </div>
-    <%= f.submit %>
+    <div>
+      <%= f.label :rating %>:
+      <%= f.select :rating, (1..5).to_a %>
+    </div>
+    <div>
+      <%= f.label :comment %>:
+      <%= f.text_area :comment %>
+    </div>
+      <%= f.submit %>
 <% end %>
-
-

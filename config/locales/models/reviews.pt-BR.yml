@@ -19,3 +19,11 @@ pt-BR:
     create_answer:
       success: 'Resposta salva com sucesso!'
       error: 'Desculpe, mas você não tem permissão para realizar essa ação.'
+  views:
+    new: 
+      experience: 'Como foi sua experiência em %{brand_name} durante a reserva %{code} ?'
+      rating: 'Por favor, classifique de 1(ruim) a 5(excelente).'
+    host_reviews: 
+      all: 'Veja todas as suas avaliações:'
+      visit: 'Visitou a pousada em:'
+      none: 'Ainda não existem avaliações.'

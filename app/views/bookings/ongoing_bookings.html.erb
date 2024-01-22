@@ -1,4 +1,4 @@
-<h3>Estadias Ativas</h3>
+<h3><%= t('views.ongoing_bookings.active_bookings') %></h3>
 
 <% if @bookings.present? %>
 <h6><%= "Reservas em #{@guesthouse.brand_name}" %></h6>
@@ -8,8 +8,8 @@
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">
-            <p><%= "Reserva #{booking.code}" %></p>
-            <p><%= "Quarto #{room.name}" %></p>
+            <p><%= t('views.guesthouse_bookings.booking_code', code: @guesthouse.brand_name) %></p>
+            <p><%= t('views.guesthouse_bookings.room_name', name: @room.name) %></p>
             </h5>
             <div class="text-center">
               <dl>
@@ -28,7 +28,7 @@
                 <dt><%= Booking.human_attribute_name(:register_checkin) %>:</dt>
                 <dd><%= I18n.l((booking.checkin_time), format: '%d/%m/%Y %H:%M:%S') %></dd>
               </dl>
-              <%= button_to 'Gerenciar Reserva', host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get, class: "btn btn-outline-primary"  %>
+              <%= button_to t('views.guesthouse_bookings.manage'), host_control_guesthouse_room_booking_path(booking.room.guesthouse, booking.room, booking), method: :get, class: "btn btn-outline-primary"  %>
             </div>
           </div>
         </div>
@@ -36,6 +36,6 @@
     <% end %>
   </div>
 <% else %>
-  <p>Você ainda não tem reservas.</p>
+  <p><%= t('views.guesthouse_bookings.no_bookings') %></p>
 <% end %>
-<%= link_to 'Voltar', root_path, class: "btn btn-outline-secondary"  %>
+<%= link_to t('helpers.buttons.back'), root_path, class: "btn btn-outline-secondary"  %>

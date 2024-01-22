@@ -57,6 +57,7 @@ class BookingsController < ApplicationController
   end
 
   def ongoing_bookings
+    @room = Room.find_by(params[:id])
     @guesthouse = current_host.guesthouse
     @rooms = @guesthouse.rooms.where(status: :active)
     @bookings = Booking.where(status: :ongoing)

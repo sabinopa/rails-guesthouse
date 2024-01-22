@@ -60,4 +60,6 @@ pt-BR:
       cancel: 'Cancelar Reserva'
       no_cancel: 'Essa reserva não pode mais ser cancelada.'
       review: 'Avaliar Estadia'
+    ongoing_bookings:
+      active_bookings: 'Estadia Ativas'
         

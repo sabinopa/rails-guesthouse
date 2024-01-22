@@ -39,6 +39,9 @@ pt-BR:
     ongoing_bookings:
       reservation: "Reserva %{code}"
   views:
+    new: 
+      before_finalize: 'Antes de finalizar, confirme os dados da sua reserva:'
+      submit: 'Confirmar Reserva'
     checkout_register:
       checkout: 'Check-out da Reserva'      
       register_checkout: 'Registrar Check-out'

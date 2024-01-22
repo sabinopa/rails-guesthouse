@@ -1,4 +1,4 @@
-<h3>Antes de finalizar, confirme os dados da sua reserva:</h3>
+<h3><%= t('views.new.before_finalize') %></h3>
 <div>
   <p><%= @guesthouse.brand_name %></p>
   <dl>
@@ -23,6 +23,6 @@
 <%= f.hidden_field :end_date, value: @booking.end_date %>
 <%= f.hidden_field :number_guests, value: @booking.number_guests %>
 
-<%= f.submit 'Confirmar reserva' %>
+<%= f.submit t('views.new.submit') %>
 
 <% end %>

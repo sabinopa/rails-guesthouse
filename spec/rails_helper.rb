@@ -3,6 +3,8 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   add_filter 'channels'
   add_filter 'mailers'
+  add_filter 'app/controllers/guests/'
+  add_filter 'app/controllers/hosts/'
 end
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

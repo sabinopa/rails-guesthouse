@@ -1,15 +1,15 @@
-<h3>Resultados da busca: </h3>
+<h3><%= t('views.show.results') %></h3>
 
-<p><%= link_to 'Voltar', new_search_path %></p>
+<p><%= link_to t('helpers.buttons.back'), new_search_path %></p>
 
 <% if @guesthouses.empty? %>
-    <p>Nenhuma pousada encontrada.</p>
+    <p><%= t('views.show.none_found') %></p>
 <% else %>
   <div>
-    <p><%= @guesthouses.count %> pousadas encontradas! </p>
+    <p><%= t('views.show.count_guesthouses', count_guesthouses: @guesthouses.count) %></p>
     <% @guesthouses.each do |guesthouse| %>
       <span><%= link_to guesthouse.brand_name, guesthouse_path(guesthouse.id) %></span>
-      <span><small><%= @rooms.where(guesthouse_id: guesthouse.id).count %> quartos desta pousada atendem seus requisitos! </small></span><br>
+      <span><small><%= t('views.show.count_rooms', count_rooms: @rooms.where(guesthouse_id: guesthouse.id).count) %></small></span><br>
     <% end %>
   </div>
 <% end %>

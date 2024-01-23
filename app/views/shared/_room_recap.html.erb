@@ -1,11 +1,11 @@
-<h4>Quarto <%= @room.name %></h4>
-<p>Pousada <%= @guesthouse.brand_name %></p>
+<h4><%= t('views.room.room_name', name: @room.name) %></h4>
+<p><%= t('views.room.guesthouse_brandname', guesthouse_brandname: @guesthouse.brand_name) %></p>
 <p> <%= @room.description %></p>
 <div>
   <dl>
     <dt><strong><%= Room.human_attribute_name(:max_people) %>:</strong></dt>
-    <dd><%= @room.max_people %> pessoas</dd> 
+    <dd><%= t('views.form.max_people', max_people: @room.max_people) %></dd> 
     <dt><strong><%= Room.human_attribute_name(:price) %>:</strong></dt>
-    <dd>R$ <%= @room.price %></dd>
+    <dd><%= t('views.form.real', price: @room.price) %></dd>
   </dl>
 </div>

@@ -1,29 +1,29 @@
-<h1>Busca detalhada</h1>
+<h1><%= t('views.home.search_detailed') %></h1>
 
 <%= form_with model: @search do |f| %>
 
     <%= f.label :bathroom %>
-    <%= f.select :bathroom, [['Particular', 1], ['Compartilhado', 0], ['', nil]] %><br><br>
+    <%= f.select :bathroom, [[t('views.room.particular'), 1], [t('views.room.shared'), 0], ['', nil]] %><br><br>
 
     <%= f.label :balcony %>
-    <%= f.select :balcony, [['Possui', true], ['Não possui', false], ['', nil]] %><br><br>
+    <%= f.select :balcony, [[t('views.room.it_has'), true], [t('views.room.it_has_not'), false], ['', nil]] %><br><br>
 
     <%= f.label :air_conditioner %>
-    <%= f.select :air_conditioner , [['Possui', true], ['Não possui', false], ['', nil]] %><br><br>
+    <%= f.select :air_conditioner, [[t('views.room.it_has'), true], [t('views.room.it_has_not'), false], ['', nil]] %><br><br>
 
     <%= f.label :tv %>
-    <%= f.select :tv, [['Possui', true], ['Não possui', false], ['', nil]] %><br><br>
+    <%= f.select :tv, [[t('views.room.it_has'), true], [t('views.room.it_has_not'), false], ['', nil]] %><br><br>
 
     <%= f.label :wardrobe %>
-    <%= f.select :wardrobe, [['Possui', true], ['Não possui', false], ['', nil]] %><br><br>
+    <%= f.select :wardrobe, [[t('views.room.it_has'), true], [t('views.room.it_has_not'), false], ['', nil]] %><br><br>
 
     <%= f.label :safe %>
-    <%= f.select :safe, [['Possui', true], ['Não possui', false], ['', nil]] %><br><br>
+    <%= f.select :safe, [[t('views.room.it_has'), true], [t('views.room.it_has_not'), false], ['', nil]] %><br><br>
 
     <%= f.label :accessibility %>
-    <%= f.select :accessibility, [['Acessível', true], ['Não acessível', false], ['', nil]] %><br><br>
+    <%= f.select :accessibility, [[t('views.room.accessible'), true], [t('views.room.not_accessible'), false], ['', nil]] %><br><br>
 
-    <%= f.submit 'Buscar' %>
+    <%= f.submit t('views.home.search') %>
 <% end %>
 
-<p><%= link_to 'Voltar', root_path %></p>
+<p><%= link_to t('helpers.buttons.back'), root_path %></p>

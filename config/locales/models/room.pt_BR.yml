@@ -41,9 +41,9 @@ pt-BR:
     new:
       register: 'Cadastrar Quarto:'
     show:
-      add_prices: 'Adicionar preços personaizados'
+      add_prices: 'Adicionar preços personalizados'
       special_prices: 'Preços em períodos especiais:'
-      start: 'Ínicio:'
+      start: 'Início:'
       end: 'Fim:'
       custom_price: 'Preço personalizado:'
       turn_room_available: 'Tornar quarto disponível'
@@ -55,6 +55,8 @@ pt-BR:
     form: 
       meter: 'm2'
       people: 'pessoas'
+      max_people: '%{max_people} pessoas'
+      price: 'R$ %{price}'
       real: 'R$'
     room: 
       room_name: 'Quarto %{name}'

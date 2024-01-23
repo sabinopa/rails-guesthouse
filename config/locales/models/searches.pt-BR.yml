@@ -24,3 +24,9 @@ pt-BR:
       search_guesthouse: 'Buscar Pousada'
       search_detailed: 'Busca detalhada'
       search_here: 'Busque aqui...'
+    show: 
+      results: 'Resultados da busca:'
+      none_found: 'Nenhuma pousada encontrada.'
+      count_guesthouses: '%{count_guesthouses} pousadas encontradas!'
+      count_rooms: '%{count_rooms} quartos desta pousada atendem seus requisitos!'
+      

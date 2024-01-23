@@ -1,6 +1,6 @@
 <div class="container">
   <% if @host && @guesthouse == @host.guesthouse && @all_rooms.any? %>
-    <strong><%= t('rooms.views.rooms') %></strong>
+    <strong><%= t('views.home.rooms') %></strong>
     <div class="list-group">
       <ul>
         <% @all_rooms.each do |room| %>
@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% elsif @available_rooms.any? %>
-    <h3><%= t('rooms.views.rooms') %></h3>
+    <h3><%= t('views.home.rooms') %></h3>
     <ul>
       <% @available_rooms.each do |room| %>
         <li><%= link_to "#{room.name} - #{room.max_people} pessoas", [@guesthouse, room] %></li>

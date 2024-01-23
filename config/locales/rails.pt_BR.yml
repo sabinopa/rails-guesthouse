@@ -158,6 +158,7 @@ pt-BR:
     buttons:
       back: Voltar
       edit: Editar
+      verify: Verificar
   number:
     currency:
       format:

@@ -1,5 +1,5 @@
 <% if(@room.errors.any?) %>
-  <p>Verifique os erros abaixo:</p>
+  <p><%= t('errors.messages.verify_error') %></p>
   <ul>
     <% @room.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -20,16 +20,16 @@
 
   <div>
     <%= f.label :size %>: 
-    <%= f.number_field :size %> (m2)
+    <%= f.number_field :size %> <%= t('views.form.meter') %>
   </div>
 
   <div>
     <%= f.label :max_people %>: 
-    <%= f.number_field :max_people %> pessoas
+    <%= f.number_field :max_people %> <%= t('views.form.people') %>
   </div>
 
   <div>
-    <%= f.label :price %>: R$
+    <%= f.label :price %>: <%= t('views.form.real') %>
     <%= f.number_field :price %>
   </div>
 
@@ -68,6 +68,6 @@
     <%= f.label :accessibility %>
   </div>
 
-  <%= f.submit 'Salvar' %>
+  <%= f.submit t('helpers.submit.submit') %>
 
 <% end %>

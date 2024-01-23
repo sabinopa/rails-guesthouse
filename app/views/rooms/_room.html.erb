@@ -1,38 +1,38 @@
-<h1>Quarto <%= @room.name %></h1>
-<p>Pousada <%= @guesthouse.brand_name %></p>
+<h1><%= t('views.room.room_name', name: @room.name) %></h1>
+<p><%= t('views.room.guesthouse_brandname', brand_name: @guesthouse.brand_name) %></p>
 <p><%= @room.description %></p>
 
 <div>
   <dl>
     <dt><%= Room.human_attribute_name(:size) %>:</dt>
-    <dd><%= @room.size %> m2 </dd>
+    <dd><%= @room.size %> <%= t('views.form.meter') %> </dd>
  
     <dt><%= Room.human_attribute_name(:max_people) %>:</dt>
-    <dd><%= @room.max_people %> pessoas </dd>
+    <dd><%= @room.max_people %> <%= t('views.form.people') %></dd>
     
     <dt><%= Room.human_attribute_name(:price) %>:</dt>
     <dd>R$ <%= @room.price %></dd>
     
     <dt><%= Room.human_attribute_name(:bathroom) %>:</dt>
-    <dd><%= @room.bathroom? ? 'Particular' : 'Compartilhado' %></dd>
+    <dd><%= @room.bathroom? ? t('views.room.particular') : t('views.room.shared') %></dd>
     
     <dt><%= Room.human_attribute_name(:balcony) %>:</dt>
-    <dd><%= @room.balcony? ? 'Possui' : 'Não possui' %></dd>
+    <dd><%= @room.balcony? ? t('views.room.it_has') : t('views.room.it_has_not') %></dd>
     
     <dt><%= Room.human_attribute_name(:air_conditioner) %>:</dt>
-    <dd><%= @room.air_conditioner? ? 'Possui' : 'Não possui' %></dd>
+    <dd><%= @room.air_conditioner? ? t('views.room.it_has') : t('views.room.it_has_not') %></dd>
     
     <dt><%= Room.human_attribute_name(:tv) %>:</dt>
-    <dd><%= @room.tv? ? 'Possui' : 'Não possui' %></dd>
+    <dd><%= @room.tv? ? t('views.room.it_has') : t('views.room.it_has_not') %></dd>
     
     <dt><%= Room.human_attribute_name(:wardrobe) %>:</dt>
-    <dd><%= @room.wardrobe? ? 'Possui' : 'Não possui' %></dd>
+    <dd><%= @room.wardrobe? ? t('views.room.it_has') : t('views.room.it_has_not') %></dd>
     
     <dt><%= Room.human_attribute_name(:safe) %>:</dt>
-    <dd><%= @room.safe? ? 'Possui' : 'Não possui' %></dd>
+    <dd><%= @room.safe? ? t('views.room.it_has') : t('views.room.it_has_not') %></dd>
     
     <dt><%= Room.human_attribute_name(:accessibility) %>:</dt>
-    <dd><%= @room.accessibility? ? 'Acessível para pessoas com deficiência' : 'Não acessível' %></dd>
+    <dd><%= @room.accessibility? ? t('views.room.accessible') : t('views.room.not_accessible') %></dd>
     
     <dt><%= Room.human_attribute_name(:status) %>:</dt>
     <dd><%= I18n.translate(@room.status) %></dd>

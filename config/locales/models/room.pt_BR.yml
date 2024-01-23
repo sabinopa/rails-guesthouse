@@ -37,5 +37,33 @@ pt-BR:
       missing: 'Por favor, preencha todos os campos.'
       success: 'Quarto disponível, você pode finalizar a sua reserva.'
       error: 'Quarto não disponível para reserva ou número de hóspedes excede a capacidade.'
-    views:
-      rooms: 'Quartos:'
+  views:
+    new:
+      register: 'Cadastrar Quarto:'
+    show:
+      add_prices: 'Adicionar preços personaizados'
+      special_prices: 'Preços em períodos especiais:'
+      start: 'Ínicio:'
+      end: 'Fim:'
+      custom_price: 'Preço personalizado:'
+      turn_room_available: 'Tornar quarto disponível'
+      turn_room_unavailable: 'Tornar quarto indisponível'
+    index: 
+      link_room: '%{name} - %{max_people} pessoas'
+    availability: 
+      check: 'Verificar a disponibilidade das datas:'
+    form: 
+      meter: 'm2'
+      people: 'pessoas'
+      real: 'R$'
+    room: 
+      room_name: 'Quarto %{name}'
+      guesthouse_brandname: 'Pousada %{brand_name}'
+      particular: 'Particular'
+      shared: 'Compartilhado'
+      it_has: 'Possui'
+      it_has_not: 'Não possui'
+      accessible: 'Acessível para pessoas com deficiência'
+      not_accessible: 'Não acessível'
+    edit: 
+      manage: 'Gerenciar quarto:'

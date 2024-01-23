@@ -65,6 +65,7 @@ pt-BR:
       recent_guesthouse: 'Pousadas recentes'
       other_guesthouse: 'Demais pousadas'
       guesthouse_empty: 'Não existem pousadas cadastradas.'
+      rooms: 'Quartos:'
     edit: 
       manage_guesthouse: 'Gerenciar pousada:'
     cities: 

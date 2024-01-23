@@ -1,5 +1,6 @@
 <ul>
   <% @rooms.each do | room | %>
-    <li><%= link_to "#{room.name} - #{room.max_people} pessoas", guesthouse_room_path(guesthouse_id: room.guesthouse.id, id: room.id) %></li>
+    <li><%= link_to t('views.index.link_room', name: room.name, max_people: room.max_people), 
+        guesthouse_room_path(guesthouse_id: room.guesthouse.id, id: room.id) %></li>
   <% end %> 
 </ul>

@@ -1,29 +1,29 @@
 <%= render 'room', room: @room %>
 
 <% if host_signed_in? && current_host && @room.guesthouse.host == current_host %>
-  <%= link_to 'Editar', edit_guesthouse_room_path(@room.id) %>
-  <%= link_to 'Adicionar preços personalizados', new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
+  <%= link_to t('helpers.buttons.edit'), edit_guesthouse_room_path(@room.id) %>
+  <%= link_to t('views.show.add_prices'), new_guesthouse_room_custom_price_path(@room.guesthouse, @room) %>
   
   <% if @custom_prices.any? %>
-    <h3>Preços em períodos especiais:</h3>
+    <h3><%= t('views.show.special_prices') %></h3>
     <% @custom_prices.each do |custom_price| %>
       <div>
-        <strong>Início:</strong> <%= custom_price.start_date.strftime("%d/%m/%Y") %>
-        <strong>Fim:</strong> <%= custom_price.end_date.strftime("%d/%m/%Y") %>
-        <strong>Preço personalizado:</strong> R$<%= custom_price.price %>
+        <strong><%= t('views.show.start') %></strong> <%= custom_price.start_date.strftime("%d/%m/%Y") %>
+        <strong><%= t('views.show.end') %></strong> <%= custom_price.end_date.strftime("%d/%m/%Y") %>
+        <strong><%= t('views.show.custom_price') %></strong> R$<%= custom_price.price %>
       </div>
     <% end %>
   <% end %>
 
   <% if @room.inactive? %>
-    <%= button_to 'Tornar quarto disponível', active_guesthouse_room_path(@room.id) %>
+    <%= button_to t('views.show.turn_room_available'), active_guesthouse_room_path(@room.id) %>
   <% else %>
-    <%= button_to 'Tornar quarto indisponível', inactive_guesthouse_room_path(@room.id) %>
+    <%= button_to t('views.show.turn_room_unavailable'), inactive_guesthouse_room_path(@room.id) %>
   <% end %>
 <% end %>
 
 <%= render 'availability', room: @room, guesthouse: @guesthouse %>
 
 <div>
-  <%= link_to 'Voltar', guesthouse_path %>
+  <%= link_to t('helpers.buttons.back'), guesthouse_path %>
 </div>

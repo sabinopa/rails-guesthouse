@@ -1,6 +1,5 @@
-<h3><%= t('views.ongoing_bookings.active_bookings') %></h3>
-
 <% if @bookings.present? %>
+  <h3><%= t('views.ongoing_bookings.active_bookings') %></h3>
   <h6><%= t('views.guesthouse_bookings.booking_in', brand_name: @guesthouse.brand_name) %></h6>
   <div class="d-flex flex-wrap justify-content-around mt-5">
     <% @rooms.each do |room| %>

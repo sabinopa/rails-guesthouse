@@ -36,8 +36,11 @@ pt-BR:
     checkout:
       success: "Reserva %{booking_code} finalizada!" 
       error: 'Não foi possível realizar o checkout!'
+    guesthouse_bookings: 
+      error: 'Para seguir com essa ação, primeiro crie sua pousada.'
     ongoing_bookings:
       reservation: "Reserva %{code}"
+      error: 'Para seguir com essa ação, primeiro crie sua pousada.'
   views:
     new: 
       before_finalize: 'Antes de finalizar, confirme os dados da sua reserva:'

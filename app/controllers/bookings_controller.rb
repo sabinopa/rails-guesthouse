@@ -36,12 +36,18 @@ class BookingsController < ApplicationController
   
   def guesthouse_bookings
     @guesthouse = current_host.guesthouse
-    @rooms = @guesthouse.rooms.where(status: :active)
-    @bookings = Booking.joins(:room)
-                        .where(rooms: { id: @rooms.pluck(:id) })
-                        .where(status: :booked)
-                        .order(:start_date)
-                        .includes(room: { guesthouse: :payment_method })
+    
+    if @guesthouse
+      @rooms = @guesthouse.rooms.where(status: :active)
+      @bookings = Booking.joins(:room)
+        .where(rooms: { id: @rooms.pluck(:id) })
+        .where(status: :booked)
+        .order(:start_date)
+        .includes(room: { guesthouse: :payment_method })
+    else
+      flash[:alert] = t('.error')
+      return redirect_to new_guesthouse_path
+    end
   end
 
   def host_canceled
@@ -57,11 +63,19 @@ class BookingsController < ApplicationController
   end
 
   def ongoing_bookings
-    @room = Room.find_by(params[:id])
     @guesthouse = current_host.guesthouse
-    @rooms = @guesthouse.rooms.where(status: :active)
-    @booking = Booking.where(status: :ongoing)
-    @bookings = Booking.where(status: :ongoing)
+      
+    if @guesthouse
+      @rooms = @guesthouse.rooms.where(status: :active)
+      @bookings = Booking.joins(:room)
+        .where(rooms: { id: @rooms.pluck(:id) })
+        .where(status: :ongoing)
+        .order(:start_date)
+        .includes(room: { guesthouse: :payment_method })
+    else
+      flash[:alert] = t('.error')
+      return redirect_to new_guesthouse_path
+    end
   end
   
   def guest_canceled

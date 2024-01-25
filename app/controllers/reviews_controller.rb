@@ -23,7 +23,13 @@ class ReviewsController < ApplicationController
   end
 
   def host_reviews
-    @reviews = current_host.guesthouse.reviews
+    @guesthouse = current_host.guesthouse
+    if @guesthouse
+      @reviews = current_host.guesthouse.reviews
+    else
+      flash[:alert] = t('.error')
+      return redirect_to new_guesthouse_path
+    end
   end
 
   def create_answer

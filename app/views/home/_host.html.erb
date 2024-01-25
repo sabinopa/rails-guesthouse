@@ -7,7 +7,7 @@
     
       <div class="card-header" style="width: 18rem;">
           <% if @guesthouse.inactive? %>
-            <%= button_to t('views.home.activate_guesthouse'), active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
+            <%= button_to t('views.home.active_guesthouse'), active_guesthouse_path(@guesthouse.id), class: "btn btn-outline-primary" %>
           <% else %>  
             <%= button_to t('views.home.inactive_guesthouse'), inactive_guesthouse_path(@guesthouse.id), class: "btn btn-outline-danger" %>
           <% end %>

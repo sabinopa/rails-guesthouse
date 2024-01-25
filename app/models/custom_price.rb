@@ -11,13 +11,13 @@ class CustomPrice < ApplicationRecord
 
   def start_date_is_future
     if start_date.present? && start_date.past?
-      errors.add(:start_date, 'Ops, a data de início não pode ser passada')
+      errors.add(:start_date, I18n.t('activerecord.models.custom_price.is_future'))
     end
   end
 
   def start_date_before_end_date
     if start_date.present? && end_date.present? && start_date >= end_date
-      errors.add(:start_date, 'Ops, a data de início deve ser anterior a data final.')
+      errors.add(:start_date, I18n.t('activerecord.models.custom_price.before_date'))
     end
   end
 
@@ -29,7 +29,7 @@ class CustomPrice < ApplicationRecord
       existing_period = Range.new(custom.start_date, custom.end_date)
       new_period.overlaps?(existing_period)
     end
-    errors.add(:start_date, 'Ops, você já tem um preço especial cadastrado nessa data.') if overlapping_custom_prices
+    errors.add(:start_date, I18n.t('activerecord.models.custom_price.overlapping')) if overlapping_custom_prices
   end
 end
 

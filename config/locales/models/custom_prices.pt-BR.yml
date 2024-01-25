@@ -4,6 +4,9 @@ pt-BR:
       custom_price: 
         one: 'Preço personalizado'
         other: 'Preços personalizados'
+        overlapping: 'Ops, você já tem um preço especial cadastrado nessa data.'
+        before_date: 'Ops, a data de início deve ser anterior a data final.'
+        is_future: 'Ops, a data de início não pode ser passada'
     attributes:
       custom_price:
         start_date: 'Início'

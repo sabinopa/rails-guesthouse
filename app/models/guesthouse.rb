@@ -32,7 +32,7 @@ class Guesthouse < ApplicationRecord
 
   def host_has_guesthouse
     if Guesthouse.exists?(host: self.host)
-      errors.add(:host, 'Ops, você já tem uma pousada cadastrada!')
+      errors.add(:host, I18n.t('activerecord.models.guesthouse.error'))
     end
   end
 end

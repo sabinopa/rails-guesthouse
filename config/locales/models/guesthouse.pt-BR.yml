@@ -9,6 +9,7 @@ pt-BR:
       guesthouse: 
         one: 'pousada'
         other: 'pousadas'
+        error: 'Ops, você já tem uma pousada cadastrada!'
     attributes:
       guesthouse:
         description: 'Descrição'
